@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using DevExpress.UserSkins;
+using DevExpress.Skins;
 
-namespace ShopQuanAo
+namespace ShopQuanAo2
 {
     static class Program
     {
@@ -15,7 +17,10 @@ namespace ShopQuanAo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+
+            BonusSkins.Register();
+            SkinManager.EnableFormSkins();
+            Application.Run(new frmMain());
         }
     }
 }

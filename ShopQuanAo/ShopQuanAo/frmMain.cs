@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
+using System.Linq;
 using System.Windows.Forms;
+using DevExpress.XtraBars;
 
 namespace ShopQuanAo
 {
-    public partial class Form1 : Form
+    public partial class frmMain : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        public Form1()
+        public frmMain()
         {
             InitializeComponent();
         }
