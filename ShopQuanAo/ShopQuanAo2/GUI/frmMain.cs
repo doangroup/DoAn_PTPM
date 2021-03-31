@@ -7,38 +7,39 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+
+using ShopQuanAo2.DAO;
+using ShopQuanAo2.GUI;
 using ShopQuanAo2.View;
 namespace ShopQuanAo2
 {
     public partial class frmMain : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+
+        ProductDAO pd = new ProductDAO();
         public frmMain()
         {
             InitializeComponent();
-            load();
+            loadProduct();
         }
         public void load()
         {
-            btnLogout.Enabled = true;
-            btnChangePass.Enabled = true;
             
         }
-        
-        private void xtraTabPage1_Paint(object sender, PaintEventArgs e)
+        public void loadProduct()
         {
-
+            dgvSanPham.DataSource = pd.loadProduct();
+            
         }
 
-        private void btnLogin_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            frmLogin login = new frmLogin();
-            login.ShowDialog();
-        }
+    
+ 
 
         private void frmMain_Load(object sender, EventArgs e)
         {
             DevExpress.LookAndFeel.DefaultLookAndFeel themes = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             themes.LookAndFeel.SkinName = "Valentine";
+           
         }
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -60,5 +61,33 @@ namespace ShopQuanAo2
         {
 
         }
+
+        private void groupControl2_Click(object sender, EventArgs e)
+        {
+            dgvSanPham.DataSource = pd.loadProduct();
+        }
+
+        private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmAbout about = new frmAbout();
+            about.ShowDialog();
+        }
+
+      
+
+     
+
+    
+
+    
+
+     
+
+       
     }
 }

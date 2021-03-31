@@ -41,11 +41,19 @@ namespace ShopQuanAo2.View
             {
                 XtraMessageBox.Show("Đăng nhập thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Hide();
+                frmMain main = new frmMain();
+                main.Show();
             }
             else
             {
                 XtraMessageBox.Show("Tài Khoản hoặc Mật Khẩu không đúng !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            DevExpress.LookAndFeel.DefaultLookAndFeel themes = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            themes.LookAndFeel.SkinName = "Valentine";
         }
     }
 }

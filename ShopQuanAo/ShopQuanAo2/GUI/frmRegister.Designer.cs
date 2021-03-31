@@ -35,12 +35,12 @@
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.btnOut = new DevExpress.XtraEditors.SimpleButton();
             this.txtPassword = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.txtUsername = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnOut = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
@@ -115,29 +115,6 @@
             this.labelControl3.TabIndex = 7;
             this.labelControl3.Text = "Nhập Lại Mật Khẩu";
             // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(107, 266);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(196, 64);
-            this.simpleButton1.TabIndex = 6;
-            this.simpleButton1.Text = "Đăng Ký";
-            // 
-            // btnOut
-            // 
-            this.btnOut.Appearance.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnOut.Appearance.Options.UseFont = true;
-            this.btnOut.Image = ((System.Drawing.Image)(resources.GetObject("btnOut.Image")));
-            this.btnOut.Location = new System.Drawing.Point(358, 266);
-            this.btnOut.Name = "btnOut";
-            this.btnOut.Size = new System.Drawing.Size(158, 64);
-            this.btnOut.TabIndex = 5;
-            this.btnOut.Text = "Thoát";
-            this.btnOut.Click += new System.EventHandler(this.btnOut_Click);
-            // 
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(334, 114);
@@ -174,6 +151,29 @@
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Tài Khoản";
             // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.simpleButton1.Appearance.Options.UseFont = true;
+            this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
+            this.simpleButton1.Location = new System.Drawing.Point(107, 266);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(196, 64);
+            this.simpleButton1.TabIndex = 6;
+            this.simpleButton1.Text = "Đăng Ký";
+            // 
+            // btnOut
+            // 
+            this.btnOut.Appearance.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnOut.Appearance.Options.UseFont = true;
+            this.btnOut.Image = ((System.Drawing.Image)(resources.GetObject("btnOut.Image")));
+            this.btnOut.Location = new System.Drawing.Point(358, 266);
+            this.btnOut.Name = "btnOut";
+            this.btnOut.Size = new System.Drawing.Size(158, 64);
+            this.btnOut.TabIndex = 5;
+            this.btnOut.Text = "Thoát";
+            this.btnOut.Click += new System.EventHandler(this.btnOut_Click);
+            // 
             // frmRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -196,7 +196,6 @@
 
         #endregion
 
-        private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.SimpleButton btnOut;
         private DevExpress.XtraEditors.TextEdit txtPassword;
@@ -208,5 +207,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.TextEdit textEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl3;
+        public DevExpress.XtraEditors.GroupControl groupControl1;
     }
 }
