@@ -62,8 +62,10 @@
     <Compile Include="DAO\AcountDAO.cs" />
     <Compile Include="DAO\DataProvider.cs" />
     <Compile Include="DAO\ProductDAO.cs" />
+    <Compile Include="DAO\StaffDAO.cs" />
     <Compile Include="DTO\Acount.cs" />
     <Compile Include="DTO\Product.cs" />
+    <Compile Include="DTO\Staff.cs" />
     <Compile Include="GUI\frmAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,6 +200,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\chartsshowlegend_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Word-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Excel-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

@@ -14,6 +14,7 @@ namespace ShopQuanAo2.DAO
         }
         public bool login(string userName, string passWord)
         {
+
             string sqlAcount = "select TenDN, MatKhau, LoaiTK from TaiKhoan where TenDN = '" + userName + "' and MatKhau = '" + passWord + "'";
             DataTable dt = dp.ExcuteQuery(sqlAcount);
             if (dt.Rows.Count > 0)
