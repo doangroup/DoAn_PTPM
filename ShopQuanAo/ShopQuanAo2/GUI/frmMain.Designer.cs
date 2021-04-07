@@ -64,6 +64,7 @@
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.sstMain = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
+            this.hideContainerLeft = new DevExpress.XtraBars.Docking.AutoHideContainer();
             this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.navBarControl1 = new DevExpress.XtraNavBar.NavBarControl();
@@ -78,14 +79,13 @@
             this.navBarItem4 = new DevExpress.XtraNavBar.NavBarItem();
             this.btnSanPham = new DevExpress.XtraBars.BarButtonItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.hideContainerLeft = new DevExpress.XtraBars.Docking.AutoHideContainer();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgCLT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
+            this.hideContainerLeft.SuspendLayout();
             this.dockPanel1.SuspendLayout();
             this.dockPanel1_Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
-            this.hideContainerLeft.SuspendLayout();
             this.SuspendLayout();
             // 
             // ribbonControl1
@@ -254,6 +254,7 @@
             this.barButtonItem2.Id = 17;
             this.barButtonItem2.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.LargeGlyph")));
             this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // barButtonItem6
             // 
@@ -262,6 +263,7 @@
             this.barButtonItem6.Id = 18;
             this.barButtonItem6.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem6.LargeGlyph")));
             this.barButtonItem6.Name = "barButtonItem6";
+            this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
             // 
             // barButtonItem7
             // 
@@ -400,6 +402,15 @@
             "DevExpress.XtraBars.Navigation.OfficeNavigationBar",
             "DevExpress.XtraBars.Navigation.TileNavPane"});
             // 
+            // hideContainerLeft
+            // 
+            this.hideContainerLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.hideContainerLeft.Controls.Add(this.dockPanel1);
+            this.hideContainerLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.hideContainerLeft.Location = new System.Drawing.Point(0, 184);
+            this.hideContainerLeft.Name = "hideContainerLeft";
+            this.hideContainerLeft.Size = new System.Drawing.Size(24, 584);
+            // 
             // dockPanel1
             // 
             this.dockPanel1.Controls.Add(this.dockPanel1_Container);
@@ -524,15 +535,6 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // hideContainerLeft
-            // 
-            this.hideContainerLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.hideContainerLeft.Controls.Add(this.dockPanel1);
-            this.hideContainerLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.hideContainerLeft.Location = new System.Drawing.Point(0, 184);
-            this.hideContainerLeft.Name = "hideContainerLeft";
-            this.hideContainerLeft.Size = new System.Drawing.Size(24, 584);
-            // 
             // frmMain
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
@@ -556,10 +558,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgCLT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
+            this.hideContainerLeft.ResumeLayout(false);
             this.dockPanel1.ResumeLayout(false);
             this.dockPanel1_Container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
-            this.hideContainerLeft.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

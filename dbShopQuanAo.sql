@@ -206,7 +206,7 @@ go
 select sum(ThanhTien) as [Tổng] from HoaDon
 go
 
-
+use QLSHOPQUANAO
 
 drop proc LayHDTheoNgay
 select * from KhachHang

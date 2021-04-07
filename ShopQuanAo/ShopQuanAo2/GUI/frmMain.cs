@@ -112,6 +112,36 @@ namespace ShopQuanAo2
             
         }
 
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.checkExit(typeof(frmProduct));
+            if (frm != null)
+            {
+                frm.Activate();
+            }
+            else
+            {
+                frmProduct product = new frmProduct();
+                product.MdiParent = this;
+                product.Show();
+            }
+        }
+
+        private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.checkExit(typeof(frmCategory));
+            if (frm != null)
+            {
+                frm.Activate();
+            }
+            else
+            {
+                frmCategory cate = new frmCategory();
+                cate.MdiParent = this;
+                cate.Show();
+            }
+        }
+
 
 
 
