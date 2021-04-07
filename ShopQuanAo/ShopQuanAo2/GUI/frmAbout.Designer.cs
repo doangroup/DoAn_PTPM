@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -39,15 +40,26 @@
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Đồ án cuối môn Phát triển phần mềm và ứng dụng thông minh";
             // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(925, 478);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(75, 16);
+            this.labelControl2.TabIndex = 1;
+            this.labelControl2.Text = "labelControl2";
+            // 
             // frmAbout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(689, 411);
+            this.ClientSize = new System.Drawing.Size(1032, 538);
+            this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
             this.Name = "frmAbout";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.ShowMdiChildCaptionInParentTitle = true;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Thông Tin";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -56,6 +68,7 @@
         #endregion
 
         private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
 
     }
 }

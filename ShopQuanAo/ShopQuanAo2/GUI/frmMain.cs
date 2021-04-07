@@ -24,22 +24,32 @@ namespace ShopQuanAo2
         }
         public void load()
         {
-            
+
         }
         public void loadProduct()
         {
-            dgvSanPham.DataSource = pd.loadProduct();
-            
+           
+
         }
 
-    
- 
+        private Form checkExit(Type type)
+        {
+            foreach (Form item in this.MdiChildren)
+            {
+                if (item.GetType() == type)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+
 
         private void frmMain_Load(object sender, EventArgs e)
         {
             DevExpress.LookAndFeel.DefaultLookAndFeel themes = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             themes.LookAndFeel.SkinName = "Valentine";
-           
+
         }
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -64,7 +74,7 @@ namespace ShopQuanAo2
 
         private void groupControl2_Click(object sender, EventArgs e)
         {
-            dgvSanPham.DataSource = pd.loadProduct();
+           
         }
 
         private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -75,19 +85,43 @@ namespace ShopQuanAo2
         private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             frmAbout about = new frmAbout();
-            about.ShowDialog();
+            about.MdiParent = this;
+            about.Show();
         }
 
-      
+        private void groupControl2_Paint(object sender, PaintEventArgs e)
+        {
 
-     
+        }
 
-    
+        private void btnNhanVien_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.checkExit(typeof(frmStaff));
+            if (frm != null)
+            {
+                frm.Activate();
+            }
+            else
+            {
+                frmStaff staff = new frmStaff();
+                staff.MdiParent = this;
+                staff.Show();
+            }
+           
 
-    
+            
+        }
 
-     
 
-       
+
+
+
+
+
+
+
+
+
+
     }
 }
