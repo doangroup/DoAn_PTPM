@@ -264,7 +264,6 @@
             this.txtGhiChu.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.txtGhiChu.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.txtGhiChu.Properties.Mask.EditMask = "d";
-            this.txtGhiChu.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtGhiChu.Size = new System.Drawing.Size(527, 22);
             this.txtGhiChu.StyleController = this.layoutControl1;
             this.txtGhiChu.TabIndex = 7;

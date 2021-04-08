@@ -83,14 +83,15 @@ namespace ShopQuanAo2.GUI
                 DialogResult dl = XtraMessageBox.Show("Bạn có chắc muốn xóa Nhân Viên: "+txtTenNV.Text+" không?","Thông báo",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
                 if (dl == DialogResult.Yes)
                 {
-                    if (st.deleteStaff(manv) == true)
+                    try 
                     {
+                        st.deleteStaff(manv);
                         XtraMessageBox.Show("Xóa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         dgvNhanVien.DataSource = st.loadStaff();
                     }
-                    else
+                    catch(Exception ex)
                     {
-                        XtraMessageBox.Show("Xóa thất bại !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        XtraMessageBox.Show("Xóa thất bại ! Lỗi - " + ex.Message.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

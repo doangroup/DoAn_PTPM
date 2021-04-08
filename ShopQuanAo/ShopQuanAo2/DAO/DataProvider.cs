@@ -12,7 +12,8 @@ namespace ShopQuanAo2.DAO
         public DataTable ExcuteQuery(string query, object[] parameter = null)
         {
             DataTable data = new DataTable();
-            //using cho dù có vấn đề j đi nữa khi kết thúc khối lệnh trong đó dữ liệu khai báo sẽ tự giải phóng
+            //using cho dù có vấn đề j đi nữa khi kết thúc khối lệnh trong đó 
+            //dữ liệu khai báo sẽ tự giải phóng
             using (SqlConnection conn = new SqlConnection(sql))
             {
                 conn.Open();

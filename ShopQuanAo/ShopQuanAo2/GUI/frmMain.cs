@@ -17,6 +17,7 @@ namespace ShopQuanAo2
     {
 
         ProductDAO pd = new ProductDAO();
+ 
         public frmMain()
         {
             InitializeComponent();
@@ -49,6 +50,18 @@ namespace ShopQuanAo2
         {
             DevExpress.LookAndFeel.DefaultLookAndFeel themes = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             themes.LookAndFeel.SkinName = "Valentine";
+
+            Form frm = this.checkExit(typeof(frmProduct));
+            if (frm != null)
+            {
+                frm.Activate();
+            }
+            else
+            {
+                frmProduct product = new frmProduct();
+                product.MdiParent = this;
+                product.Show();
+            }
 
         }
 

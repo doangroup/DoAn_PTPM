@@ -37,15 +37,59 @@ namespace ShopQuanAo2.DAO
 
         public bool deleteProduct(int maSP)
         {
-            try
+
+            string sqlDelete = "delete from SanPham where MaSP = " + maSP;
+            int rs = dp.ExcuteNonQuery(sqlDelete);
+            if (rs > 0)
             {
-                string sqlDelete = "delete from SanPham where MaSP = " + maSP;
-                int rs = dp.ExcuteNonQuery(sqlDelete);
-                return rs > 0 ? true : false;
+                return true;
+
             }
-            catch (Exception e)
+            else
             {
-                e.Message.ToString();
+                return false;
+            }
+        }
+        public bool addProduct(int maSP, int maDM, string tenSP, int soLuong, int donGia, string ghiChu)
+        {
+
+            string sqlAdd = "insert into SanPham values (" + maSP + "," + maDM + ",N'" + tenSP + "'," + soLuong + "," + donGia + ",'',N'" + ghiChu + "')";
+            int rs = dp.ExcuteNonQuery(sqlAdd);
+            if (rs > 0)
+            {
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool repairProduct(int maSP, int maDM, string tenSP, int soLuong, int donGia, string ghiChu)
+        {
+            string sqlAdd = "update SanPham set MaDM = " + maDM + ", TenSP = N'" + tenSP + "',SoLuong = " + soLuong + ", DonGia = " + donGia + ",GhiChu = N'" + ghiChu + "' where MaSP = " + maSP;
+            int rs = dp.ExcuteNonQuery(sqlAdd);
+            if (rs > 0)
+            {
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool checkPrimarykey(int masp)
+        {
+            string sqlCheck = "select count(*) from SanPham where MaSP = " + masp;
+            int rs = dp.ExcuteNonQuery(sqlCheck);
+            if (rs > 0)
+            {
+                return true;
+
+            }
+            else
+            {
                 return false;
             }
         }
