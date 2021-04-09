@@ -70,6 +70,7 @@ namespace ShopQuanAo2.GUI
                 // nếu có sẽ sửa 
                 //Chưa xong phần kiểm tra khóa chính để hỏi Sửa 
                 int madm = int.Parse(cbDanhMuc.EditValue.ToString());
+
                 if (pd.checkPrimarykey(masp) == true)
                 {
                     DialogResult dl = XtraMessageBox.Show("Mã sản phẩm trùng với mã đã có bán có muốn sửa cho Mã Sản Phẩm: " + txtMaSP.Text + " không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

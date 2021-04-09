@@ -81,9 +81,9 @@ namespace ShopQuanAo2.DAO
         }
         public bool checkPrimarykey(int masp)
         {
-            string sqlCheck = "select count(*) from SanPham where MaSP = " + masp;
-            int rs = dp.ExcuteNonQuery(sqlCheck);
-            if (rs > 0)
+            string sqlCheck = "select * from SanPham where MaSP = " + masp;
+            DataTable rs = dp.ExcuteQuery(sqlCheck);
+            if (rs.Rows.Count > 0)
             {
                 return true;
 
