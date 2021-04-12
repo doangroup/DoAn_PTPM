@@ -25,7 +25,7 @@ namespace ShopQuanAo2.DAO
         public List<Product> findProduct(string tenSP)
         {
             List<Product> lstProduct = new List<Product>();
-            string sqlProduct = "select * from SanPham where TenSP = '" + tenSP + "'";
+            string sqlProduct = "select * from SanPham where TenSP = N'" + tenSP + "'";
             DataTable dt = dp.ExcuteQuery(sqlProduct);
             foreach (DataRow item in dt.Rows)
             {

@@ -27,7 +27,7 @@ namespace ShopQuanAo2.DAO
         public List<Staff> findStaff(string tenNV)
         {
             List<Staff> lstStaff = new List<Staff>();
-            string sqlStaff = "select * from NhanVien where TenNV = '" + tenNV + "'";
+            string sqlStaff = "select * from NhanVien where TenNV = N'" + tenNV + "'";
             DataTable dt = dp.ExcuteQuery(sqlStaff);
             foreach (DataRow item in dt.Rows)
             {
@@ -54,7 +54,7 @@ namespace ShopQuanAo2.DAO
         public bool addStaff(int maNV, string tenNV, string gioiTinh, string diaChi, int sDT, string ngaySinh)
         {
 
-            string sqlAdd = "insert into NhanVien values (" + maNV + ",N'" + tenNV + "',N'" + gioiTinh + "',N'" + diaChi + "','" + sDT + "','" + ngaySinh + "')";
+            string sqlAdd = "insert into NhanVien values (" + maNV + ",N'" + tenNV + "',N'" + gioiTinh + "',N'" + diaChi + "','" + sDT + "'," + ngaySinh + ")";
             int rs = dp.ExcuteNonQuery(sqlAdd);
             if (rs > 0)
             {

@@ -26,7 +26,7 @@ namespace ShopQuanAo2.DAO
         public List<Category> findCategory(string tendm)
         {
             List<Category> lstCategory = new List<Category>();
-            string sqlCategory = "select * from DanhMuc where TenDM = '" + tendm + "'";
+            string sqlCategory = "select * from DanhMuc where TenDM = N'" + tendm + "'";
             DataTable dt = dp.ExcuteQuery(sqlCategory);
             foreach (DataRow item in dt.Rows)
             {

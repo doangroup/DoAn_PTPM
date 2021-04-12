@@ -10,88 +10,73 @@ using DevExpress.XtraEditors;
 using ShopQuanAo2.DAO;
 namespace ShopQuanAo2.GUI
 {
-    public partial class frmStaff : DevExpress.XtraEditors.XtraForm
+    public partial class frmCustomer : DevExpress.XtraEditors.XtraForm
     {
-        StaffDAO st = new StaffDAO();
-        BindingSource listStaff = new BindingSource();
+        CustomerDAO ct = new CustomerDAO();
+       
+        BindingSource listCustomer = new BindingSource();
         //Tránh mất dữ liệu gốc khi binding qua textbox
         //Hạn chế lỗi mất kêt nối Binding - Nguồn: K Team
-        public frmStaff()
+        public frmCustomer()
         {
             InitializeComponent();
         }
 
-        private void dgvNhanVien_Click(object sender, EventArgs e)
+        private void frmCustomer_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void groupControl2_Paint(object sender, PaintEventArgs e)
-        {
+            dgvKhachHang.DataSource = listCustomer;
+            listCustomer.DataSource = ct.loadCustomer();
             
-            
-        }
 
-        private void frmStaff_Load(object sender, EventArgs e)
-        {
-            dgvNhanVien.DataSource = listStaff;
-            listStaff.DataSource = st.loadStaff();
-          
-            
             BindingSource();
         }
-
         private void BindingSource()
         {
-            txtMaNV.DataBindings.Add(new Binding("Text", dgvNhanVien.DataSource, "MaNV", true, DataSourceUpdateMode.Never));
-            txtTenNV.DataBindings.Add(new Binding("Text", dgvNhanVien.DataSource, "TenNV", true, DataSourceUpdateMode.Never));
-            cbGioiTinh.DataBindings.Add(new Binding("Text", dgvNhanVien.DataSource, "GioiTinh", true, DataSourceUpdateMode.Never));
-            txtDiaChi.DataBindings.Add(new Binding("Text", dgvNhanVien.DataSource, "DiaChi", true, DataSourceUpdateMode.Never));
-            txtSDT.DataBindings.Add(new Binding("Text", dgvNhanVien.DataSource, "SDT", true, DataSourceUpdateMode.Never));
-            txtNgaySinh.DataBindings.Add(new Binding("Text", dgvNhanVien.DataSource, "NgaySinh", true, DataSourceUpdateMode.Never));
+            txtMaKH.DataBindings.Add(new Binding("Text", dgvKhachHang.DataSource, "MaKH", true, DataSourceUpdateMode.Never));
+           
+            txtTenKH.DataBindings.Add(new Binding("Text", dgvKhachHang.DataSource, "TenKH", true, DataSourceUpdateMode.Never));
+            txtDiaChi.DataBindings.Add(new Binding("Text", dgvKhachHang.DataSource, "DiaChi", true, DataSourceUpdateMode.Never));
+            txtSDT.DataBindings.Add(new Binding("Text", dgvKhachHang.DataSource, "SDT", true, DataSourceUpdateMode.Never));
+           
         }
 
         private void groupControl2_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
         {
-            
+            int maKH = int.Parse(txtMaKH.Text);
+           
+
             if (e.Button.Properties.Caption == "Tải Lại")
             {
-                dgvNhanVien.DataSource = listStaff;
-                listStaff.DataSource = st.loadStaff();
+                dgvKhachHang.DataSource = listCustomer;
+                listCustomer.DataSource = ct.loadCustomer();
             }
             else if (e.Button.Properties.Caption == "Thêm")
             {
-                txtMaNV.Text = "";
-                txtTenNV.Text = "";
-                cbGioiTinh.Text = "";
+                txtMaKH.Text = "";
+                txtTenKH.Text = "";
                 txtDiaChi.Text = "";
                 txtSDT.Text = "";
-                txtNgaySinh.Text = "";
-                txtMaNV.Focus();
+           
+                txtMaKH.Focus();
             }
             else if (e.Button.Properties.Caption == "Lưu")
             {
-                int maNV = int.Parse(txtMaNV.Text);
-                int sDT = int.Parse(txtSDT.Text);
-                string gioiTinh = cbGioiTinh.Text;
-                string ngaySinh = txtNgaySinh.SelectedText.ToString();
                 //Kiểm tra khóa chính nếu trùng thì sẽ hỏi có sửa k? nếu k thì t.b lỗi
                 // nếu có sẽ sửa 
                 //Chưa xong phần kiểm tra khóa chính để hỏi Sửa 
                 
 
-                if (st.checkPrimarykey(maNV) == true)
+                if (ct.checkPrimarykey(maKH) == true)
                 {
-                    DialogResult dl = XtraMessageBox.Show("Mã nhân viên trùng với mã đã có bán có muốn sửa cho Mã Nhân Viên: " + txtMaNV.Text + " không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult dl = XtraMessageBox.Show("Mã khách hàng trùng với mã đã có bán có muốn sửa cho Mã Khách Hàng: " + txtMaKH.Text + " không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (dl == DialogResult.Yes)
                     {
                         try
                         {
-                            st.repairStaff(maNV, txtTenNV.Text, gioiTinh, txtDiaChi.Text, sDT, ngaySinh);
+                            ct.repairCustomer(maKH, txtTenKH.Text, txtDiaChi.Text, txtSDT.Text);
                             XtraMessageBox.Show("Sửa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                          
-                            dgvNhanVien.DataSource = listStaff;
-                            listStaff.DataSource = st.loadStaff();
+                            dgvKhachHang.DataSource = listCustomer;
+                            listCustomer.DataSource = ct.loadCustomer();
 
                         }
                         catch (Exception ex)
@@ -101,7 +86,7 @@ namespace ShopQuanAo2.GUI
                     }
                     else
                     {
-                        XtraMessageBox.Show("Thêm thất bại! Lỗi - Trùng mã sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        XtraMessageBox.Show("Thêm thất bại! Lỗi - Trùng mã khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 //Không trùng mã thì sẽ thêm vào
@@ -109,10 +94,10 @@ namespace ShopQuanAo2.GUI
                 {
                     try
                     {
-                        st.addStaff(maNV, txtTenNV.Text, gioiTinh, txtDiaChi.Text, sDT, ngaySinh);
+                        ct.addCustomer(maKH, txtTenKH.Text, txtDiaChi.Text, txtSDT.Text);
                         XtraMessageBox.Show("Thêm thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        dgvNhanVien.DataSource = listStaff;
-                        listStaff.DataSource = st.loadStaff();
+                        dgvKhachHang.DataSource = listCustomer;
+                        listCustomer.DataSource = ct.loadCustomer();
 
                     }
                     catch (Exception ex)
@@ -123,17 +108,16 @@ namespace ShopQuanAo2.GUI
             }
             else if (e.Button.Properties.Caption == "Xóa")
             {
-                int maNV = int.Parse(txtMaNV.Text);
 
                 DialogResult dl = XtraMessageBox.Show("Bạn có chắc muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dl == DialogResult.Yes)
                 {
                     try
                     {
-                        st.deleteStaff(maNV);
+                        ct.deleteCustomer(maKH);
                         XtraMessageBox.Show("Xóa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        dgvNhanVien.DataSource = listStaff;
-                        listStaff.DataSource = st.loadStaff();
+                        dgvKhachHang.DataSource = listCustomer;
+                        listCustomer.DataSource = ct.loadCustomer();
                     }
                     catch (Exception ex)
                     {
@@ -144,20 +128,17 @@ namespace ShopQuanAo2.GUI
             else if (e.Button.Properties.Caption == "Sửa")
             {
 
-                int maNV = int.Parse(txtMaNV.Text);
-                int sDT = int.Parse(txtSDT.Text);
-                string gioiTinh = cbGioiTinh.Text;
-                string ngaySinh = txtNgaySinh.SelectedText.ToString();
+
                
                 DialogResult dl = XtraMessageBox.Show("Bạn có chắc muốn sửa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dl == DialogResult.Yes)
                 {
                     try
                     {
-                        st.repairStaff(maNV, txtTenNV.Text, gioiTinh, txtDiaChi.Text, sDT, ngaySinh);
+                        ct.repairCustomer(maKH, txtTenKH.Text, txtDiaChi.Text, txtSDT.Text);
                         XtraMessageBox.Show("Sửa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        dgvNhanVien.DataSource = listStaff;
-                        listStaff.DataSource = st.loadStaff();
+                        dgvKhachHang.DataSource = listCustomer;
+                        listCustomer.DataSource = ct.loadCustomer();
 
                     }
                     catch (Exception ex)
@@ -170,12 +151,12 @@ namespace ShopQuanAo2.GUI
             {
                 if (txtTim.Text == "")
                 {
-                    XtraMessageBox.Show("Vui lòng nhập Tên Nhân Viên để tìm !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    XtraMessageBox.Show("Vui lòng nhập Tên Khách Hàng để tìm !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 try
                 {
-                    dgvNhanVien.DataSource = listStaff;
-                    listStaff.DataSource = st.findStaff(txtTim.Text);
+                    dgvKhachHang.DataSource = listCustomer;
+                    listCustomer.DataSource = ct.findCustomer(txtTim.Text);
                     txtTim.Text = "";
                 }
                 catch (Exception ex)
