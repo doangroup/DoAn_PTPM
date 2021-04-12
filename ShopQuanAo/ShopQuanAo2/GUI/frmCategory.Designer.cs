@@ -41,8 +41,8 @@
             this.txtTenDM = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -56,8 +56,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTenDM.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -89,6 +89,7 @@
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(1110, 688);
             this.groupControl2.TabIndex = 0;
+            this.groupControl2.CustomButtonClick += new DevExpress.XtraBars.Docking2010.BaseButtonEventHandler(this.groupControl2_CustomButtonClick);
             // 
             // txtTim
             // 
@@ -164,7 +165,6 @@
             this.txtTenDM.Location = new System.Drawing.Point(109, 44);
             this.txtTenDM.Name = "txtTenDM";
             this.txtTenDM.Properties.Mask.EditMask = "d";
-            this.txtTenDM.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtTenDM.Size = new System.Drawing.Size(981, 22);
             this.txtTenDM.StyleController = this.layoutControl1;
             this.txtTenDM.TabIndex = 5;
@@ -192,15 +192,6 @@
             this.layoutControlItem6.Text = "Mã Danh Mục";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(89, 17);
             // 
-            // layoutControlItem2
-            // 
-            this.layoutControlItem2.Control = this.txtTenDM;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 28);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(1080, 28);
-            this.layoutControlItem2.Text = "Tên Danh Mục";
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(89, 17);
-            // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.dgvDanhMuc;
@@ -209,6 +200,15 @@
             this.layoutControlItem7.Size = new System.Drawing.Size(1080, 555);
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.txtTenDM;
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 28);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(1080, 28);
+            this.layoutControlItem2.Text = "Tên Danh Mục";
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(89, 17);
             // 
             // frmCategory
             // 
@@ -236,8 +236,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTenDM.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             this.ResumeLayout(false);
 
         }

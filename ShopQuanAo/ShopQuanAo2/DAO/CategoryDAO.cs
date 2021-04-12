@@ -35,5 +35,63 @@ namespace ShopQuanAo2.DAO
             }
             return lstCategory;
         }
+        public bool deleteCategory(int maDM)
+        {
+
+            string sqlDelete = "delete from DanhMuc where MaDM = " + maDM;
+            int rs = dp.ExcuteNonQuery(sqlDelete);
+            if (rs > 0)
+            {
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool addCategory(int maDM, string tenDM)
+        {
+
+            string sqlAdd = "insert into DanhMuc values (" + maDM + ",N'" + tenDM + "')";
+            int rs = dp.ExcuteNonQuery(sqlAdd);
+            if (rs > 0)
+            {
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool repairCategory(int maDM, string tenDM)
+        {
+            string sqlAdd = "update DanhMuc set TenDM = N'" + tenDM + "' where MaDM = " + maDM;
+            int rs = dp.ExcuteNonQuery(sqlAdd);
+            if (rs > 0)
+            {
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool checkPrimarykey(int maDM)
+        {
+            string sqlCheck = "select * from DanhMuc where MaDM = " + maDM;
+            DataTable rs = dp.ExcuteQuery(sqlCheck);
+            if (rs.Rows.Count > 0)
+            {
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

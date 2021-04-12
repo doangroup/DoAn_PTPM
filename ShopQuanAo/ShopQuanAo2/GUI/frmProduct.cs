@@ -36,7 +36,7 @@ namespace ShopQuanAo2.GUI
         private void BindingSource()
         {
             txtMaSP.DataBindings.Add(new Binding("Text", dgvSanPham.DataSource, "MaSP", true, DataSourceUpdateMode.Never));
-            cbDanhMuc.DataBindings.Add(new Binding("Text", dgvSanPham.DataSource, "MaDM", true, DataSourceUpdateMode.Never));
+            cbDanhMuc.DataBindings.Add(new Binding("EditValue", dgvSanPham.DataSource, "MaDM", true, DataSourceUpdateMode.Never));
             txtTenSP.DataBindings.Add(new Binding("Text", dgvSanPham.DataSource, "TenSP", true, DataSourceUpdateMode.Never));
             txtSoLuong.DataBindings.Add(new Binding("Text", dgvSanPham.DataSource, "SoLuong", true, DataSourceUpdateMode.Never));
             txtDonGia.DataBindings.Add(new Binding("Text", dgvSanPham.DataSource, "DonGia", true, DataSourceUpdateMode.Never));
@@ -80,7 +80,8 @@ namespace ShopQuanAo2.GUI
                         {
                             pd.repairProduct(masp, madm, txtTenSP.Text, soluong, dongia, txtGhiChu.Text);
                             XtraMessageBox.Show("Sửa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            dgvSanPham.DataSource = pd.loadProduct();
+                            dgvSanPham.DataSource = listProduct;
+                            listProduct.DataSource = pd.loadProduct();
 
                         }
                         catch (Exception ex)
@@ -100,7 +101,8 @@ namespace ShopQuanAo2.GUI
                     {
                         pd.addProduct(masp, madm, txtTenSP.Text, soluong, dongia, txtGhiChu.Text);
                         XtraMessageBox.Show("Thêm thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        dgvSanPham.DataSource = pd.loadProduct();
+                        dgvSanPham.DataSource = listProduct;
+                        listProduct.DataSource = pd.loadProduct();
 
                     }
                     catch (Exception ex)
@@ -112,14 +114,15 @@ namespace ShopQuanAo2.GUI
             else if (e.Button.Properties.Caption == "Xóa")
             {
                 
-                DialogResult dl = XtraMessageBox.Show("Bạn có chắc muốn xóa Nhân Viên: " + txtTenSP.Text + " không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult dl = XtraMessageBox.Show("Bạn có chắc muốn xóa Sản Phẩm: " + txtTenSP.Text + " không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dl == DialogResult.Yes)
                 {
                     try
                     {
                         pd.deleteProduct(masp);
                         XtraMessageBox.Show("Xóa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        dgvSanPham.DataSource = pd.loadProduct();
+                        dgvSanPham.DataSource = listProduct;
+                        listProduct.DataSource = pd.loadProduct();
                     }
                     catch (Exception ex)
                     {
@@ -132,14 +135,15 @@ namespace ShopQuanAo2.GUI
 
 
                 int madm = int.Parse(cbDanhMuc.EditValue.ToString());
-                DialogResult dl = XtraMessageBox.Show("Bạn có chắc muốn sửa Sản Phẩm: " + txtTenSP.Text + " không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult dl = XtraMessageBox.Show("Bạn có chắc muốn sửa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dl == DialogResult.Yes)
                 {
                     try
                     {
                         pd.repairProduct(masp, madm, txtTenSP.Text, soluong, dongia, txtGhiChu.Text);
                         XtraMessageBox.Show("Sửa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        dgvSanPham.DataSource = pd.loadProduct();
+                        dgvSanPham.DataSource = listProduct;
+                        listProduct.DataSource = pd.loadProduct();
                         
                     }
                     catch (Exception ex)
@@ -152,11 +156,12 @@ namespace ShopQuanAo2.GUI
             {
                 if (txtTim.Text == "")
                 {
-                    XtraMessageBox.Show("Vui lòng nhập Tên Nhân Viên để tìm !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    XtraMessageBox.Show("Vui lòng nhập Tên Sản Phẩm để tìm !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 try
                 {
-                    dgvSanPham.DataSource = pd.findProduct(txtTim.Text);
+                    dgvSanPham.DataSource = listProduct;  
+                    listProduct.DataSource = pd.findProduct(txtTim.Text);
                     txtTim.Text = "";
                 }
                 catch (Exception ex)
@@ -165,6 +170,12 @@ namespace ShopQuanAo2.GUI
                     XtraMessageBox.Show("Tìm thất bại ! Lỗi - " + ex.Message.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
+            }
+            else if (e.Button.Properties.Caption == "Xuất Word")
+            {
+            }
+            else if (e.Button.Properties.Caption == "Xuất Excel")
+            {
             }
         }
     }

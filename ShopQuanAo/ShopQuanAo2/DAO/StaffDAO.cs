@@ -44,6 +44,50 @@ namespace ShopQuanAo2.DAO
             if (rs > 0)
             {
                 return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool addStaff(int maNV, string tenNV, string gioiTinh, string diaChi, int sDT, string ngaySinh)
+        {
+
+            string sqlAdd = "insert into NhanVien values (" + maNV + ",N'" + tenNV + "',N'" + gioiTinh + "',N'" + diaChi + "','" + sDT + "','" + ngaySinh + "')";
+            int rs = dp.ExcuteNonQuery(sqlAdd);
+            if (rs > 0)
+            {
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool repairStaff(int maNV, string tenNV, string gioiTinh, string diaChi, int sDT, string ngaySinh)
+        {
+            string sqlAdd = "update NhanVien set TenNV = N'" + tenNV + "', GioiTinh = N'" + gioiTinh + "',DiaChi =N'" + diaChi + "', SDT = '" + sDT + "',NgaySinh = " + ngaySinh + " where MaNV = " + maNV;
+            int rs = dp.ExcuteNonQuery(sqlAdd);
+            if (rs > 0)
+            {
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool checkPrimarykey(int maNV)
+        {
+            string sqlCheck = "select * from NhanVien where MaNV = " + maNV;
+            DataTable rs = dp.ExcuteQuery(sqlCheck);
+            if (rs.Rows.Count > 0)
+            {
+                return true;
+
             }
             else
             {
