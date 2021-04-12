@@ -61,7 +61,7 @@ values (1,N'Trung',N'Nam',N'Tân Phú','045648932',1999/01/23),
 go
 
 insert into NhanVien values (3,N'trung',N'Nam',N'thone','65465',3/2/2010)
-
+insert into NhanVien values (2,N'fd',N'Nam',N'fads','3424',01/04/2021)
 select * from NhanVien
 go
 create table DanhMuc
@@ -168,9 +168,9 @@ values (1,7,N'Áo thun đính đá hình báo',20,200000,'cap3.jpg',N'Giặt ra 
 		(72,6,N'quần jogger 925',20,100000,'jogger9.jpg',null)
 go
 
-select * from SanPham
+select * from KhachHang
 go
-
+use QLSHOPQUANAO
 insert into KhachHang
 values (1,N'Tạ Quang Trung', N'Thôn 5', N'0123456'),
 		(2,N'Nguyễn Văn Tèo', N'Thôn 2', N'0123456'),
@@ -253,7 +253,7 @@ select DonGia from SanPham, HoaDon, ChiTietHD where ChiTietHD.MaHD = HoaDon.MaHD
 update SanPham set TenSP = N'', SoLuong = 5, DonGiaNhap = 4, DonGiaBan = 4, GhiChu = N'' where MaSP = 1
 
 
-
+select * from NhanVien
 
 
 
