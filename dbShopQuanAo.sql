@@ -28,7 +28,8 @@ create table KhachHang
 	SDT nvarchar(20),
 )
 go
-
+alter table KhachHang
+add MatKhau nvarchar(50) default null;
 
 
 
@@ -196,7 +197,7 @@ go
 
 create table ChiTietHD
 (
-	MaHD int,
+	MaHD int primary key,
 	SoLuong int,
 	ThanhTien float,
 	Tinhtrang int default 0,
