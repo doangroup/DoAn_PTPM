@@ -86,7 +86,11 @@ namespace ShopQuanAo2
 
         private void btnLogout_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            this.Close();
+            frmLogin lg = new frmLogin();
+            lg.Show();
+            lg.txtUsername.Text = "";
+            lg.txtPassword.Text = "";
         }
 
         private void groupControl2_Click(object sender, EventArgs e)
@@ -97,6 +101,7 @@ namespace ShopQuanAo2
         private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Close();
+            
         }
 
         private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -187,6 +192,12 @@ namespace ShopQuanAo2
                 acc.MdiParent = this;
                 acc.Show();
             }
+        }
+
+        private void btnChangePass_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            frmChangePass change = new frmChangePass(Acc);
+            change.ShowDialog();
         }
 
 

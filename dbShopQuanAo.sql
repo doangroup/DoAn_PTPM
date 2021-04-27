@@ -6,6 +6,7 @@ go
 select * from TaiKhoan
 go
 
+select * from TaiKhoan where MatKhau = '1' and TenDN = 'admin'
 create table TaiKhoan
 (
 	TenDN nvarchar(50) primary key,

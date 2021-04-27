@@ -94,33 +94,47 @@ namespace ShopQuanAo2.DAO
                 return false;
             }
         }
-        //public bool repairAccount(string tenDN, string )
-        //{
-        //    string sqlAdd = "update SanPham set MaDM = " + maDM + ", TenSP = N'" + tenSP + "',SoLuong = " + soLuong + ", DonGia = " + donGia + ",GhiChu = N'" + ghiChu + "' where MaSP = " + maSP;
-        //    int rs = dp.ExcuteNonQuery(sqlAdd);
-        //    if (rs > 0)
-        //    {
-        //        return true;
+        public bool repairAccount(string tenDN, string password, int type)
+        {
+            string sqlAdd = "update TaiKhoan set MatKhau = '" + password + "', LoaiTK = " + type + " where TenDN = '" + tenDN + "'";
+            int rs = dp.ExcuteNonQuery(sqlAdd);
+            if (rs > 0)
+            {
+                return true;
 
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
-        //public bool checkPrimarykey(int masp)
-        //{
-        //    string sqlCheck = "select * from SanPham where MaSP = " + masp;
-        //    DataTable rs = dp.ExcuteQuery(sqlCheck);
-        //    if (rs.Rows.Count > 0)
-        //    {
-        //        return true;
-
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool repairPassAccount(string tenDN, string password)
+        {
+            string sqlAdd = "update TaiKhoan set MatKhau = '" + password + "' where TenDN = '" + tenDN + "'";
+            int rs = dp.ExcuteNonQuery(sqlAdd);
+            if (rs > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool checkPassword(string userName,string passWord)
+        {
+            string sqlCheck = "select * from TaiKhoan where TenDN = '" + userName + "' and MatKhau = '" + passWord + "'";
+            DataTable rs = dp.ExcuteQuery(sqlCheck);
+            if (rs.Rows.Count > 0)
+            {
+                return true;
+                // nếu = true thì đối mật khẩu
+            }
+            else
+            {
+                return false;
+                //sai mật khẩu cũ
+            }
+        }
     }
 }

@@ -93,6 +93,16 @@ namespace ShopQuanAo2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Apps_preferences_desktop_user_password_icon {
+            get {
+                object obj = ResourceManager.GetObject("Apps-preferences-desktop-user-password-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bocustomer_16x16 {
             get {
                 object obj = ResourceManager.GetObject("bocustomer_16x16", resourceCulture);

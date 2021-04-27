@@ -39,6 +39,8 @@ namespace ShopQuanAo2.View
         private void frmRegister_Load(object sender, EventArgs e)
         {
             cboLoaiTK.SelectedIndex = 0;
+            txtPassword.Properties.PasswordChar = (txtPassword.Properties.PasswordChar == '*') ? '\0' : '*';
+            txtRePassword.Properties.PasswordChar = (txtRePassword.Properties.PasswordChar == '*') ? '\0' : '*';
 
 
         }
@@ -53,7 +55,7 @@ namespace ShopQuanAo2.View
             int loatk = int.Parse(cboLoaiTK.SelectedItem.ToString());
             try
             {
-                if (RePassword.Text.Trim().Equals(txtPassword.Text.Trim()))
+                if (txtRePassword.Text.Trim().Equals(txtPassword.Text.Trim()))
                 {
                     acc.addAccount(txtUsername.Text, txtPassword.Text, loatk);
                     XtraMessageBox.Show("Đăng ký thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -72,6 +74,11 @@ namespace ShopQuanAo2.View
         }
 
         private void RePassword_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPassword_EditValueChanged(object sender, EventArgs e)
         {
 
         }

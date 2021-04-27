@@ -30,10 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegister));
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.cboLoaiTK = new System.Windows.Forms.ComboBox();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.RePassword = new DevExpress.XtraEditors.TextEdit();
+            this.txtRePassword = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.txtPassword = new DevExpress.XtraEditors.TextEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -41,14 +46,9 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.btnOut = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
-            this.cboLoaiTK = new System.Windows.Forms.ComboBox();
-            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RePassword.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRePassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUsername.Properties)).BeginInit();
             this.SuspendLayout();
@@ -63,7 +63,7 @@
             this.groupControl1.Controls.Add(this.labelControl6);
             this.groupControl1.Controls.Add(this.labelControl5);
             this.groupControl1.Controls.Add(this.labelControl4);
-            this.groupControl1.Controls.Add(this.RePassword);
+            this.groupControl1.Controls.Add(this.txtRePassword);
             this.groupControl1.Controls.Add(this.labelControl3);
             this.groupControl1.Controls.Add(this.simpleButton1);
             this.groupControl1.Controls.Add(this.btnOut);
@@ -78,6 +78,56 @@
             this.groupControl1.TabIndex = 1;
             this.groupControl1.Text = "Thông tin đăng ký";
             this.groupControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.groupControl1_Paint);
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.labelControl10.Location = new System.Drawing.Point(357, 281);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(210, 17);
+            this.labelControl10.TabIndex = 16;
+            this.labelControl10.Text = "0 = Nhân Viên || 1 = Quản Lý";
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.labelControl9.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl9.Location = new System.Drawing.Point(343, 281);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(8, 16);
+            this.labelControl9.TabIndex = 15;
+            this.labelControl9.Text = "*";
+            // 
+            // cboLoaiTK
+            // 
+            this.cboLoaiTK.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.cboLoaiTK.FormattingEnabled = true;
+            this.cboLoaiTK.Items.AddRange(new object[] {
+            "1",
+            "0"});
+            this.cboLoaiTK.Location = new System.Drawing.Point(334, 240);
+            this.cboLoaiTK.Name = "cboLoaiTK";
+            this.cboLoaiTK.Size = new System.Drawing.Size(290, 35);
+            this.cboLoaiTK.TabIndex = 14;
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.labelControl8.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl8.Location = new System.Drawing.Point(247, 235);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(19, 36);
+            this.labelControl8.TabIndex = 13;
+            this.labelControl8.Text = "*";
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.labelControl7.Location = new System.Drawing.Point(19, 235);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(222, 36);
+            this.labelControl7.TabIndex = 12;
+            this.labelControl7.Text = "Loại Tài Khoản";
             // 
             // labelControl6
             // 
@@ -109,15 +159,15 @@
             this.labelControl4.TabIndex = 9;
             this.labelControl4.Text = "*";
             // 
-            // RePassword
+            // txtRePassword
             // 
-            this.RePassword.Location = new System.Drawing.Point(334, 179);
-            this.RePassword.Name = "RePassword";
-            this.RePassword.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.RePassword.Properties.Appearance.Options.UseFont = true;
-            this.RePassword.Size = new System.Drawing.Size(290, 34);
-            this.RePassword.TabIndex = 8;
-            this.RePassword.EditValueChanged += new System.EventHandler(this.RePassword_EditValueChanged);
+            this.txtRePassword.Location = new System.Drawing.Point(334, 179);
+            this.txtRePassword.Name = "txtRePassword";
+            this.txtRePassword.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtRePassword.Properties.Appearance.Options.UseFont = true;
+            this.txtRePassword.Size = new System.Drawing.Size(290, 34);
+            this.txtRePassword.TabIndex = 8;
+            this.txtRePassword.EditValueChanged += new System.EventHandler(this.RePassword_EditValueChanged);
             // 
             // labelControl3
             // 
@@ -136,6 +186,7 @@
             this.txtPassword.Properties.Appearance.Options.UseFont = true;
             this.txtPassword.Size = new System.Drawing.Size(290, 34);
             this.txtPassword.TabIndex = 3;
+            this.txtPassword.EditValueChanged += new System.EventHandler(this.txtPassword_EditValueChanged);
             // 
             // labelControl2
             // 
@@ -188,56 +239,6 @@
             this.btnOut.Text = "Thoát";
             this.btnOut.Click += new System.EventHandler(this.btnOut_Click);
             // 
-            // labelControl7
-            // 
-            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.labelControl7.Location = new System.Drawing.Point(19, 235);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(222, 36);
-            this.labelControl7.TabIndex = 12;
-            this.labelControl7.Text = "Loại Tài Khoản";
-            // 
-            // labelControl8
-            // 
-            this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.labelControl8.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.labelControl8.Location = new System.Drawing.Point(247, 235);
-            this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(19, 36);
-            this.labelControl8.TabIndex = 13;
-            this.labelControl8.Text = "*";
-            // 
-            // cboLoaiTK
-            // 
-            this.cboLoaiTK.Font = new System.Drawing.Font("Tahoma", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.cboLoaiTK.FormattingEnabled = true;
-            this.cboLoaiTK.Items.AddRange(new object[] {
-            "1",
-            "0"});
-            this.cboLoaiTK.Location = new System.Drawing.Point(334, 240);
-            this.cboLoaiTK.Name = "cboLoaiTK";
-            this.cboLoaiTK.Size = new System.Drawing.Size(290, 35);
-            this.cboLoaiTK.TabIndex = 14;
-            // 
-            // labelControl9
-            // 
-            this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.labelControl9.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.labelControl9.Location = new System.Drawing.Point(343, 281);
-            this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(8, 16);
-            this.labelControl9.TabIndex = 15;
-            this.labelControl9.Text = "*";
-            // 
-            // labelControl10
-            // 
-            this.labelControl10.Appearance.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.labelControl10.Location = new System.Drawing.Point(357, 281);
-            this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(210, 17);
-            this.labelControl10.TabIndex = 16;
-            this.labelControl10.Text = "0 = Nhân Viên || 1 = Quản Lý";
-            // 
             // frmRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -253,7 +254,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RePassword.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtRePassword.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUsername.Properties)).EndInit();
             this.ResumeLayout(false);
@@ -271,7 +272,7 @@
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.TextEdit RePassword;
+        private DevExpress.XtraEditors.TextEdit txtRePassword;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         public DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.LabelControl labelControl8;

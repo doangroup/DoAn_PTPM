@@ -46,6 +46,7 @@ namespace ShopQuanAo2.View
                 frmMain b = new frmMain(acc);
                 this.Hide();
                 b.ShowDialog();
+                
                 this.Show();
             }
             else
@@ -58,6 +59,10 @@ namespace ShopQuanAo2.View
         {
             DevExpress.LookAndFeel.DefaultLookAndFeel themes = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             themes.LookAndFeel.SkinName = "Valentine";
+
+            txtPassword.Properties.PasswordChar = (txtPassword.Properties.PasswordChar == '*') ? '\0' : '*';
+            txtUsername.Text = "";
+            txtPassword.Text = "";
         }
     }
 }
