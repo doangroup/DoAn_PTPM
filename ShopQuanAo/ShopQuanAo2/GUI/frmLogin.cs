@@ -8,6 +8,7 @@ using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using ShopQuanAo2.DAO;
+using ShopQuanAo2.DTO;
 namespace ShopQuanAo2.View
 {
     public partial class frmLogin : DevExpress.XtraEditors.XtraForm
@@ -39,10 +40,13 @@ namespace ShopQuanAo2.View
         {
             if (acount.login(txtUsername.Text, txtPassword.Text) == true)
             {
-                XtraMessageBox.Show("Đăng nhập thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //XtraMessageBox.Show("Đăng nhập thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                Acount acc = acount.getAcountByUsername(txtUsername.Text);
+                frmMain b = new frmMain(acc);
                 this.Hide();
-                frmMain main = new frmMain();
-                main.Show();
+                b.ShowDialog();
+                this.Show();
             }
             else
             {

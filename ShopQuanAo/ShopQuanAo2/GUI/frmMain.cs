@@ -11,27 +11,31 @@ using DevExpress.XtraEditors;
 using ShopQuanAo2.DAO;
 using ShopQuanAo2.GUI;
 using ShopQuanAo2.View;
+using ShopQuanAo2.DTO;
 namespace ShopQuanAo2
 {
     public partial class frmMain : DevExpress.XtraBars.Ribbon.RibbonForm
     {
 
         ProductDAO pd = new ProductDAO();
- 
-        public frmMain()
+        private Acount acc;
+
+        public Acount Acc
+        {
+            get { return acc; }
+            set { acc = value; phanQuyen(Acc.Type); }
+        }
+        void phanQuyen(int loaiTK)
+        {
+            btnRegister.Enabled = btnSanPham.Enabled = btnTaiKhoan.Enabled = btnDanhMuc.Enabled = btnKhachHang.Enabled = btnNhanVien.Enabled = barButtonItem2.Enabled = barButtonItem6.Enabled = btnHoaDon.Enabled = loaiTK == 1;
+
+        }
+        public frmMain(Acount acc)
         {
             InitializeComponent();
-            loadProduct();
+            this.Acc = acc;
         }
-        public void load()
-        {
-
-        }
-        public void loadProduct()
-        {
-           
-
-        }
+      
 
         private Form checkExit(Type type)
         {
@@ -50,7 +54,7 @@ namespace ShopQuanAo2
         {
             DevExpress.LookAndFeel.DefaultLookAndFeel themes = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             themes.LookAndFeel.SkinName = "Valentine";
-
+            
             Form frm = this.checkExit(typeof(frmProduct));
             if (frm != null)
             {

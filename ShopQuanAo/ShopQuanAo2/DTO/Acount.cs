@@ -14,7 +14,13 @@ namespace ShopQuanAo2.DTO
         {
 
         }
-        public Acount(string user,string pass,int _type)
+        //public Acount(string user,string pass,int _type)
+        //{
+        //    this.UserName = user;
+        //    this.PassWord = pass;
+        //    this.Type = _type;
+        //}
+        public Acount(string user, int _type, string pass = null)
         {
             this.UserName = user;
             this.PassWord = pass;

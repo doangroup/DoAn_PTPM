@@ -3,11 +3,8 @@ go
 use QLSHOPQUANAO
 go
 
-
-
+select * from TaiKhoan
 go
-
-
 
 create table TaiKhoan
 (
@@ -17,6 +14,11 @@ create table TaiKhoan
 )
 go
 
+select * from HoaDon
+go
+
+select * from ChiTietHD
+go
 
 go
 
@@ -28,11 +30,9 @@ create table KhachHang
 	SDT nvarchar(20),
 )
 go
+
 alter table KhachHang
 add MatKhau nvarchar(50) default null;
-
-
-
 go
 
 create table KhuyenMai
@@ -53,6 +53,8 @@ create table NhanVien
 go
 
 set dateformat dmy
+go
+
 insert into NhanVien
 values (1,N'Trung',N'Nam',N'Tân Phú','045648932',1999/01/23),
 		(2,N'Nhân Viên 2',N'Nữ',N'Thủ Đức','045648932',2000/07/20)
@@ -170,19 +172,15 @@ values (1,7,N'Áo thun đính đá hình báo',20,200000,'cap3.jpg',N'Giặt ra 
 		(72,6,N'quần jogger 925',20,100000,'jogger9.jpg',null)
 go
 
-<<<<<<< HEAD
 select * from KhachHang
-=======
->>>>>>> Huy
-go
-use QLSHOPQUANAO
-insert into KhachHang
-values (1,N'Tạ Quang Trung', N'Thôn 5', N'0123456'),
-		(2,N'Nguyễn Văn Tèo', N'Thôn 2', N'0123456'),
-		(3,N'Nguyễn Thị Bưởi', N'Thôn 8', N'0123456'),
-		(4,N'Nguyễn Thị Đào', N'Thôn 1', N'0123456')
 go
 
+insert into KhachHang
+values (1,N'Tạ Quang Trung', N'Thôn 5', N'0123456','1'),
+		(2,N'Nguyễn Văn Tèo', N'Thôn 2', N'0123456','1'),
+		(3,N'Nguyễn Thị Bưởi', N'Thôn 8', N'0123456','1'),
+		(4,N'Nguyễn Thị Đào', N'Thôn 1', N'0123456','1')
+go
 
 create table HoaDon
 (
@@ -195,25 +193,18 @@ create table HoaDon
 	constraint fk_HD_H foreign key(MaSP) references SanPham(MaSP),
 	constraint fk_HD_KH foreign key(MaKH) references KhachHang(MaKH)
 )
-
-
-
-
-
 go
-
-
 
 create table ChiTietHD
 (
 	MaHD int primary key,
 	SoLuong int,
 	ThanhTien float,
-	Tinhtrang int default 0,
+	Tinhtrang int default 0, -- 0 = chưa thanh toán | 1 = thanh toán
 	constraint fk_CTHD_HD foreign key(MaHD) references HoaDon(MaHD)
 )
 go
-
+select * from ChiTietHD
 
 insert into TaiKhoan
 values ('admin','1',1),
@@ -224,10 +215,7 @@ insert into HoaDon
 values (1,1,1,3,2020/05/01),
 		(2,2,2,2,2020/07/01)
 go
-insert into ChiTietHD
-values (1,1,0),
-		(2,2,0)
-go
+
 create trigger TGThanhTien
 on ChiTietHD
 for insert, update
@@ -237,6 +225,7 @@ as
 	from inserted, SanPham, HoaDon
 	where inserted.MaHD= ChiTietHD.MaHD and HoaDon.MaSP = SanPham.MaSP
 go
+
 create proc LayHDTheoNgay 
 @ngayban datetime
 as
@@ -244,14 +233,14 @@ begin
 	select TenSP, ChiTietHD.SoLuong, SanPham.DonGia, NgayBan, TenKH, ThanhTien = ChiTietHD.SoLuong * DonGia from KhachHang, HoaDon,SanPham, ChiTietHD where NgayBan = @ngayban and SanPham.MaSP = HoaDon.MaSP and KhachHang.MaKH = HoaDon.MaKH
 end
 go
-<<<<<<< HEAD
+
 exec LayHDTheoNgay '1900-01-01 00:00:00.000'
 
-insert into ChiTietHD
-values (1,1,0),
-		(2,2,0)
-go
 
+insert into ChiTietHD
+values (1,1,0,1),
+		(2,2,0,0)
+go
 select * from ChiTietHD
 
 

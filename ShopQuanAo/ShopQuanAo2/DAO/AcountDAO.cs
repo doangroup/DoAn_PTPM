@@ -27,6 +27,16 @@ namespace ShopQuanAo2.DAO
                 return false;
             }
         }
+        public Acount getAcountByUsername(string ten)
+        {
+            DataTable data = dp.ExcuteQuery("select * from TaiKhoan where TenDN = '" + ten + "'");
+            foreach (DataRow item in data.Rows)
+            {
+                return new Acount(item);
+            }
+            return null;
+        }
+        
         public List<Acount> loadAccount()
         {
             List<Acount> lstAccount = new List<Acount>();
@@ -39,6 +49,7 @@ namespace ShopQuanAo2.DAO
             }
             return lstAccount;
         }
+        
 
         public List<Acount> findAccount(string tenTK)
         {
@@ -68,21 +79,21 @@ namespace ShopQuanAo2.DAO
                 return false;
             }
         }
-        //public bool addAccount(string tenDN,string  int loaiTK)
-        //{
+        public bool addAccount(string tenDN,string matKhau, int loaiTK)
+        {
 
-        //    string sqlAdd = "insert into TaiKhoan values (N'"+tenDN+"','"+mat+"')";
-        //    int rs = dp.ExcuteNonQuery(sqlAdd);
-        //    if (rs > 0)
-        //    {
-        //        return true;
+            string sqlAdd = "insert into TaiKhoan values (N'" + tenDN + "','" + matKhau + "',"+loaiTK+")";
+            int rs = dp.ExcuteNonQuery(sqlAdd);
+            if (rs > 0)
+            {
+                return true;
 
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
+            }
+            else
+            {
+                return false;
+            }
+        }
         //public bool repairAccount(string tenDN, string )
         //{
         //    string sqlAdd = "update SanPham set MaDM = " + maDM + ", TenSP = N'" + tenSP + "',SoLuong = " + soLuong + ", DonGia = " + donGia + ",GhiChu = N'" + ghiChu + "' where MaSP = " + maSP;
