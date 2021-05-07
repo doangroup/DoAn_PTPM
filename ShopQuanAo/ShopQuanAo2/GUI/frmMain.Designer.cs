@@ -278,6 +278,7 @@
             this.btnHoaDon.Id = 19;
             this.btnHoaDon.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnHoaDon.LargeGlyph")));
             this.btnHoaDon.Name = "btnHoaDon";
+            this.btnHoaDon.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnHoaDon_ItemClick);
             // 
             // barButtonItem8
             // 

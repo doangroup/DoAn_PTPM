@@ -200,6 +200,21 @@ namespace ShopQuanAo2
             change.ShowDialog();
         }
 
+        private void btnHoaDon_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.checkExit(typeof(frmBill));
+            if (frm != null)
+            {
+                frm.Activate();
+            }
+            else
+            {
+                frmBill bill = new frmBill();
+                bill.MdiParent = this;
+                bill.Show();
+            }
+        }
+
 
 
 

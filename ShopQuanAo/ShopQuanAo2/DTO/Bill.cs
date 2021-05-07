@@ -18,16 +18,16 @@ namespace ShopQuanAo2.DTO
             get { return maNV; }
             set { maNV = value; }
         }
-        private DateTime ngayBan;
+        private string ngayBan;
         public Bill(DataRow row)
         {
             this.MaHD = (int)row[0];
             this.MaKH = (int)row[1];
             this.MaNV = (int)row[2];
             this.MaSP = (int)row[3];
-            this.NgayBan = (DateTime)row[4];
+            this.NgayBan = row[4].ToString();
         }
-        public DateTime NgayBan
+        public string NgayBan
         {
             get { return ngayBan; }
             set { ngayBan = value; }
