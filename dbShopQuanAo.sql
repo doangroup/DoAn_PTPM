@@ -3,7 +3,18 @@ go
 use QLSHOPQUANAO
 go
 
-select * from TaiKhoan
+create proc findKHByHD @tenKH nvarchar(50)
+as
+begin
+	select HoaDon.MaHD, HoaDon.MaKH,HoaDon.MaNV,HoaDon.MaSP,HoaDon.NgayBan 
+	from HoaDon, KhachHang 
+	where TenKH = @tenKH and HoaDon.MaKH = KhachHang.MaKH
+end
+go
+exec findKHByHD N'Tạ Quang Trung'
+
+exec findKHByHD N'tạ quang trung'
+select * from ChiTietHD
 go
 
 select * from TaiKhoan where MatKhau = '1' and TenDN = 'admin'
@@ -201,11 +212,11 @@ create table ChiTietHD
 	MaHD int primary key,
 	SoLuong int,
 	ThanhTien float,
-	Tinhtrang int default 0, -- 0 = chưa thanh toán | 1 = thanh toán
+	Tinhtrang int default 0, -- 0 = chưa thanh toán | 1 = đã thanh toán
 	constraint fk_CTHD_HD foreign key(MaHD) references HoaDon(MaHD)
 )
 go
-select * from ChiTietHD
+select * from TaiKhoan
 
 insert into TaiKhoan
 values ('admin','1',1),
