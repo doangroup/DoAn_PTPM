@@ -1,6 +1,6 @@
 ﻿namespace ShopQuanAo2.GUI
 {
-    partial class frmAccount
+    partial class frmAccount2
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAccount));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAccount2));
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.txtTim = new DevExpress.XtraEditors.TextEdit();
@@ -67,10 +67,9 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(1216, 592);
-            this.groupControl1.TabIndex = 9;
+            this.groupControl1.Size = new System.Drawing.Size(1116, 697);
+            this.groupControl1.TabIndex = 10;
             this.groupControl1.Text = "Thao Tác";
-            this.groupControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.groupControl1_Paint);
             // 
             // groupControl2
             // 
@@ -86,9 +85,8 @@
             this.groupControl2.ImeMode = System.Windows.Forms.ImeMode.On;
             this.groupControl2.Location = new System.Drawing.Point(2, 25);
             this.groupControl2.Name = "groupControl2";
-            this.groupControl2.Size = new System.Drawing.Size(1212, 565);
+            this.groupControl2.Size = new System.Drawing.Size(1112, 670);
             this.groupControl2.TabIndex = 0;
-            this.groupControl2.CustomButtonClick += new DevExpress.XtraBars.Docking2010.BaseButtonEventHandler(this.groupControl2_CustomButtonClick);
             // 
             // txtTim
             // 
@@ -109,7 +107,7 @@
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(860, 464, 250, 350);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(1208, 514);
+            this.layoutControl1.Size = new System.Drawing.Size(1108, 619);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -118,7 +116,7 @@
             this.dgvTaiKhoan.Location = new System.Drawing.Point(16, 72);
             this.dgvTaiKhoan.MainView = this.gridView1;
             this.dgvTaiKhoan.Name = "dgvTaiKhoan";
-            this.dgvTaiKhoan.Size = new System.Drawing.Size(1176, 426);
+            this.dgvTaiKhoan.Size = new System.Drawing.Size(1076, 531);
             this.dgvTaiKhoan.TabIndex = 11;
             this.dgvTaiKhoan.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -163,7 +161,7 @@
             // 
             this.txtTenDN.Location = new System.Drawing.Point(116, 16);
             this.txtTenDN.Name = "txtTenDN";
-            this.txtTenDN.Size = new System.Drawing.Size(1076, 22);
+            this.txtTenDN.Size = new System.Drawing.Size(976, 22);
             this.txtTenDN.StyleController = this.layoutControl1;
             this.txtTenDN.TabIndex = 9;
             // 
@@ -173,7 +171,7 @@
             this.txtLoaiTK.Name = "txtLoaiTK";
             this.txtLoaiTK.Properties.Mask.EditMask = "d";
             this.txtLoaiTK.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.txtLoaiTK.Size = new System.Drawing.Size(1076, 22);
+            this.txtLoaiTK.Size = new System.Drawing.Size(976, 22);
             this.txtLoaiTK.StyleController = this.layoutControl1;
             this.txtLoaiTK.TabIndex = 5;
             // 
@@ -188,7 +186,7 @@
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.OptionsItemText.TextToControlDistance = 4;
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1208, 514);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1108, 619);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem6
@@ -196,7 +194,7 @@
             this.layoutControlItem6.Control = this.txtTenDN;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(1182, 28);
+            this.layoutControlItem6.Size = new System.Drawing.Size(1082, 28);
             this.layoutControlItem6.Text = "Tên Đăng Nhập";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(96, 17);
             // 
@@ -205,7 +203,7 @@
             this.layoutControlItem7.Control = this.dgvTaiKhoan;
             this.layoutControlItem7.Location = new System.Drawing.Point(0, 56);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(1182, 432);
+            this.layoutControlItem7.Size = new System.Drawing.Size(1082, 537);
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
             // 
@@ -214,20 +212,19 @@
             this.layoutControlItem2.Control = this.txtLoaiTK;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 28);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(1182, 28);
+            this.layoutControlItem2.Size = new System.Drawing.Size(1082, 28);
             this.layoutControlItem2.Text = "Loại Tài Khoản";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(96, 17);
             // 
-            // frmAccount
+            // frmAccount2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1216, 592);
+            this.ClientSize = new System.Drawing.Size(1116, 697);
             this.Controls.Add(this.groupControl1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "frmAccount";
-            this.Text = "Tài Khoản";
-            this.Load += new System.EventHandler(this.frmAccount_Load);
+            this.Name = "frmAccount2";
+            this.Text = "frmAccount2";
+            this.Load += new System.EventHandler(this.frmAccount2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
@@ -256,13 +253,13 @@
         private DevExpress.XtraGrid.GridControl dgvTaiKhoan;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraEditors.TextEdit txtTenDN;
         private DevExpress.XtraEditors.TextEdit txtLoaiTK;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
     }
 }

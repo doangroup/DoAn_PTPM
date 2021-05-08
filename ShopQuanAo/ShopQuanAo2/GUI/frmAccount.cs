@@ -25,11 +25,11 @@ namespace ShopQuanAo2.GUI
 
         private void frmAccount_Load(object sender, EventArgs e)
         {
+
             dgvTaiKhoan.DataSource = listAccount;
             listAccount.DataSource = acc.loadAccount();
-            
 
-            BindingSource();
+            //BindingSource();
         }
         private void BindingSource()
         {
@@ -97,6 +97,11 @@ namespace ShopQuanAo2.GUI
             else if (e.Button.Properties.Caption == "Xuất Excel")
             {
             }
+        }
+
+        private void groupControl1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
        

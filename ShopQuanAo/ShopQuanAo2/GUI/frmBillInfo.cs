@@ -8,68 +8,52 @@ using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using ShopQuanAo2.DAO;
+using ShopQuanAo2.DTO;
+using DevExpress.XtraEditors.Controls;
 namespace ShopQuanAo2.GUI
 {
-    public partial class frmBill : DevExpress.XtraEditors.XtraForm
+    public partial class frmBillInfo : DevExpress.XtraEditors.XtraForm
     {
-        BillDAO bill = new BillDAO();
-        StaffDAO staff = new StaffDAO();
-        ProductDAO pd = new ProductDAO();
-        CustomerDAO ct = new CustomerDAO();
-
-        BindingSource listBill = new BindingSource();
-        public frmBill()
+        BillInfoDAO billInfo = new BillInfoDAO();
+        BindingSource listBillInfo = new BindingSource();
+        public frmBillInfo()
         {
             InitializeComponent();
         }
 
-        private void frmBill_Load(object sender, EventArgs e)
+        private void frmBillInfo_Load(object sender, EventArgs e)
         {
-            dgvHoaDon.DataSource = listBill;
-            listBill.DataSource = bill.loadBill();
+            dgvChiTIetHD.DataSource = listBillInfo;
+            listBillInfo.DataSource = billInfo.loadBillInfo();
 
-            cbKhachHang.Properties.DataSource = ct.loadCustomer();
-            cbKhachHang.Properties.DisplayMember = "TenKH";
-            cbKhachHang.Properties.ValueMember = "MaKH";
-
-            cbNhanVien.Properties.DataSource = staff.loadStaff();
-            cbNhanVien.Properties.DisplayMember = "TenNV";
-            cbNhanVien.Properties.ValueMember = "MaNV";
-
-            cbSanPham.Properties.DataSource = pd.loadProduct();
-            cbSanPham.Properties.DisplayMember = "TenSP";
-            cbSanPham.Properties.ValueMember = "MaSP";
-
+            cbTinhTrang.Properties.DataSource = billInfo.loadBillInfo();
+            cbTinhTrang.Properties.DisplayMember = "TinhTrang";
+            cbTinhTrang.Properties.ValueMember = "TinhTrang";
+           // loadStatus();
             BindingSource();
         }
         private void BindingSource()
         {
-            txtMaHD.DataBindings.Add(new Binding("Text", dgvHoaDon.DataSource, "MaHD", true, DataSourceUpdateMode.Never));
-            cbKhachHang.DataBindings.Add(new Binding("EditValue", dgvHoaDon.DataSource, "MaKH", true, DataSourceUpdateMode.Never));
-            cbNhanVien.DataBindings.Add(new Binding("EditValue", dgvHoaDon.DataSource, "MaNV", true, DataSourceUpdateMode.Never));
-            cbSanPham.DataBindings.Add(new Binding("EditValue", dgvHoaDon.DataSource, "MaSP", true, DataSourceUpdateMode.Never));
-            txtNgayBan.DataBindings.Add(new Binding("Text", dgvHoaDon.DataSource, "NgayBan", true, DataSourceUpdateMode.Never));
-
-        }
-        private void groupControl1_Paint(object sender, PaintEventArgs e)
-        {
+            txtMaHD.DataBindings.Add(new Binding("Text", dgvChiTIetHD.DataSource, "MaHD", true, DataSourceUpdateMode.Never));
+            txtSoLuong.DataBindings.Add(new Binding("Text", dgvChiTIetHD.DataSource, "SoLuong", true, DataSourceUpdateMode.Never));
+            txtThanhTien.DataBindings.Add(new Binding("Text", dgvChiTIetHD.DataSource, "ThanhTien", true, DataSourceUpdateMode.Never));
+            cbTinhTrang.DataBindings.Add(new Binding("EditValue", dgvChiTIetHD.DataSource, "TinhTrang", true, DataSourceUpdateMode.Never));
+       
 
         }
 
         private void groupControl2_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
         {
-            
-            
             if (e.Button.Properties.Caption == "Tải Lại")
             {
-                dgvHoaDon.DataSource = listBill;
-                listBill.DataSource = bill.loadBill();
+                dgvChiTIetHD.DataSource = listBillInfo;
+                listBillInfo.DataSource = billInfo.loadBillInfo();
             }
             else if (e.Button.Properties.Caption == "Thêm")
             {
                 txtMaHD.Text = "";
                 
-                txtNgayBan.Text = "";
+                txtSoLuong.Text = "0";
                 txtMaHD.Focus();
             }
             else if (e.Button.Properties.Caption == "Lưu")
@@ -79,20 +63,20 @@ namespace ShopQuanAo2.GUI
                 //Chưa xong phần kiểm tra khóa chính để hỏi Sửa 
 
                 int maHD = int.Parse(txtMaHD.Text);
-                int maKH = int.Parse(cbKhachHang.EditValue.ToString());
-                int MaNV = int.Parse(cbNhanVien.EditValue.ToString());
-                int maSP = int.Parse(cbSanPham.EditValue.ToString());
-                if (bill.checkPrimarykey(maHD) == true)
+                int soLuong = int.Parse(txtSoLuong.Text);
+                double thanhTien = double.Parse(txtThanhTien.Text);
+                int tinhTrang = int.Parse(cbTinhTrang.EditValue.ToString());
+                if (billInfo.checkPrimarykey(maHD) == true)
                 {
                     DialogResult dl = XtraMessageBox.Show("Mã hóa đơn trùng với mã đã có bán có muốn sửa cho Mã Hóa Đơn: " + txtMaHD.Text + " không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (dl == DialogResult.Yes)
                     {
                         try
                         {
-                            bill.repairBill(maHD, maKH,MaNV,maSP,txtNgayBan.SelectedText.ToString());
+                            billInfo.repairBillInfo(maHD, soLuong,thanhTien,tinhTrang);
                             XtraMessageBox.Show("Sửa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            dgvHoaDon.DataSource = listBill;
-                            listBill.DataSource = bill.loadBill();
+                            dgvChiTIetHD.DataSource = listBillInfo;
+                            listBillInfo.DataSource = billInfo.loadBillInfo();
 
                         }
                         catch (Exception ex)
@@ -111,10 +95,10 @@ namespace ShopQuanAo2.GUI
 
                     try
                     {
-                        bill.addBill(maHD, maKH,MaNV,maSP,txtNgayBan.SelectedText.ToString());
+                        billInfo.addBillInfo(maHD, soLuong, thanhTien, tinhTrang);
                         XtraMessageBox.Show("Thêm thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        dgvHoaDon.DataSource = listBill;
-                        listBill.DataSource = bill.loadBill();
+                        dgvChiTIetHD.DataSource = listBillInfo;
+                        listBillInfo.DataSource = billInfo.loadBillInfo();
 
                     }
                     catch (Exception ex)
@@ -126,16 +110,16 @@ namespace ShopQuanAo2.GUI
             else if (e.Button.Properties.Caption == "Xóa")
             {
                 int maHD = int.Parse(txtMaHD.Text);
-                
+
                 DialogResult dl = XtraMessageBox.Show("Bạn có chắc muốn xóa Hóa Đơn: " + txtMaHD.Text + " không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dl == DialogResult.Yes)
                 {
                     try
                     {
-                        bill.deleteBill(maHD);
+                        billInfo.deleteBillInfo(maHD);
                         XtraMessageBox.Show("Xóa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        dgvHoaDon.DataSource = listBill;
-                        listBill.DataSource = bill.loadBill();
+                        dgvChiTIetHD.DataSource = listBillInfo;
+                        listBillInfo.DataSource = billInfo.loadBillInfo();
                     }
                     catch (Exception ex)
                     {
@@ -146,9 +130,9 @@ namespace ShopQuanAo2.GUI
             else if (e.Button.Properties.Caption == "Sửa")
             {
                 int maHD = int.Parse(txtMaHD.Text);
-                int maKH = int.Parse(cbKhachHang.EditValue.ToString());
-                int MaNV = int.Parse(cbNhanVien.EditValue.ToString());
-                int maSP = int.Parse(cbSanPham.EditValue.ToString());
+                int soLuong = int.Parse(txtSoLuong.Text);
+                double thanhTien = double.Parse(txtThanhTien.Text);
+                int tinhTrang = int.Parse(cbTinhTrang.EditValue.ToString());
 
 
                 DialogResult dl = XtraMessageBox.Show("Bạn có chắc muốn sửa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -156,10 +140,10 @@ namespace ShopQuanAo2.GUI
                 {
                     try
                     {
-                        bill.repairBill(maHD, maKH,MaNV,maSP,txtNgayBan.SelectedText.ToString());
+                        billInfo.repairBillInfo(maHD, soLuong, thanhTien, tinhTrang);
                         XtraMessageBox.Show("Sửa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        dgvHoaDon.DataSource = listBill;
-                        listBill.DataSource = bill.loadBill();
+                        dgvChiTIetHD.DataSource = listBillInfo;
+                        listBillInfo.DataSource = billInfo.loadBillInfo();
 
                     }
                     catch (Exception ex)
@@ -168,7 +152,7 @@ namespace ShopQuanAo2.GUI
                     }
                 }
             }
-            else if (e.Button.Properties.Caption == "Tìm Kiếm Theo Tên Khách Hàng")
+            else if (e.Button.Properties.Caption == "Tìm Kiếm Theo Mã Hóa Đơn")
             {
                 if (txtTim.Text == "")
                 {
@@ -177,8 +161,8 @@ namespace ShopQuanAo2.GUI
                 try
                 {
                     int maHD = int.Parse(txtTim.Text);
-                    dgvHoaDon.DataSource = listBill;                
-                    listBill.DataSource = bill.findBill(maHD);
+                    dgvChiTIetHD.DataSource = listBillInfo;
+                    listBillInfo.DataSource = billInfo.findBillInfo(maHD);
                     txtTim.Text = "";
                 }
                 catch (Exception ex)
@@ -195,5 +179,24 @@ namespace ShopQuanAo2.GUI
             {
             }
         }
+        //public void loadStatus()
+        //{
+        //    StatusBillInfoDAO st = new StatusBillInfoDAO();
+        //    st.Add(new StatusBillInfo(0, "Chưa thanh Toán"));
+        //    st.Add(new StatusBillInfo(1, "Đã Thanh Toán"));
+           
+
+        //    bind the lookup editor to the list
+        //    cbTinhTrang.Properties.DataSource = st;
+        //    cbTinhTrang.Properties.DisplayMember = "Name";
+        //    cbTinhTrang.Properties.ValueMember = "Id";
+        //     Add columns.
+        //     The ID column is populated 
+        //     via the GetNotInListValue event (not listed in the example).
+        //    cbTinhTrang.Properties.Columns.Add(new LookUpColumnInfo("Id", "ID", 20));
+        //    cbTinhTrang.Properties.Columns.Add(new LookUpColumnInfo("Name", "TinhTrang", 80));
+        //    enable text editing
+        //    cbTinhTrang.Properties.TextEditStyle = TextEditStyles.Standard;
+        //}
     }
 }

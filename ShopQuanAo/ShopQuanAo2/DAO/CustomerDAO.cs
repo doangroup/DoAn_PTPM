@@ -35,6 +35,18 @@ namespace ShopQuanAo2.DAO
             return lstCustomer;
         }
 
+        public List<Customer> findBillByCustomer(string tenKH)
+        {
+            List<Customer> lstCustomer = new List<Customer>();
+            string sql = "exec findKHByHD N'" + tenKH + "'";
+            DataTable dt = dp.ExcuteQuery(sql);
+            foreach (DataRow item in dt.Rows)
+            {
+                Customer ct = new Customer(item);
+                lstCustomer.Add(ct);
+            }
+            return lstCustomer;
+        }
         public bool deleteCustomer(int maKH)
         {
 

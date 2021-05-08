@@ -51,6 +51,9 @@
             this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnBanHang = new DevExpress.XtraBars.BarButtonItem();
+            this.btnCTHD = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.papeUser = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -60,7 +63,6 @@
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.sstMain = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
@@ -114,10 +116,13 @@
             this.btnHoaDon,
             this.barButtonItem8,
             this.barButtonItem9,
-            this.barButtonItem10});
+            this.barButtonItem10,
+            this.barButtonItem7,
+            this.btnBanHang,
+            this.btnCTHD});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ribbonControl1.MaxItemId = 23;
+            this.ribbonControl1.MaxItemId = 26;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageHeaderItemLinks.Add(this.ribbonControl1.ExpandCollapseItem);
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -306,6 +311,28 @@
             this.barButtonItem10.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem10.LargeGlyph")));
             this.barButtonItem10.Name = "barButtonItem10";
             // 
+            // barButtonItem7
+            // 
+            this.barButtonItem7.Caption = "barButtonItem7";
+            this.barButtonItem7.Id = 23;
+            this.barButtonItem7.Name = "barButtonItem7";
+            // 
+            // btnBanHang
+            // 
+            this.btnBanHang.Caption = "Bán Hàng";
+            this.btnBanHang.Glyph = ((System.Drawing.Image)(resources.GetObject("btnBanHang.Glyph")));
+            this.btnBanHang.Id = 24;
+            this.btnBanHang.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnBanHang.LargeGlyph")));
+            this.btnBanHang.Name = "btnBanHang";
+            // 
+            // btnCTHD
+            // 
+            this.btnCTHD.Caption = "Chi Tiết Hóa Đơn";
+            this.btnCTHD.Id = 25;
+            this.btnCTHD.LargeGlyph = global::ShopQuanAo2.Properties.Resources.file_info_icon;
+            this.btnCTHD.Name = "btnCTHD";
+            this.btnCTHD.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCTHD_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -359,27 +386,25 @@
             // ribbonPageGroup6
             // 
             this.ribbonPageGroup6.ItemLinks.Add(this.btnHoaDon);
+            this.ribbonPageGroup6.ItemLinks.Add(this.btnCTHD);
             this.ribbonPageGroup6.Name = "ribbonPageGroup6";
             this.ribbonPageGroup6.Text = "Hóa Đơn";
             // 
             // ribbonPage3
             // 
             this.ribbonPage3.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup7,
-            this.ribbonPageGroup8});
+            this.ribbonPageGroup7});
             this.ribbonPage3.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPage3.Image")));
             this.ribbonPage3.Name = "ribbonPage3";
             this.ribbonPage3.Text = "Bán Hàng";
             // 
             // ribbonPageGroup7
             // 
+            this.ribbonPageGroup7.AllowTextClipping = false;
+            this.ribbonPageGroup7.Glyph = ((System.Drawing.Image)(resources.GetObject("ribbonPageGroup7.Glyph")));
+            this.ribbonPageGroup7.ItemLinks.Add(this.btnBanHang);
             this.ribbonPageGroup7.Name = "ribbonPageGroup7";
-            this.ribbonPageGroup7.Text = "ribbonPageGroup7";
-            // 
-            // ribbonPageGroup8
-            // 
-            this.ribbonPageGroup8.Name = "ribbonPageGroup8";
-            this.ribbonPageGroup8.Text = "ribbonPageGroup8";
+            this.ribbonPageGroup7.Text = "Lập Hóa Đơn Bán Hàng";
             // 
             // ribbonPage4
             // 
@@ -432,7 +457,7 @@
             this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             this.dockPanel1.Font = new System.Drawing.Font("Tahoma", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.dockPanel1.ID = new System.Guid("45b1dc06-b583-4f65-938d-f45fe06b3fc6");
-            this.dockPanel1.Location = new System.Drawing.Point(0, 0);
+            this.dockPanel1.Location = new System.Drawing.Point(-207, 0);
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.OriginalSize = new System.Drawing.Size(207, 200);
             this.dockPanel1.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Left;
@@ -592,7 +617,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage3;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar sstMain;
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem1;
@@ -635,6 +659,9 @@
         private DevExpress.XtraBars.Docking.AutoHideContainer hideContainerLeft;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem7;
+        private DevExpress.XtraBars.BarButtonItem btnBanHang;
+        private DevExpress.XtraBars.BarButtonItem btnCTHD;
 
     }
 }

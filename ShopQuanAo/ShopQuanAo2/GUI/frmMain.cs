@@ -181,14 +181,14 @@ namespace ShopQuanAo2
 
         private void btnTaiKhoan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Form frm = this.checkExit(typeof(frmAccount));
+            Form frm = this.checkExit(typeof(frmAccount2));
             if (frm != null)
             {
                 frm.Activate();
             }
             else
             {
-                frmAccount acc = new frmAccount();
+                frmAccount2 acc = new frmAccount2();
                 acc.MdiParent = this;
                 acc.Show();
             }
@@ -212,6 +212,21 @@ namespace ShopQuanAo2
                 frmBill bill = new frmBill();
                 bill.MdiParent = this;
                 bill.Show();
+            }
+        }
+
+        private void btnCTHD_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.checkExit(typeof(frmBillInfo));
+            if (frm != null)
+            {
+                frm.Activate();
+            }
+            else
+            {
+                frmBillInfo billInfo = new frmBillInfo();
+                billInfo.MdiParent = this;
+                billInfo.Show();
             }
         }
 
