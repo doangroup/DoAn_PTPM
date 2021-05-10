@@ -42,11 +42,12 @@ namespace ShopQuanAo2.GUI
         {          
             try
             {
-                if (adao.checkPassword(txtUserName.Text.Trim(),txtPassword.Text.Trim())==true)
+                if (adao.checkPassword(txtUserName.Text.Trim(),MaHoaMD5.MD5Hash(txtPassword.Text.Trim()))==true)
                 {
                     if (txtRePassword.Text.Trim().Equals(txtNewPassword.Text.Trim()))
                     {
-                        adao.repairPassAccount(txtUserName.Text.Trim(), txtNewPassword.Text.Trim());
+                        
+                        adao.repairPassAccount(txtUserName.Text.Trim(), MaHoaMD5.MD5Hash(txtNewPassword.Text.Trim()));
                         XtraMessageBox.Show("Đổi mật khẩu thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
                     }

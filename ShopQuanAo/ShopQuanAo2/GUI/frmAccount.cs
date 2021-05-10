@@ -28,17 +28,17 @@ namespace ShopQuanAo2.GUI
 
             dgvTaiKhoan.DataSource = listAccount;
             listAccount.DataSource = acc.loadAccount();
-
-            //BindingSource();
+            cbLoaiTK.Properties.DataSource = acc.loadTypeAccount();
+            cbLoaiTK.Properties.ValueMember = "LoaiTK";
+            cbLoaiTK.Properties.DisplayMember = "LoaiTK";
+            BindingSource();
         }
         private void BindingSource()
         {
             txtTenDN.DataBindings.Add(new Binding("Text", dgvTaiKhoan.DataSource, "TenDN", true, DataSourceUpdateMode.Never));
-            txtLoaiTK.DataBindings.Add(new Binding("Text", dgvTaiKhoan.DataSource, "LoaiTK", true, DataSourceUpdateMode.Never));
+            cbLoaiTK.DataBindings.Add(new Binding("EditValue", dgvTaiKhoan.DataSource, "LoaiTK", true, DataSourceUpdateMode.Never));
             ////True: tự động ép kiểu, ngược lại; Never k thay đổi giá trị, chỉ đi 1 nguồn duy nhất
-            //txtTenDN.DataBindings.Add(new Binding("Text", dgvTaiKhoan.DataSource, "TenDN", true, DataSourceUpdateMode.Never));
-            ////txt.DataBindings.Add(new Binding("Text", dgvTaiKhoan.DataSource, "MatKhau", true, DataSourceUpdateMode.Never));
-            //txtLoaiTK.DataBindings.Add(new Binding("Text", dgvTaiKhoan.DataSource, "LoaiTK", true, DataSourceUpdateMode.Never));
+            
             
         }
         private void groupControl2_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)

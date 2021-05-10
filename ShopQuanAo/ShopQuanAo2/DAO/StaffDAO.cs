@@ -44,7 +44,6 @@ namespace ShopQuanAo2.DAO
             if (rs > 0)
             {
                 return true;
-
             }
             else
             {
@@ -53,13 +52,11 @@ namespace ShopQuanAo2.DAO
         }
         public bool addStaff(int maNV, string tenNV, string gioiTinh, string diaChi, int sDT, string ngaySinh)
         {
-
             string sqlAdd = "insert into NhanVien values (" + maNV + ",N'" + tenNV + "',N'" + gioiTinh + "',N'" + diaChi + "','" + sDT + "'," + ngaySinh + ")";
             int rs = dp.ExcuteNonQuery(sqlAdd);
             if (rs > 0)
             {
                 return true;
-
             }
             else
             {
@@ -73,7 +70,6 @@ namespace ShopQuanAo2.DAO
             if (rs > 0)
             {
                 return true;
-
             }
             else
             {
@@ -87,7 +83,6 @@ namespace ShopQuanAo2.DAO
             if (rs.Rows.Count > 0)
             {
                 return true;
-
             }
             else
             {

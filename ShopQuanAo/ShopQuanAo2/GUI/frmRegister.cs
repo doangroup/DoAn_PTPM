@@ -57,7 +57,7 @@ namespace ShopQuanAo2.View
             {
                 if (txtRePassword.Text.Trim().Equals(txtPassword.Text.Trim()))
                 {
-                    acc.addAccount(txtUsername.Text, txtPassword.Text, loatk);
+                    acc.addAccount(txtUsername.Text, MaHoaMD5.MD5Hash(txtPassword.Text), loatk);
                     XtraMessageBox.Show("Đăng ký thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                     

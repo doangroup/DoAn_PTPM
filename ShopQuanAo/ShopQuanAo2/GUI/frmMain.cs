@@ -27,7 +27,7 @@ namespace ShopQuanAo2
         }
         void phanQuyen(int loaiTK)
         {
-            btnRegister.Enabled = btnSanPham.Enabled = btnTaiKhoan.Enabled = btnDanhMuc.Enabled = btnKhachHang.Enabled = btnNhanVien.Enabled = barButtonItem2.Enabled = barButtonItem6.Enabled = btnHoaDon.Enabled = loaiTK == 1;
+            btnRegister.Enabled = btnSanPham.Enabled = btnTaiKhoan.Enabled = btnDanhMuc.Enabled = btnKhachHang.Enabled = btnNhanVien.Enabled = barButtonItem2.Enabled = barButtonItem6.Enabled = btnHoaDon.Enabled = btnCTHD.Enabled = loaiTK == 1;
 
         }
         public frmMain(Acount acc)
@@ -86,7 +86,7 @@ namespace ShopQuanAo2
 
         private void btnLogout_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            this.Close();
+            this.Hide();
             frmLogin lg = new frmLogin();
             lg.Show();
             lg.txtUsername.Text = "";
@@ -181,14 +181,14 @@ namespace ShopQuanAo2
 
         private void btnTaiKhoan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Form frm = this.checkExit(typeof(frmAccount2));
+            Form frm = this.checkExit(typeof(frmAccount));
             if (frm != null)
             {
                 frm.Activate();
             }
             else
             {
-                frmAccount2 acc = new frmAccount2();
+                frmAccount acc = new frmAccount();
                 acc.MdiParent = this;
                 acc.Show();
             }

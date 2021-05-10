@@ -37,20 +37,14 @@ namespace ShopQuanAo2.DAO
             return null;
         }
         
-        public List<Acount> loadAccount()
+        public DataTable loadAccount()
         {
-            List<Acount> lstAccount = new List<Acount>();
-            string sql = "select * from TaiKhoan";
-            DataTable dt = dp.ExcuteQuery(sql);
-            foreach (DataRow item in dt.Rows)
-            {
-                Acount acc = new Acount(item);
-                lstAccount.Add(acc);
-            }
-            return lstAccount;
+            return dp.ExcuteQuery("select TenDN, LoaiTK from TaiKhoan");
         }
-        
-
+        public DataTable loadTypeAccount()
+        {
+            return dp.ExcuteQuery("select LoaiTK from TaiKhoan");
+        }
         public List<Acount> findAccount(string tenTK)
         {
             List<Acount> lstAccount = new List<Acount>();
@@ -101,7 +95,6 @@ namespace ShopQuanAo2.DAO
             if (rs > 0)
             {
                 return true;
-
             }
             else
             {

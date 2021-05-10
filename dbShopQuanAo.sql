@@ -13,8 +13,8 @@ end
 go
 exec findKHByHD N'Tạ Quang Trung'
 
-exec findKHByHD N'tạ quang trung'
-select * from ChiTietHD
+
+select * from TaiKhoan
 go
 
 select * from TaiKhoan where MatKhau = '1' and TenDN = 'admin'
@@ -219,8 +219,8 @@ go
 select * from TaiKhoan
 
 insert into TaiKhoan
-values ('admin','1',1),
-		('admin2','1',0)
+values ('admin','c4ca4238a0b923820dcc509a6f75849b',1),
+		('admin2','c4ca4238a0b923820dcc509a6f75849b',0)
 
 go
 insert into HoaDon

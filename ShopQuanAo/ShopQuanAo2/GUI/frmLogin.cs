@@ -38,7 +38,7 @@ namespace ShopQuanAo2.View
         AcountDAO acount = new AcountDAO();
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            if (acount.login(txtUsername.Text, txtPassword.Text) == true)
+            if (acount.login(txtUsername.Text, MaHoaMD5.MD5Hash(txtPassword.Text)) == true)
             {
                 //XtraMessageBox.Show("Đăng nhập thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
