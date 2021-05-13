@@ -16,7 +16,7 @@ namespace ShopQuanAo2.DAO
         public bool login(string userName, string passWord)
         {
 
-            string sqlAcount = "select TenDN, MatKhau, LoaiTK from TaiKhoan where TenDN = '" + userName + "' and MatKhau = '" + passWord + "'";
+            string sqlAcount = "select TenDN, MatKhau, LoaiTK from NhanVien where TenDN = '" + userName + "' and MatKhau = '" + passWord + "'";
             DataTable dt = dp.ExcuteQuery(sqlAcount);
             if (dt.Rows.Count > 0)
             {
@@ -29,7 +29,7 @@ namespace ShopQuanAo2.DAO
         }
         public Acount getAcountByUsername(string ten)
         {
-            DataTable data = dp.ExcuteQuery("select * from TaiKhoan where TenDN = '" + ten + "'");
+            DataTable data = dp.ExcuteQuery("select * from NhanVien where TenDN = '" + ten + "'");
             foreach (DataRow item in data.Rows)
             {
                 return new Acount(item);
@@ -39,16 +39,16 @@ namespace ShopQuanAo2.DAO
         
         public DataTable loadAccount()
         {
-            return dp.ExcuteQuery("select TenDN, LoaiTK from TaiKhoan");
+            return dp.ExcuteQuery("select TenDN, LoaiTK from NhanVien");
         }
         public DataTable loadTypeAccount()
         {
-            return dp.ExcuteQuery("select LoaiTK from TaiKhoan");
+            return dp.ExcuteQuery("select LoaiTK from NhanVien");
         }
         public List<Acount> findAccount(string tenTK)
         {
             List<Acount> lstAccount = new List<Acount>();
-            string sql = "select * from TaiKhoan where TenDN = N'" + tenTK + "'";
+            string sql = "select * from NhanVien where TenDN = N'" + tenTK + "'";
             DataTable dt = dp.ExcuteQuery(sql);
             foreach (DataRow item in dt.Rows)
             {
@@ -58,25 +58,25 @@ namespace ShopQuanAo2.DAO
             return lstAccount;
         }
 
-        public bool deleteAccount(string tenDN)
+        //public bool deleteAccount(string tenDN)
+        //{
+
+        //    string sqlDelete = "delete from NhanVien where TenDN = N'" + tenDN + "'";
+        //    int rs = dp.ExcuteNonQuery(sqlDelete);
+        //    if (rs > 0)
+        //    {
+        //        return true;
+
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
+        public bool addAccount(string tenDN, string matKhau, int loaiTK)
         {
 
-            string sqlDelete = "delete from TaiKhoan where TenDN = N'" + tenDN + "'";
-            int rs = dp.ExcuteNonQuery(sqlDelete);
-            if (rs > 0)
-            {
-                return true;
-
-            }
-            else
-            {
-                return false;
-            }
-        }
-        public bool addAccount(string tenDN,string matKhau, int loaiTK)
-        {
-
-            string sqlAdd = "insert into TaiKhoan values (N'" + tenDN + "','" + matKhau + "',"+loaiTK+")";
+            string sqlAdd = "insert into NhanVien values (N'" + tenDN + "','" + matKhau + "'," + loaiTK + ")";
             int rs = dp.ExcuteNonQuery(sqlAdd);
             if (rs > 0)
             {

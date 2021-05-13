@@ -50,9 +50,9 @@ namespace ShopQuanAo2.DAO
                 return false;
             }
         }
-        public bool addStaff(int maNV, string tenNV, string gioiTinh, string diaChi, int sDT, string ngaySinh)
+        public bool addStaff(int maNV, string tenNV, string gioiTinh, string diaChi, int sDT, string ngaySinh,string tenDN,int loaiTK)
         {
-            string sqlAdd = "insert into NhanVien values (" + maNV + ",N'" + tenNV + "',N'" + gioiTinh + "',N'" + diaChi + "','" + sDT + "'," + ngaySinh + ")";
+            string sqlAdd = "insert into NhanVien values (" + maNV + ",N'" + tenNV + "',N'" + gioiTinh + "',N'" + diaChi + "','" + sDT + "'," + ngaySinh + ",'"+tenDN+"','c4ca4238a0b923820dcc509a6f75849b',"+loaiTK+")";
             int rs = dp.ExcuteNonQuery(sqlAdd);
             if (rs > 0)
             {
@@ -63,9 +63,22 @@ namespace ShopQuanAo2.DAO
                 return false;
             }
         }
-        public bool repairStaff(int maNV, string tenNV, string gioiTinh, string diaChi, int sDT, string ngaySinh)
+        public bool addStaff2(int maNV, string tenNV, string gioiTinh, string diaChi, int sDT, string ngaySinh, string tenDN,string matKhau, int loaiTK)
         {
-            string sqlAdd = "update NhanVien set TenNV = N'" + tenNV + "', GioiTinh = N'" + gioiTinh + "',DiaChi =N'" + diaChi + "', SDT = '" + sDT + "',NgaySinh = " + ngaySinh + " where MaNV = " + maNV;
+            string sqlAdd = "insert into NhanVien values (" + maNV + ",N'" + tenNV + "',N'" + gioiTinh + "',N'" + diaChi + "','" + sDT + "'," + ngaySinh + ",'" + tenDN + "','" + matKhau + "'," + loaiTK + ")";
+            int rs = dp.ExcuteNonQuery(sqlAdd);
+            if (rs > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool repairStaff(int maNV, string tenNV, string gioiTinh, string diaChi, int sDT, string ngaySinh,int loaiTK)
+        {
+            string sqlAdd = "update NhanVien set TenNV = N'" + tenNV + "', GioiTinh = N'" + gioiTinh + "',DiaChi =N'" + diaChi + "', SDT = '" + sDT + "',NgaySinh = " + ngaySinh + ", LoaiTK = " + loaiTK + " where MaNV = " + maNV;
             int rs = dp.ExcuteNonQuery(sqlAdd);
             if (rs > 0)
             {

@@ -8,7 +8,26 @@ namespace ShopQuanAo2.DTO
 {
    public class Staff
     {
-        private int maNV;
+        private int maNV, loaiTK;
+
+        public int LoaiTK
+        {
+            get { return loaiTK; }
+            set { loaiTK = value; }
+        }
+        private string tenDN, matKhau;
+
+        public string TenDN
+        {
+            get { return tenDN; }
+            set { tenDN = value; }
+        }
+
+        public string MatKhau
+        {
+            get { return matKhau; }
+            set { matKhau = value; }
+        }
         public Staff(DataRow row) 
         {
             this.MaNV = (int)row[0];
@@ -17,6 +36,8 @@ namespace ShopQuanAo2.DTO
             this.DiaChi = row[3].ToString();
             this.SDT = row[4].ToString();
             this.NgaySinh = row[5].ToString();
+            this.TenDN = row[6].ToString();
+            this.LoaiTK = (int)row[7];
         }
         public string SDT
         {

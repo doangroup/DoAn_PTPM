@@ -181,17 +181,7 @@ namespace ShopQuanAo2
 
         private void btnTaiKhoan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Form frm = this.checkExit(typeof(frmAccount));
-            if (frm != null)
-            {
-                frm.Activate();
-            }
-            else
-            {
-                frmAccount acc = new frmAccount();
-                acc.MdiParent = this;
-                acc.Show();
-            }
+            
         }
 
         private void btnChangePass_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

@@ -17,7 +17,8 @@ namespace ShopQuanAo2.View
         {
             InitializeComponent();
         }
-        AcountDAO acc = new AcountDAO();
+        StaffDAO st = new StaffDAO();
+
         private void btnOut_Click(object sender, EventArgs e)
         {
             DialogResult rs = XtraMessageBox.Show("Bạn có muốn thoát?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -38,9 +39,9 @@ namespace ShopQuanAo2.View
 
         private void frmRegister_Load(object sender, EventArgs e)
         {
-            cboLoaiTK.SelectedIndex = 0;
-            txtPassword.Properties.PasswordChar = (txtPassword.Properties.PasswordChar == '*') ? '\0' : '*';
-            txtRePassword.Properties.PasswordChar = (txtRePassword.Properties.PasswordChar == '*') ? '\0' : '*';
+            cbLoaiTK.SelectedIndex = 0;
+            txtMatKhau.Properties.PasswordChar = (txtMatKhau.Properties.PasswordChar == '*') ? '\0' : '*';
+            txtNhapLaiMK.Properties.PasswordChar = (txtNhapLaiMK.Properties.PasswordChar == '*') ? '\0' : '*';
 
 
         }
@@ -52,12 +53,14 @@ namespace ShopQuanAo2.View
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            int loatk = int.Parse(cboLoaiTK.SelectedItem.ToString());
+            int loatk = int.Parse(cbLoaiTK.SelectedItem.ToString());
+            int maNV = int.Parse(txtMaNV.Text);
+            int sDT = int.Parse(txtSDT.Text);
             try
             {
-                if (txtRePassword.Text.Trim().Equals(txtPassword.Text.Trim()))
+                if (txtNhapLaiMK.Text.Trim().Equals(txtMatKhau.Text.Trim()))
                 {
-                    acc.addAccount(txtUsername.Text, MaHoaMD5.MD5Hash(txtPassword.Text), loatk);
+                    st.addStaff2(maNV, txtTenNV.Text.Trim(), cbGioiTinh.SelectedText.ToString().Trim(), txtDiaChi.Text.Trim(), sDT, txtNgaySinh.Text, txtTaiKhoan.Text.Trim(), MaHoaMD5.MD5Hash(txtNhapLaiMK.Text).ToString(), loatk);
                     XtraMessageBox.Show("Đăng ký thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                     

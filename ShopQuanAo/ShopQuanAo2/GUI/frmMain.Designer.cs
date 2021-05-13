@@ -372,7 +372,6 @@
             // ribbonPageGroup4
             // 
             this.ribbonPageGroup4.ItemLinks.Add(this.btnNhanVien);
-            this.ribbonPageGroup4.ItemLinks.Add(this.btnTaiKhoan);
             this.ribbonPageGroup4.ItemLinks.Add(this.btnKhachHang);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             this.ribbonPageGroup4.Text = "Tổ Chức";
