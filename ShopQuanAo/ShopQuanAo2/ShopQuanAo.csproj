@@ -97,6 +97,12 @@
     <Compile Include="GUI\frmAccount.Designer.cs">
       <DependentUpon>frmAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\frmAddCusmer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmAddCusmer.Designer.cs">
+      <DependentUpon>frmAddCusmer.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\frmBill.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +151,12 @@
     <Compile Include="GUI\frmProduct.Designer.cs">
       <DependentUpon>frmProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\frmSellProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmSellProduct.Designer.cs">
+      <DependentUpon>frmSellProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\frmStaff.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmAccount.resx">
       <DependentUpon>frmAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmAddCusmer.resx">
+      <DependentUpon>frmAddCusmer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmBill.resx">
       <DependentUpon>frmBill.cs</DependentUpon>
@@ -188,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmProduct.resx">
       <DependentUpon>frmProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmSellProduct.resx">
+      <DependentUpon>frmSellProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmStaff.resx">
       <DependentUpon>frmStaff.cs</DependentUpon>
@@ -285,6 +303,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\file-info-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Male-user-add-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Male-user-add-icon %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

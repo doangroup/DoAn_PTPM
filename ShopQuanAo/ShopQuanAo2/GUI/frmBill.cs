@@ -49,6 +49,7 @@ namespace ShopQuanAo2.GUI
             cbNhanVien.DataBindings.Add(new Binding("EditValue", dgvHoaDon.DataSource, "MaNV", true, DataSourceUpdateMode.Never));
             cbSanPham.DataBindings.Add(new Binding("EditValue", dgvHoaDon.DataSource, "MaSP", true, DataSourceUpdateMode.Never));
             txtNgayBan.DataBindings.Add(new Binding("Text", dgvHoaDon.DataSource, "NgayBan", true, DataSourceUpdateMode.Never));
+            txtTongTien.DataBindings.Add(new Binding("Text", dgvHoaDon.DataSource, "TongTien", true, DataSourceUpdateMode.Never));
 
         }
         private void groupControl1_Paint(object sender, PaintEventArgs e)
@@ -108,10 +109,10 @@ namespace ShopQuanAo2.GUI
                 //Không trùng mã thì sẽ thêm vào
                 else
                 {
-
+                    double tongtien = double.Parse(txtTongTien.Text);
                     try
                     {
-                        bill.addBill(maHD, maKH,MaNV,maSP,txtNgayBan.SelectedText.ToString());
+                        bill.addBill(maHD, maKH,MaNV,maSP,txtNgayBan.SelectedText.ToString(),tongtien);
                         XtraMessageBox.Show("Thêm thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         dgvHoaDon.DataSource = listBill;
                         listBill.DataSource = bill.loadBill();

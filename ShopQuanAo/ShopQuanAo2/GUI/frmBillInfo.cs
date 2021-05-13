@@ -29,11 +29,12 @@ namespace ShopQuanAo2.GUI
             cbTinhTrang.Properties.DataSource = billInfo.loadBillInfo();
             cbTinhTrang.Properties.DisplayMember = "TinhTrang";
             cbTinhTrang.Properties.ValueMember = "TinhTrang";
-           // loadStatus();
+            //loadStatus();
             BindingSource();
         }
         private void BindingSource()
         {
+            txtMaCTHD.DataBindings.Add(new Binding("Text", dgvChiTIetHD.DataSource, "MaCTHD", true, DataSourceUpdateMode.Never));
             txtMaHD.DataBindings.Add(new Binding("Text", dgvChiTIetHD.DataSource, "MaHD", true, DataSourceUpdateMode.Never));
             txtSoLuong.DataBindings.Add(new Binding("Text", dgvChiTIetHD.DataSource, "SoLuong", true, DataSourceUpdateMode.Never));
             txtThanhTien.DataBindings.Add(new Binding("Text", dgvChiTIetHD.DataSource, "ThanhTien", true, DataSourceUpdateMode.Never));
@@ -65,6 +66,7 @@ namespace ShopQuanAo2.GUI
                 int maHD = int.Parse(txtMaHD.Text);
                 int soLuong = int.Parse(txtSoLuong.Text);
                 double thanhTien = double.Parse(txtThanhTien.Text);
+                int macthd = int.Parse(txtMaCTHD.Text);
                 int tinhTrang = int.Parse(cbTinhTrang.EditValue.ToString());
                 if (billInfo.checkPrimarykey(maHD) == true)
                 {
@@ -73,7 +75,7 @@ namespace ShopQuanAo2.GUI
                     {
                         try
                         {
-                            billInfo.repairBillInfo(maHD, soLuong,thanhTien,tinhTrang);
+                            billInfo.repairBillInfo(macthd, maHD, soLuong, thanhTien, tinhTrang);
                             XtraMessageBox.Show("Sửa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             dgvChiTIetHD.DataSource = listBillInfo;
                             listBillInfo.DataSource = billInfo.loadBillInfo();
@@ -109,14 +111,14 @@ namespace ShopQuanAo2.GUI
             }
             else if (e.Button.Properties.Caption == "Xóa")
             {
-                int maHD = int.Parse(txtMaHD.Text);
+                int maCTHD = int.Parse(txtMaCTHD.Text);
 
                 DialogResult dl = XtraMessageBox.Show("Bạn có chắc muốn xóa Hóa Đơn: " + txtMaHD.Text + " không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dl == DialogResult.Yes)
                 {
                     try
                     {
-                        billInfo.deleteBillInfo(maHD);
+                        billInfo.deleteBillInfo(maCTHD);
                         XtraMessageBox.Show("Xóa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         dgvChiTIetHD.DataSource = listBillInfo;
                         listBillInfo.DataSource = billInfo.loadBillInfo();
@@ -133,14 +135,14 @@ namespace ShopQuanAo2.GUI
                 int soLuong = int.Parse(txtSoLuong.Text);
                 double thanhTien = double.Parse(txtThanhTien.Text);
                 int tinhTrang = int.Parse(cbTinhTrang.EditValue.ToString());
-
+                int maCTHD = int.Parse(txtMaCTHD.Text);
 
                 DialogResult dl = XtraMessageBox.Show("Bạn có chắc muốn sửa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dl == DialogResult.Yes)
                 {
                     try
                     {
-                        billInfo.repairBillInfo(maHD, soLuong, thanhTien, tinhTrang);
+                        billInfo.repairBillInfo(maCTHD, maHD, soLuong, thanhTien, tinhTrang);
                         XtraMessageBox.Show("Sửa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         dgvChiTIetHD.DataSource = listBillInfo;
                         listBillInfo.DataSource = billInfo.loadBillInfo();
@@ -184,18 +186,18 @@ namespace ShopQuanAo2.GUI
         //    StatusBillInfoDAO st = new StatusBillInfoDAO();
         //    st.Add(new StatusBillInfo(0, "Chưa thanh Toán"));
         //    st.Add(new StatusBillInfo(1, "Đã Thanh Toán"));
-           
 
-        //    bind the lookup editor to the list
+
+        //    //bind the lookup editor to the list
         //    cbTinhTrang.Properties.DataSource = st;
         //    cbTinhTrang.Properties.DisplayMember = "Name";
         //    cbTinhTrang.Properties.ValueMember = "Id";
-        //     Add columns.
-        //     The ID column is populated 
-        //     via the GetNotInListValue event (not listed in the example).
+        //     //Add columns.
+        //     //The ID column is populated 
+        //     //via the GetNotInListValue event (not listed in the example).
         //    cbTinhTrang.Properties.Columns.Add(new LookUpColumnInfo("Id", "ID", 20));
         //    cbTinhTrang.Properties.Columns.Add(new LookUpColumnInfo("Name", "TinhTrang", 80));
-        //    enable text editing
+        //    //enable text editing
         //    cbTinhTrang.Properties.TextEditStyle = TextEditStyles.Standard;
         //}
     }

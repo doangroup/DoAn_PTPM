@@ -52,6 +52,9 @@
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.txtTongTien = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
@@ -74,6 +77,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTongTien.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -119,6 +124,7 @@
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.txtTongTien);
             this.layoutControl1.Controls.Add(this.cbSanPham);
             this.layoutControl1.Controls.Add(this.cbKhachHang);
             this.layoutControl1.Controls.Add(this.cbNhanVien);
@@ -174,10 +180,10 @@
             // 
             // dgvHoaDon
             // 
-            this.dgvHoaDon.Location = new System.Drawing.Point(16, 100);
+            this.dgvHoaDon.Location = new System.Drawing.Point(16, 128);
             this.dgvHoaDon.MainView = this.gridView1;
             this.dgvHoaDon.Name = "dgvHoaDon";
-            this.dgvHoaDon.Size = new System.Drawing.Size(1102, 534);
+            this.dgvHoaDon.Size = new System.Drawing.Size(1102, 506);
             this.dgvHoaDon.TabIndex = 11;
             this.dgvHoaDon.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -189,7 +195,8 @@
             this.gridColumn2,
             this.gridColumn3,
             this.gridColumn4,
-            this.gridColumn5});
+            this.gridColumn5,
+            this.gridColumn6});
             this.gridView1.GridControl = this.dgvHoaDon;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowGroupPanel = false;
@@ -271,7 +278,8 @@
             this.layoutControlItem2,
             this.layoutControlItem3,
             this.layoutControlItem4,
-            this.layoutControlItem5});
+            this.layoutControlItem5,
+            this.layoutControlItem6});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.OptionsItemText.TextToControlDistance = 4;
@@ -281,9 +289,9 @@
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.dgvHoaDon;
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 84);
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 112);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(1108, 540);
+            this.layoutControlItem7.Size = new System.Drawing.Size(1108, 512);
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
             // 
@@ -332,6 +340,34 @@
             this.layoutControlItem5.Text = "Sản Phẩm";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(70, 17);
             // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "Tổng Tiền";
+            this.gridColumn6.FieldName = "TongTien";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 5;
+            // 
+            // txtTongTien
+            // 
+            this.txtTongTien.Enabled = false;
+            this.txtTongTien.Location = new System.Drawing.Point(90, 100);
+            this.txtTongTien.Name = "txtTongTien";
+            this.txtTongTien.Properties.Mask.EditMask = "c";
+            this.txtTongTien.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtTongTien.Size = new System.Drawing.Size(1028, 22);
+            this.txtTongTien.StyleController = this.layoutControl1;
+            this.txtTongTien.TabIndex = 17;
+            // 
+            // layoutControlItem6
+            // 
+            this.layoutControlItem6.Control = this.txtTongTien;
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 84);
+            this.layoutControlItem6.Name = "layoutControlItem6";
+            this.layoutControlItem6.Size = new System.Drawing.Size(1108, 28);
+            this.layoutControlItem6.Text = "Tổng Tiền";
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(70, 17);
+            // 
             // frmBill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -364,6 +400,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTongTien.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -393,5 +431,8 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraEditors.TextEdit txtTongTien;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
     }
 }

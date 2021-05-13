@@ -49,10 +49,10 @@ namespace ShopQuanAo2.DAO
                 return false;
             }
         }
-        public bool addBill(int maHD, int maKH, int maNV, int maSP,string ngayBan)
+        public bool addBill(int maHD, int maKH, int maNV, int maSP, string ngayBan, double tongTien)
         {
 
-            string sqlAdd = "insert into HoaDon values (" + maHD + "," + maKH + "," + maNV + "," + maSP + "," + ngayBan + ")";
+            string sqlAdd = "insert into HoaDon values (" + maHD + "," + maKH + "," + maNV + "," + maSP + "," + ngayBan + ",null)";
             int rs = dp.ExcuteNonQuery(sqlAdd);
             if (rs > 0)
             {
@@ -66,7 +66,7 @@ namespace ShopQuanAo2.DAO
         }
         public bool repairBill(int maHD, int maKH, int maNV, int maSP, string ngayBan)
         {
-            string sqlAdd = "update HoaDon set MaKH = " + maKH + ",MaNV = " + maNV + ",MaSP = " + maSP + ",NgayBan = " + ngayBan + " where MaHD = " + maHD;
+            string sqlAdd = "update HoaDon set MaKH = " + maKH + ",MaNV = " + maNV + ",MaSP = " + maSP + ",NgayBan = " + ngayBan + ",TongTien = null where MaHD = " + maHD;
             int rs = dp.ExcuteNonQuery(sqlAdd);
             if (rs > 0)
             {

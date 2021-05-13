@@ -12,7 +12,13 @@ namespace ShopQuanAo2.DTO
         public Bill()
         { }
         private int maHD, maKH, maSP, maNV;
+        private double tongTien;
 
+        public double TongTien
+        {
+            get { return tongTien; }
+            set { tongTien = value; }
+        }
         public int MaNV
         {
             get { return maNV; }
@@ -26,6 +32,7 @@ namespace ShopQuanAo2.DTO
             this.MaNV = (int)row[2];
             this.MaSP = (int)row[3];
             this.NgayBan = row[4].ToString();
+            this.TongTien = (double)row[5];
         }
         public string NgayBan
         {

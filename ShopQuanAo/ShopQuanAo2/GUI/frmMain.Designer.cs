@@ -324,6 +324,7 @@
             this.btnBanHang.Id = 24;
             this.btnBanHang.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnBanHang.LargeGlyph")));
             this.btnBanHang.Name = "btnBanHang";
+            this.btnBanHang.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBanHang_ItemClick);
             // 
             // btnCTHD
             // 

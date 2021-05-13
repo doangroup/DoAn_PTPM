@@ -201,15 +201,17 @@ create table HoaDon
 	MaNV int,
 	MaSP int,
 	NgayBan datetime not null,
+	TongTien float,
 	constraint fk_HD_NV foreign key(MaNV) references NhanVien(MaNV),
 	constraint fk_HD_H foreign key(MaSP) references SanPham(MaSP),
 	constraint fk_HD_KH foreign key(MaKH) references KhachHang(MaKH)
 )
 go
-
+drop table HoaDon
 create table ChiTietHD
 (
-	MaHD int primary key,
+	MaCTHD int identity(1,1)primary key,
+	MaHD int,
 	SoLuong int,
 	ThanhTien float,
 	Tinhtrang int default 0, -- 0 = chưa thanh toán | 1 = đã thanh toán
@@ -224,48 +226,40 @@ values ('admin','c4ca4238a0b923820dcc509a6f75849b',1),
 
 go
 insert into HoaDon
-values (1,1,1,3,2020/05/01),
-		(2,2,2,2,2020/07/01)
+values (1,1,1,3,2020/05/01,null),
+		(2,2,2,2,2020/07/01,null)
 go
 
 create trigger TGThanhTien
 on ChiTietHD
 for insert, update
 as
-	update ChiTietHD
-	set ThanhTien = inserted.SoLuong * SanPham.DonGia
-	from inserted, SanPham, HoaDon
-	where inserted.MaHD= ChiTietHD.MaHD and HoaDon.MaSP = SanPham.MaSP
+	update HoaDon
+	set TongTien = inserted.SoLuong * inserted.ThanhTien
+	from inserted, HoaDon,ChiTietHD
+	where inserted.MaHD= ChiTietHD.MaHD and HoaDon.MaHD = ChiTietHD.MaHD
 go
-
-create proc LayHDTheoNgay 
-@ngayban datetime
-as
-begin
-	select TenSP, ChiTietHD.SoLuong, SanPham.DonGia, NgayBan, TenKH, ThanhTien = ChiTietHD.SoLuong * DonGia from KhachHang, HoaDon,SanPham, ChiTietHD where NgayBan = @ngayban and SanPham.MaSP = HoaDon.MaSP and KhachHang.MaKH = HoaDon.MaKH
-end
-go
-
-exec LayHDTheoNgay '1900-01-01 00:00:00.000'
-
 
 insert into ChiTietHD
-values (1,1,0,1),
-		(2,2,0,0)
-go
+values (1,2,140000,0),
+		(1,5,140000,0)
 select * from ChiTietHD
+select * from HoaDon
+
+--create proc LayHDTheoNgay 
+--@ngayban datetime
+--as
+--begin
+--	select TenSP, ChiTietHD.SoLuong, SanPham.DonGia, NgayBan, TenKH, ThanhTien = ChiTietHD.SoLuong * DonGia from KhachHang, HoaDon,SanPham, ChiTietHD where NgayBan = @ngayban and SanPham.MaSP = HoaDon.MaSP and KhachHang.MaKH = HoaDon.MaKH
+--end
+--go
+
+--exec LayHDTheoNgay '1900-01-01 00:00:00.000'
 
 
-select DonGia from SanPham, HoaDon, ChiTietHD where ChiTietHD.MaHD = HoaDon.MaHD and SanPham.MaSP = HoaDon.MaSP and HoaDon.MaHD = 1
-update SanPham set TenSP = N'', SoLuong = 5, DonGiaNhap = 4, DonGiaBan = 4, GhiChu = N'' where MaSP = 1
-
-
-select * from NhanVien
 
 
 
-=======
->>>>>>> Huy
 
 
 

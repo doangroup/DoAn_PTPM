@@ -61,8 +61,7 @@ namespace ShopQuanAo2.View
             themes.LookAndFeel.SkinName = "Valentine";
 
             txtPassword.Properties.PasswordChar = (txtPassword.Properties.PasswordChar == '*') ? '\0' : '*';
-            txtUsername.Text = "";
-            txtPassword.Text = "";
+         
         }
     }
 }

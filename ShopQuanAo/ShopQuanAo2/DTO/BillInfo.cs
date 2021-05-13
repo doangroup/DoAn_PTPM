@@ -8,16 +8,22 @@ namespace ShopQuanAo2.DTO
 {
     public class BillInfo
     {
-        private int maHD, soLuong, tinhTrang;
+        private int maHD, soLuong, tinhTrang, maCTHD;
+
+        public int MaCTHD
+        {
+            get { return maCTHD; }
+            set { maCTHD = value; }
+        }
        
 
         public BillInfo(DataRow row)
         {
-
-            this.MaHD = (int)row[0];
-            this.SoLuong = (int)row[1];
-            this.ThanhTien = (double)row[2];
-            this.TinhTrang = (int)row[3];
+            this.MaCTHD = (int)row[0];
+            this.MaHD = (int)row[1];
+            this.SoLuong = (int)row[2];
+            this.ThanhTien = (double)row[3];
+            this.TinhTrang = (int)row[4];
         }
         public BillInfo()
         { }

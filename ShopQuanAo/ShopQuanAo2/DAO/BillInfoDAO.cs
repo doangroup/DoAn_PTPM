@@ -38,7 +38,7 @@ namespace ShopQuanAo2.DAO
         public bool deleteBillInfo(int maHD)
         {
 
-            string sqlDelete = "delete from ChiTietHD where MaHD = " + maHD;
+            string sqlDelete = "delete from ChiTietHD where MaCTHD = " + maHD;
             int rs = dp.ExcuteNonQuery(sqlDelete);
             if (rs > 0)
             {
@@ -65,9 +65,9 @@ namespace ShopQuanAo2.DAO
                 return false;
             }
         }
-        public bool repairBillInfo(int maHD, int soLuong, double thanhTien, int tinhTrang)
+        public bool repairBillInfo(int maCTHD,int maHD, int soLuong, double thanhTien, int tinhTrang)
         {
-            string sqlAdd = "update ChiTietHD set SoLuong = " + soLuong + ",ThanhTien = " + thanhTien + ",TinhTrang = " + tinhTrang + " where MaHD = " + maHD;
+            string sqlAdd = "update ChiTietHD set MaHD = " + maHD + ", SoLuong = " + soLuong + ",ThanhTien = " + thanhTien + ",TinhTrang = " + tinhTrang + " where MaCTHD = " + maCTHD;
             int rs = dp.ExcuteNonQuery(sqlAdd);
             if (rs > 0)
             {
@@ -81,7 +81,7 @@ namespace ShopQuanAo2.DAO
         }
         public bool checkPrimarykey(int maHD)
         {
-            string sqlCheck = "select * from ChiTietHD where MaHD = " + maHD;
+            string sqlCheck = "select * from ChiTietHD where MaCTHD = " + maHD;
             DataTable rs = dp.ExcuteQuery(sqlCheck);
             if (rs.Rows.Count > 0)
             {

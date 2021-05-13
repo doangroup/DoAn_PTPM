@@ -230,6 +230,21 @@ namespace ShopQuanAo2
             }
         }
 
+        private void btnBanHang_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.checkExit(typeof(frmSellProduct));
+            if (frm != null)
+            {
+                frm.Activate();
+            }
+            else
+            {
+                frmSellProduct sell = new frmSellProduct();
+                sell.MdiParent = this;
+                sell.Show();
+            }
+        }
+
 
 
 
