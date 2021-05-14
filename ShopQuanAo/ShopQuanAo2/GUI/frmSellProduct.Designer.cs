@@ -42,7 +42,7 @@
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.cbNhanVien = new DevExpress.XtraEditors.LookUpEdit();
+            this.txtNhanVien = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -58,7 +58,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbNhanVien.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNhanVien.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,7 +74,7 @@
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.cbNhanVien);
+            this.layoutControl1.Controls.Add(this.txtNhanVien);
             this.layoutControl1.Controls.Add(this.btnAddBill);
             this.layoutControl1.Controls.Add(this.btnAddCustomer);
             this.layoutControl1.Controls.Add(this.cbSanPham);
@@ -211,19 +211,18 @@
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
-            // cbNhanVien
+            // txtNhanVien
             // 
-            this.cbNhanVien.Location = new System.Drawing.Point(87, 62);
-            this.cbNhanVien.Name = "cbNhanVien";
-            this.cbNhanVien.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbNhanVien.Size = new System.Drawing.Size(474, 22);
-            this.cbNhanVien.StyleController = this.layoutControl1;
-            this.cbNhanVien.TabIndex = 15;
+            this.txtNhanVien.Enabled = false;
+            this.txtNhanVien.Location = new System.Drawing.Point(87, 62);
+            this.txtNhanVien.Name = "txtNhanVien";
+            this.txtNhanVien.Size = new System.Drawing.Size(474, 22);
+            this.txtNhanVien.StyleController = this.layoutControl1;
+            this.txtNhanVien.TabIndex = 15;
             // 
             // layoutControlItem3
             // 
-            this.layoutControlItem3.Control = this.cbNhanVien;
+            this.layoutControlItem3.Control = this.txtNhanVien;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 46);
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Size = new System.Drawing.Size(551, 28);
@@ -254,7 +253,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbNhanVien.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtNhanVien.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             this.ResumeLayout(false);
 
@@ -275,7 +274,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraEditors.SimpleButton btnAddBill;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
-        private DevExpress.XtraEditors.LookUpEdit cbNhanVien;
+        private DevExpress.XtraEditors.TextEdit txtNhanVien;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
     }
 }

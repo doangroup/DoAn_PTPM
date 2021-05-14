@@ -14,18 +14,18 @@ namespace ShopQuanAo2.GUI
 {
     public partial class frmChangePass : DevExpress.XtraEditors.XtraForm
     {
-        private Acount acc;
+        private Staff acc;
 
-        public Acount Acc
+        public Staff Acc
         {
             get { return acc; }
             set { acc = value; changeAcount(Acc); }
         }
-        void changeAcount(Acount acc)
+        void changeAcount(Staff acc)
         {
-            txtUserName.Text = acc.UserName;
+            txtUserName.Text = acc.TenDN;
         }
-        public frmChangePass(Acount ac)
+        public frmChangePass(Staff ac)
         {
             InitializeComponent();
             this.Acc = ac;
@@ -37,7 +37,7 @@ namespace ShopQuanAo2.GUI
             rg.Show();
             this.Hide();
         }
-        AcountDAO adao = new AcountDAO();
+        StaffDAO adao = new StaffDAO();
         private void simpleButton1_Click(object sender, EventArgs e)
         {          
             try

@@ -16,13 +16,15 @@ exec findKHByHD N'Tạ Quang Trung'
 
 
 
+select * from NhanVien
+go
+
 select * from HoaDon
 go
 
-select * from ChiTietHD
-go
-
-go
+update NhanVien 
+set NgaySinh = '20/11/2000'
+ where MaNV = 2
 
 create table KhachHang
 (
@@ -43,9 +45,11 @@ create table KhuyenMai
 	LinkKM nvarchar(max)
 )
 go
+select * from NhanVien
+
 create table NhanVien
 (
-	MaNV int primary key,
+	MaNV int identity(1,1) primary key,
 	TenNV nvarchar(100) not null,
 	GioiTinh nvarchar(20) not null,
 	DiaChi nvarchar(100) not null,
@@ -57,22 +61,18 @@ create table NhanVien
 )
 go
 
+
 set dateformat dmy
 go
 
 insert into NhanVien
-values (1,N'Trung',N'Nam',N'Tân Phú','045648932',1999/01/23,'admin','c4ca4238a0b923820dcc509a6f75849b',1),
-		(2,N'Nhân Viên 2',N'Nữ',N'Thủ Đức','045648932',2000/07/20,'admin2','c4ca4238a0b923820dcc509a6f75849b',0)
+values (N'Trung',N'Nam',N'Tân Phú','045648932',1999/01/23,'admin','c4ca4238a0b923820dcc509a6f75849b',1),
+		(N'Nhân Viên 2',N'Nữ',N'Thủ Đức','045648932',2000/07/20,'admin2','c4ca4238a0b923820dcc509a6f75849b',0)
 go
 
-insert into NhanVien values (3,N'trung',N'Nam',N'thone','65465',3/2/2010)
-<<<<<<< HEAD
-insert into NhanVien values (2,N'fd',N'Nam',N'fads','3424',01/04/2021)
-select * from NhanVien
-=======
 
->>>>>>> Huy
-go
+
+
 create table DanhMuc
 (
 	MaDM int primary key,
@@ -211,11 +211,11 @@ create table ChiTietHD
 	constraint fk_CTHD_HD foreign key(MaHD) references HoaDon(MaHD)
 )
 go
-select * from TaiKhoan
+select * from NhanVien
 
 
 insert into HoaDon
-values (1,1,1,3,2020/05/01,null),
+values (1,1,3,3,2020/05/01,null),
 		(2,2,2,2,2020/07/01,null)
 go
 

@@ -37,7 +37,8 @@ namespace ShopQuanAo2.DTO
             this.SDT = row[4].ToString();
             this.NgaySinh = row[5].ToString();
             this.TenDN = row[6].ToString();
-            this.LoaiTK = (int)row[7];
+            this.MatKhau = row[7].ToString();
+            this.LoaiTK = (int)row[8];
         }
         public string SDT
         {

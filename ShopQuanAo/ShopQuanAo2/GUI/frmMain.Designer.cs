@@ -457,7 +457,7 @@
             this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             this.dockPanel1.Font = new System.Drawing.Font("Tahoma", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.dockPanel1.ID = new System.Guid("45b1dc06-b583-4f65-938d-f45fe06b3fc6");
-            this.dockPanel1.Location = new System.Drawing.Point(-207, 0);
+            this.dockPanel1.Location = new System.Drawing.Point(24, 184);
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.OriginalSize = new System.Drawing.Size(207, 200);
             this.dockPanel1.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Left;

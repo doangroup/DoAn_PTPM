@@ -11,7 +11,29 @@ namespace ShopQuanAo2.DAO
     {
         DataProvider dp = new DataProvider();
         public StaffDAO() { }
+        public bool login(string userName, string passWord)
+        {
 
+            string sqlAcount = "select TenDN, MatKhau, LoaiTK from NhanVien where TenDN = '" + userName + "' and MatKhau = '" + passWord + "'";
+            DataTable dt = dp.ExcuteQuery(sqlAcount);
+            if (dt.Rows.Count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public Staff getAcountByUsername(string ten)
+        {
+            DataTable data = dp.ExcuteQuery("select * from NhanVien where TenDN = '" + ten + "'");
+            foreach (DataRow item in data.Rows)
+            {
+                return new Staff(item);
+            }
+            return null;
+        }
         public List<Staff> loadStaff()
         {
             List<Staff> lstStaff = new List<Staff>();
@@ -50,9 +72,9 @@ namespace ShopQuanAo2.DAO
                 return false;
             }
         }
-        public bool addStaff(int maNV, string tenNV, string gioiTinh, string diaChi, int sDT, string ngaySinh,string tenDN,int loaiTK)
+        public bool addStaff(string tenNV, string gioiTinh, string diaChi, int sDT, string ngaySinh,string tenDN,int loaiTK)
         {
-            string sqlAdd = "insert into NhanVien values (" + maNV + ",N'" + tenNV + "',N'" + gioiTinh + "',N'" + diaChi + "','" + sDT + "'," + ngaySinh + ",'"+tenDN+"','c4ca4238a0b923820dcc509a6f75849b',"+loaiTK+")";
+            string sqlAdd = "insert into NhanVien values (N'" + tenNV + "',N'" + gioiTinh + "',N'" + diaChi + "','" + sDT + "'," + ngaySinh + ",'"+tenDN+"','c4ca4238a0b923820dcc509a6f75849b',"+loaiTK+")";
             int rs = dp.ExcuteNonQuery(sqlAdd);
             if (rs > 0)
             {
@@ -63,9 +85,9 @@ namespace ShopQuanAo2.DAO
                 return false;
             }
         }
-        public bool addStaff2(int maNV, string tenNV, string gioiTinh, string diaChi, int sDT, string ngaySinh, string tenDN,string matKhau, int loaiTK)
+        public bool addStaff2(string tenNV, string gioiTinh, string diaChi, int sDT, string ngaySinh, string tenDN,string matKhau, int loaiTK)
         {
-            string sqlAdd = "insert into NhanVien values (" + maNV + ",N'" + tenNV + "',N'" + gioiTinh + "',N'" + diaChi + "','" + sDT + "'," + ngaySinh + ",'" + tenDN + "','" + matKhau + "'," + loaiTK + ")";
+            string sqlAdd = "insert into NhanVien values (N'" + tenNV + "',N'" + gioiTinh + "',N'" + diaChi + "','" + sDT + "'," + ngaySinh + ",'" + tenDN + "','" + matKhau + "'," + loaiTK + ")";
             int rs = dp.ExcuteNonQuery(sqlAdd);
             if (rs > 0)
             {
@@ -89,11 +111,40 @@ namespace ShopQuanAo2.DAO
                 return false;
             }
         }
-        public bool checkPrimarykey(int maNV)
+        
+        public bool checkPrimarykey(string tenNV)
         {
-            string sqlCheck = "select * from NhanVien where MaNV = " + maNV;
+            string sqlCheck = "select * from NhanVien where TenNV = N'" + tenNV + "'";
             DataTable rs = dp.ExcuteQuery(sqlCheck);
             if (rs.Rows.Count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool checkPassword(string userName, string passWord)
+        {
+            string sqlCheck = "select * from NhanVien where TenDN = '" + userName + "' and MatKhau = '" + passWord + "'";
+            DataTable rs = dp.ExcuteQuery(sqlCheck);
+            if (rs.Rows.Count > 0)
+            {
+                return true;
+                // nếu = true thì đối mật khẩu
+            }
+            else
+            {
+                return false;
+                //sai mật khẩu cũ
+            }
+        }
+        public bool repairPassAccount(string tenDN, string password)
+        {
+            string sqlAdd = "update NhanVien set MatKhau = '" + password + "' where TenDN = '" + tenDN + "'";
+            int rs = dp.ExcuteNonQuery(sqlAdd);
+            if (rs > 0)
             {
                 return true;
             }

@@ -33,6 +33,7 @@
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.txtTim = new DevExpress.XtraEditors.TextEdit();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.txtTongTien = new DevExpress.XtraEditors.TextEdit();
             this.cbSanPham = new DevExpress.XtraEditors.LookUpEdit();
             this.cbKhachHang = new DevExpress.XtraEditors.LookUpEdit();
             this.cbNhanVien = new DevExpress.XtraEditors.LookUpEdit();
@@ -44,6 +45,7 @@
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.txtNgayBan = new DevExpress.XtraEditors.DateEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -52,8 +54,6 @@
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.txtTongTien = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -62,6 +62,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTim.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTongTien.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbSanPham.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbKhachHang.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbNhanVien.Properties)).BeginInit();
@@ -77,7 +78,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTongTien.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             this.SuspendLayout();
             // 
@@ -139,6 +139,17 @@
             this.layoutControl1.Size = new System.Drawing.Size(1134, 650);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // txtTongTien
+            // 
+            this.txtTongTien.Enabled = false;
+            this.txtTongTien.Location = new System.Drawing.Point(90, 100);
+            this.txtTongTien.Name = "txtTongTien";
+            this.txtTongTien.Properties.Mask.EditMask = "c";
+            this.txtTongTien.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtTongTien.Size = new System.Drawing.Size(1028, 22);
+            this.txtTongTien.StyleController = this.layoutControl1;
+            this.txtTongTien.TabIndex = 17;
             // 
             // cbSanPham
             // 
@@ -251,6 +262,15 @@
             this.gridColumn5.Visible = true;
             this.gridColumn5.VisibleIndex = 4;
             // 
+            // gridColumn6
+            // 
+            this.gridColumn6.Caption = "Tổng Tiền";
+            this.gridColumn6.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn6.FieldName = "TongTien";
+            this.gridColumn6.Name = "gridColumn6";
+            this.gridColumn6.Visible = true;
+            this.gridColumn6.VisibleIndex = 5;
+            // 
             // txtNgayBan
             // 
             this.txtNgayBan.EditValue = null;
@@ -340,25 +360,6 @@
             this.layoutControlItem5.Text = "Sản Phẩm";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(70, 17);
             // 
-            // gridColumn6
-            // 
-            this.gridColumn6.Caption = "Tổng Tiền";
-            this.gridColumn6.FieldName = "TongTien";
-            this.gridColumn6.Name = "gridColumn6";
-            this.gridColumn6.Visible = true;
-            this.gridColumn6.VisibleIndex = 5;
-            // 
-            // txtTongTien
-            // 
-            this.txtTongTien.Enabled = false;
-            this.txtTongTien.Location = new System.Drawing.Point(90, 100);
-            this.txtTongTien.Name = "txtTongTien";
-            this.txtTongTien.Properties.Mask.EditMask = "c";
-            this.txtTongTien.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.txtTongTien.Size = new System.Drawing.Size(1028, 22);
-            this.txtTongTien.StyleController = this.layoutControl1;
-            this.txtTongTien.TabIndex = 17;
-            // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.txtTongTien;
@@ -385,6 +386,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTim.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtTongTien.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbSanPham.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbKhachHang.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbNhanVien.Properties)).EndInit();
@@ -400,7 +402,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTongTien.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             this.ResumeLayout(false);
 

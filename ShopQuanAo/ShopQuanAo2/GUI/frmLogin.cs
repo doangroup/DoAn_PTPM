@@ -35,14 +35,14 @@ namespace ShopQuanAo2.View
             //    e.Cancel = true;
             //}
         }
-        AcountDAO acount = new AcountDAO();
+        StaffDAO acount = new StaffDAO();
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             if (acount.login(txtUsername.Text, MaHoaMD5.MD5Hash(txtPassword.Text)) == true)
             {
                 //XtraMessageBox.Show("Đăng nhập thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                Acount acc = acount.getAcountByUsername(txtUsername.Text);
+                Staff acc = acount.getAcountByUsername(txtUsername.Text);
                 frmMain b = new frmMain(acc);
                 this.Hide();
                 b.ShowDialog();

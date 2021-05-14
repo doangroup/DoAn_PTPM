@@ -49,6 +49,7 @@ namespace ShopQuanAo2.GUI
             txtDiaChi.DataBindings.Add(new Binding("Text", dgvNhanVien.DataSource, "DiaChi", true, DataSourceUpdateMode.Never));
             txtSDT.DataBindings.Add(new Binding("Text", dgvNhanVien.DataSource, "SDT", true, DataSourceUpdateMode.Never));
             txtNgaySinh.DataBindings.Add(new Binding("Text", dgvNhanVien.DataSource, "NgaySinh", true, DataSourceUpdateMode.Never));
+            txtLoaiTK.DataBindings.Add(new Binding("Text", dgvNhanVien.DataSource, "LoaiTK", true, DataSourceUpdateMode.Never));
         }
 
         private void groupControl2_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
@@ -58,68 +59,6 @@ namespace ShopQuanAo2.GUI
             {
                 dgvNhanVien.DataSource = listStaff;
                 listStaff.DataSource = st.loadStaff();
-            }
-            else if (e.Button.Properties.Caption == "Thêm")
-            {
-                txtMaNV.Text = "";
-                txtTenNV.Text = "";
-                cbGioiTinh.Text = "";
-                txtDiaChi.Text = "";
-                txtSDT.Text = "";
-                txtNgaySinh.Text = "";
-                txtMaNV.Focus();
-            }
-            else if (e.Button.Properties.Caption == "Lưu")
-            {
-                int maNV = int.Parse(txtMaNV.Text);
-                int sDT = int.Parse(txtSDT.Text);
-                string gioiTinh = cbGioiTinh.Text;
-                string ngaySinh = txtNgaySinh.SelectedText.ToString();
-                //Kiểm tra khóa chính nếu trùng thì sẽ hỏi có sửa k? nếu k thì t.b lỗi
-                // nếu có sẽ sửa 
-                //Chưa xong phần kiểm tra khóa chính để hỏi Sửa 
-                
-
-                if (st.checkPrimarykey(maNV) == true)
-                {
-                    DialogResult dl = XtraMessageBox.Show("Mã nhân viên trùng với mã đã có bán có muốn sửa cho Mã Nhân Viên: " + txtMaNV.Text + " không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (dl == DialogResult.Yes)
-                    {
-                        try
-                        {
-                            st.repairStaff(maNV, txtTenNV.Text, gioiTinh, txtDiaChi.Text, sDT, ngaySinh);
-                            XtraMessageBox.Show("Sửa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                          
-                            dgvNhanVien.DataSource = listStaff;
-                            listStaff.DataSource = st.loadStaff();
-
-                        }
-                        catch (Exception ex)
-                        {
-                            XtraMessageBox.Show("Sửa thất bại ! Lỗi - " + ex.Message.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    else
-                    {
-                        XtraMessageBox.Show("Thêm thất bại! Lỗi - Trùng mã sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                //Không trùng mã thì sẽ thêm vào
-                else
-                {
-                    try
-                    {
-                        st.addStaff(maNV, txtTenNV.Text, gioiTinh, txtDiaChi.Text, sDT, ngaySinh);
-                        XtraMessageBox.Show("Thêm thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        dgvNhanVien.DataSource = listStaff;
-                        listStaff.DataSource = st.loadStaff();
-
-                    }
-                    catch (Exception ex)
-                    {
-                        XtraMessageBox.Show("Thêm thất bại ! Lỗi - " + ex.Message.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
             }
             else if (e.Button.Properties.Caption == "Xóa")
             {
@@ -143,27 +82,37 @@ namespace ShopQuanAo2.GUI
             }
             else if (e.Button.Properties.Caption == "Sửa")
             {
-
+                
+               
                 int maNV = int.Parse(txtMaNV.Text);
                 int sDT = int.Parse(txtSDT.Text);
                 string gioiTinh = cbGioiTinh.Text;
-                string ngaySinh = txtNgaySinh.SelectedText.ToString();
+                string ngaySinh = txtNgaySinh.DateTime.Date.ToShortDateString();
                
                 DialogResult dl = XtraMessageBox.Show("Bạn có chắc muốn sửa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dl == DialogResult.Yes)
                 {
-                    try
+                    if (txtLoaiTK.Text.Equals(""))
                     {
-                        st.repairStaff(maNV, txtTenNV.Text, gioiTinh, txtDiaChi.Text, sDT, ngaySinh);
-                        XtraMessageBox.Show("Sửa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        dgvNhanVien.DataSource = listStaff;
-                        listStaff.DataSource = st.loadStaff();
+                        XtraMessageBox.Show("Vui lòng nhập loại tài khoản\nVí Dụ: 1 = Quản lý | 0 = Nhân viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
+                        txtLoaiTK.Focus();
                     }
-                    catch (Exception ex)
-                    {
-                        XtraMessageBox.Show("Sửa thất bại ! Lỗi - " + ex.Message.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else {
+                        int loaiTK = int.Parse(txtLoaiTK.Text);
+                        try { 
+                            st.repairStaff(maNV, txtTenNV.Text, gioiTinh, txtDiaChi.Text, sDT, ngaySinh, loaiTK);
+                            XtraMessageBox.Show("Sửa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            dgvNhanVien.DataSource = listStaff;
+                            listStaff.DataSource = st.loadStaff();
+
+                        }
+                        catch (Exception ex)
+                        {
+                            XtraMessageBox.Show("Sửa thất bại ! Lỗi - " + ex.Message.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
+                    
                 }
             }
             else if (e.Button.Properties.Caption == "Tìm Kiếm Theo Tên")

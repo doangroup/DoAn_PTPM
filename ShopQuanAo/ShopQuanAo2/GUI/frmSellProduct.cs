@@ -15,6 +15,7 @@ namespace ShopQuanAo2.GUI
     {
         CustomerDAO ct = new CustomerDAO();
         ProductDAO pd = new ProductDAO();
+        StaffDAO saff = new StaffDAO();
         private Staff st;
 
         public Staff ST
@@ -24,12 +25,14 @@ namespace ShopQuanAo2.GUI
         }
         void staff(Staff st)
         {
-            cbNhanVien.Properties.DisplayMember = st.MaNV.ToString();
-            cbNhanVien.Properties.ValueMember = st.TenNV;
+
+            txtNhanVien.Text = st.MaNV.ToString();
+            
         }
-        public frmSellProduct()
+        public frmSellProduct(Staff st)
         {
             InitializeComponent();
+            ST = st;
         }
 
        
@@ -46,6 +49,7 @@ namespace ShopQuanAo2.GUI
         private void frmSellProduct_Load(object sender, EventArgs e)
         {
             loadCBO();
+            
         }
 
       

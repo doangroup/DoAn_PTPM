@@ -30,16 +30,13 @@ namespace ShopQuanAo2.View
 
         private void frmRegister_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult rs = XtraMessageBox.Show("Bạn có muốn thoát?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (rs == DialogResult.No)
-            {
-                e.Cancel = true;
-            }
+            
         }
 
         private void frmRegister_Load(object sender, EventArgs e)
         {
             cbLoaiTK.SelectedIndex = 0;
+            cbGioiTinh.SelectedIndex = 0;
             txtMatKhau.Properties.PasswordChar = (txtMatKhau.Properties.PasswordChar == '*') ? '\0' : '*';
             txtNhapLaiMK.Properties.PasswordChar = (txtNhapLaiMK.Properties.PasswordChar == '*') ? '\0' : '*';
 
@@ -53,17 +50,33 @@ namespace ShopQuanAo2.View
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void RePassword_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPassword_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDangKy_Click(object sender, EventArgs e)
+        {
             int loatk = int.Parse(cbLoaiTK.SelectedItem.ToString());
-            int maNV = int.Parse(txtMaNV.Text);
+           
             int sDT = int.Parse(txtSDT.Text);
+            string ngaySinh = txtNgaySinh.ToString();
             try
             {
                 if (txtNhapLaiMK.Text.Trim().Equals(txtMatKhau.Text.Trim()))
                 {
-                    st.addStaff2(maNV, txtTenNV.Text.Trim(), cbGioiTinh.SelectedText.ToString().Trim(), txtDiaChi.Text.Trim(), sDT, txtNgaySinh.Text, txtTaiKhoan.Text.Trim(), MaHoaMD5.MD5Hash(txtNhapLaiMK.Text).ToString(), loatk);
+                    st.addStaff2(txtTenNV.Text.Trim(), cbGioiTinh.SelectedItem.ToString().Trim(), txtDiaChi.Text.Trim(), sDT, txtNgaySinh.Text, txtTaiKhoan.Text.Trim(), MaHoaMD5.MD5Hash(txtNhapLaiMK.Text).ToString(), loatk);
                     XtraMessageBox.Show("Đăng ký thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
-                    
+
                 }
                 else
                 {
@@ -76,12 +89,12 @@ namespace ShopQuanAo2.View
             }
         }
 
-        private void RePassword_EditValueChanged(object sender, EventArgs e)
+        private void btnOut_Click_1(object sender, EventArgs e)
         {
 
         }
 
-        private void txtPassword_EditValueChanged(object sender, EventArgs e)
+        private void dateTimeChartRangeControlClient1_CustomizeSeries(object sender, ClientDataSourceProviderCustomizeSeriesEventArgs e)
         {
 
         }

@@ -18,19 +18,19 @@ namespace ShopQuanAo2
     {
 
         ProductDAO pd = new ProductDAO();
-        private Acount acc;
+        private Staff acc;
 
-        public Acount Acc
+        public Staff Acc
         {
             get { return acc; }
-            set { acc = value; phanQuyen(Acc.Type); }
+            set { acc = value; phanQuyen(Acc.LoaiTK); }
         }
         void phanQuyen(int loaiTK)
         {
             btnRegister.Enabled = btnSanPham.Enabled = btnTaiKhoan.Enabled = btnDanhMuc.Enabled = btnKhachHang.Enabled = btnNhanVien.Enabled = barButtonItem2.Enabled = barButtonItem6.Enabled = btnHoaDon.Enabled = btnCTHD.Enabled = loaiTK == 1;
 
         }
-        public frmMain(Acount acc)
+        public frmMain(Staff acc)
         {
             InitializeComponent();
             this.Acc = acc;
@@ -229,7 +229,7 @@ namespace ShopQuanAo2
             }
             else
             {
-                frmSellProduct sell = new frmSellProduct();
+                frmSellProduct sell = new frmSellProduct(Acc);
                 sell.MdiParent = this;
                 sell.Show();
             }
