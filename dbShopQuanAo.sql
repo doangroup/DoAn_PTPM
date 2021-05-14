@@ -2,7 +2,7 @@
 go
 use QLSHOPQUANAO
 go
-
+drop database QLSHOPQUANAO
 create proc findKHByHD @tenKH nvarchar(50)
 as
 begin
@@ -14,17 +14,7 @@ go
 exec findKHByHD N'Tạ Quang Trung'
 
 
-select * from TaiKhoan
-go
 
-select * from TaiKhoan where MatKhau = '1' and TenDN = 'admin'
-create table TaiKhoan
-(
-	TenDN nvarchar(50) primary key,
-	MatKhau nvarchar(50) not null,
-	LoaiTK int not null -- 1 = Quản lý & 0 = Nhân viên
-)
-go
 
 select * from HoaDon
 go
@@ -40,12 +30,11 @@ create table KhachHang
 	TenKH nvarchar(100) not null,
 	DiaChi nvarchar(100),
 	SDT nvarchar(20),
+	MatKhau nvarchar(50) default null
 )
 go
 
-alter table KhachHang
-add MatKhau nvarchar(50) default null;
-go
+
 
 create table KhuyenMai
 (
@@ -53,6 +42,7 @@ create table KhuyenMai
 	TenKM nvarchar(50),
 	LinkKM nvarchar(max)
 )
+go
 create table NhanVien
 (
 	MaNV int primary key,
@@ -61,6 +51,9 @@ create table NhanVien
 	DiaChi nvarchar(100) not null,
 	SDT nvarchar(100) not null,
 	NgaySinh datetime not null,
+	TenDN nvarchar(50),
+	MatKhau nvarchar(50) not null,
+	LoaiTK int not null -- 1 = Quản lý & 0 = Nhân viên
 )
 go
 
@@ -68,8 +61,8 @@ set dateformat dmy
 go
 
 insert into NhanVien
-values (1,N'Trung',N'Nam',N'Tân Phú','045648932',1999/01/23),
-		(2,N'Nhân Viên 2',N'Nữ',N'Thủ Đức','045648932',2000/07/20)
+values (1,N'Trung',N'Nam',N'Tân Phú','045648932',1999/01/23,'admin','c4ca4238a0b923820dcc509a6f75849b',1),
+		(2,N'Nhân Viên 2',N'Nữ',N'Thủ Đức','045648932',2000/07/20,'admin2','c4ca4238a0b923820dcc509a6f75849b',0)
 go
 
 insert into NhanVien values (3,N'trung',N'Nam',N'thone','65465',3/2/2010)
@@ -220,11 +213,7 @@ create table ChiTietHD
 go
 select * from TaiKhoan
 
-insert into TaiKhoan
-values ('admin','c4ca4238a0b923820dcc509a6f75849b',1),
-		('admin2','c4ca4238a0b923820dcc509a6f75849b',0)
 
-go
 insert into HoaDon
 values (1,1,1,3,2020/05/01,null),
 		(2,2,2,2,2020/07/01,null)
