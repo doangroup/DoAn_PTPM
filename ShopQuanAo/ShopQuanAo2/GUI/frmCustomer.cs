@@ -94,7 +94,7 @@ namespace ShopQuanAo2.GUI
                 {
                     try
                     {
-                        ct.addCustomer(maKH, txtTenKH.Text, txtDiaChi.Text, txtSDT.Text);
+                        ct.addCustomer(txtTenKH.Text, txtDiaChi.Text, txtSDT.Text);
                         XtraMessageBox.Show("Thêm thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         dgvKhachHang.DataSource = listCustomer;
                         listCustomer.DataSource = ct.loadCustomer();

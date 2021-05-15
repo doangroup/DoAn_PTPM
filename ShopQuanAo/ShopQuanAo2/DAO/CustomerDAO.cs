@@ -62,10 +62,10 @@ namespace ShopQuanAo2.DAO
                 return false;
             }
         }
-        public bool addCustomer(int maKH, string tenKH, string diaChi, string sDT)
+        public bool addCustomer(string tenKH, string diaChi, string sDT)
         {
 
-            string sqlAdd = "insert into KhachHang values (" + maKH + ",N'" + tenKH + "',N'" + diaChi+ "','" + sDT + "')";
+            string sqlAdd = "insert into KhachHang values (N'" + tenKH + "',N'" + diaChi+ "','" + sDT + "','1')";
             int rs = dp.ExcuteNonQuery(sqlAdd);
             if (rs > 0)
             {

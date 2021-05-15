@@ -36,9 +36,7 @@ namespace ShopQuanAo2.GUI
             cbNhanVien.Properties.DisplayMember = "TenNV";
             cbNhanVien.Properties.ValueMember = "MaNV";
 
-            cbSanPham.Properties.DataSource = pd.loadProduct();
-            cbSanPham.Properties.DisplayMember = "TenSP";
-            cbSanPham.Properties.ValueMember = "MaSP";
+            
 
             BindingSource();
         }
@@ -47,7 +45,7 @@ namespace ShopQuanAo2.GUI
             txtMaHD.DataBindings.Add(new Binding("Text", dgvHoaDon.DataSource, "MaHD", true, DataSourceUpdateMode.Never));
             cbKhachHang.DataBindings.Add(new Binding("EditValue", dgvHoaDon.DataSource, "MaKH", true, DataSourceUpdateMode.Never));
             cbNhanVien.DataBindings.Add(new Binding("EditValue", dgvHoaDon.DataSource, "MaNV", true, DataSourceUpdateMode.Never));
-            cbSanPham.DataBindings.Add(new Binding("EditValue", dgvHoaDon.DataSource, "MaSP", true, DataSourceUpdateMode.Never));
+           
             txtNgayBan.DataBindings.Add(new Binding("Text", dgvHoaDon.DataSource, "NgayBan", true, DataSourceUpdateMode.Never));
             txtTongTien.DataBindings.Add(new Binding("Text", dgvHoaDon.DataSource, "TongTien", true, DataSourceUpdateMode.Never));
 
@@ -82,7 +80,7 @@ namespace ShopQuanAo2.GUI
                 int maHD = int.Parse(txtMaHD.Text);
                 int maKH = int.Parse(cbKhachHang.EditValue.ToString());
                 int MaNV = int.Parse(cbNhanVien.EditValue.ToString());
-                int maSP = int.Parse(cbSanPham.EditValue.ToString());
+               
                 if (bill.checkPrimarykey(maHD) == true)
                 {
                     DialogResult dl = XtraMessageBox.Show("Mã hóa đơn trùng với mã đã có bán có muốn sửa cho Mã Hóa Đơn: " + txtMaHD.Text + " không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -90,7 +88,7 @@ namespace ShopQuanAo2.GUI
                     {
                         try
                         {
-                            bill.repairBill(maHD, maKH,MaNV,maSP,txtNgayBan.SelectedText.ToString());
+                            bill.repairBill(maHD, maKH,MaNV,txtNgayBan.SelectedText.ToString());
                             XtraMessageBox.Show("Sửa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             dgvHoaDon.DataSource = listBill;
                             listBill.DataSource = bill.loadBill();
@@ -109,10 +107,10 @@ namespace ShopQuanAo2.GUI
                 //Không trùng mã thì sẽ thêm vào
                 else
                 {
-                    double tongtien = double.Parse(txtTongTien.Text);
+                    
                     try
                     {
-                        bill.addBill(maHD, maKH,MaNV,maSP,txtNgayBan.SelectedText.ToString(),tongtien);
+                        bill.addBill(maKH,MaNV,txtNgayBan.SelectedText.ToString());
                         XtraMessageBox.Show("Thêm thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         dgvHoaDon.DataSource = listBill;
                         listBill.DataSource = bill.loadBill();
@@ -149,7 +147,7 @@ namespace ShopQuanAo2.GUI
                 int maHD = int.Parse(txtMaHD.Text);
                 int maKH = int.Parse(cbKhachHang.EditValue.ToString());
                 int MaNV = int.Parse(cbNhanVien.EditValue.ToString());
-                int maSP = int.Parse(cbSanPham.EditValue.ToString());
+              
 
 
                 DialogResult dl = XtraMessageBox.Show("Bạn có chắc muốn sửa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -157,7 +155,7 @@ namespace ShopQuanAo2.GUI
                 {
                     try
                     {
-                        bill.repairBill(maHD, maKH,MaNV,maSP,txtNgayBan.SelectedText.ToString());
+                        bill.repairBill(maHD, maKH,MaNV,txtNgayBan.SelectedText.ToString());
                         XtraMessageBox.Show("Sửa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         dgvHoaDon.DataSource = listBill;
                         listBill.DataSource = bill.loadBill();
@@ -195,6 +193,11 @@ namespace ShopQuanAo2.GUI
             else if (e.Button.Properties.Caption == "Xuất Excel")
             {
             }
+        }
+
+        private void groupControl2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

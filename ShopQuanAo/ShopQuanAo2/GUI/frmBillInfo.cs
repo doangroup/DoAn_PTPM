@@ -15,6 +15,7 @@ namespace ShopQuanAo2.GUI
     public partial class frmBillInfo : DevExpress.XtraEditors.XtraForm
     {
         BillInfoDAO billInfo = new BillInfoDAO();
+        ProductDAO pd = new ProductDAO();
         BindingSource listBillInfo = new BindingSource();
         public frmBillInfo()
         {
@@ -26,9 +27,11 @@ namespace ShopQuanAo2.GUI
             dgvChiTIetHD.DataSource = listBillInfo;
             listBillInfo.DataSource = billInfo.loadBillInfo();
 
-            cbTinhTrang.Properties.DataSource = billInfo.loadBillInfo();
-            cbTinhTrang.Properties.DisplayMember = "TinhTrang";
-            cbTinhTrang.Properties.ValueMember = "TinhTrang";
+
+            cbTinhTrang.SelectedItem = 1;
+            cbSanPham.Properties.DataSource = pd.loadProduct();
+            cbSanPham.Properties.DisplayMember = "TenSP";
+            cbSanPham.Properties.ValueMember = "MaSP";
             //loadStatus();
             BindingSource();
         }
@@ -38,7 +41,8 @@ namespace ShopQuanAo2.GUI
             txtMaHD.DataBindings.Add(new Binding("Text", dgvChiTIetHD.DataSource, "MaHD", true, DataSourceUpdateMode.Never));
             txtSoLuong.DataBindings.Add(new Binding("Text", dgvChiTIetHD.DataSource, "SoLuong", true, DataSourceUpdateMode.Never));
             txtThanhTien.DataBindings.Add(new Binding("Text", dgvChiTIetHD.DataSource, "ThanhTien", true, DataSourceUpdateMode.Never));
-            cbTinhTrang.DataBindings.Add(new Binding("EditValue", dgvChiTIetHD.DataSource, "TinhTrang", true, DataSourceUpdateMode.Never));
+            cbTinhTrang.DataBindings.Add(new Binding("Text", dgvChiTIetHD.DataSource, "TinhTrang", true, DataSourceUpdateMode.Never));
+            cbSanPham.DataBindings.Add(new Binding("EditValue", dgvChiTIetHD.DataSource, "MaSP", true, DataSourceUpdateMode.Never));
        
 
         }
@@ -67,7 +71,7 @@ namespace ShopQuanAo2.GUI
                 int soLuong = int.Parse(txtSoLuong.Text);
                 double thanhTien = double.Parse(txtThanhTien.Text);
                 int macthd = int.Parse(txtMaCTHD.Text);
-                int tinhTrang = int.Parse(cbTinhTrang.EditValue.ToString());
+                int tinhTrang = int.Parse(cbTinhTrang.SelectedText.ToString());
                 if (billInfo.checkPrimarykey(maHD) == true)
                 {
                     DialogResult dl = XtraMessageBox.Show("Mã hóa đơn trùng với mã đã có bán có muốn sửa cho Mã Hóa Đơn: " + txtMaHD.Text + " không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -134,7 +138,7 @@ namespace ShopQuanAo2.GUI
                 int maHD = int.Parse(txtMaHD.Text);
                 int soLuong = int.Parse(txtSoLuong.Text);
                 double thanhTien = double.Parse(txtThanhTien.Text);
-                int tinhTrang = int.Parse(cbTinhTrang.EditValue.ToString());
+                int tinhTrang = int.Parse(cbTinhTrang.SelectedText.ToString());
                 int maCTHD = int.Parse(txtMaCTHD.Text);
 
                 DialogResult dl = XtraMessageBox.Show("Bạn có chắc muốn sửa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

@@ -16,6 +16,10 @@ namespace ShopQuanAo2.GUI
         CustomerDAO ct = new CustomerDAO();
         ProductDAO pd = new ProductDAO();
         StaffDAO saff = new StaffDAO();
+        BillDAO bill = new BillDAO();
+
+
+
         private Staff st;
 
         public Staff ST
@@ -42,14 +46,21 @@ namespace ShopQuanAo2.GUI
             cbKhachHang.Properties.DisplayMember = "TenKH";
             cbKhachHang.Properties.ValueMember = "MaKH";
 
-            cbSanPham.Properties.DataSource = pd.loadProduct();
-            cbSanPham.Properties.DisplayMember = "TenSP";
-            cbSanPham.Properties.ValueMember = "MaSP";
+           
+        }
+        public void enable()
+        {
+          btnThemKH2.Enabled = btnAddBill.Enabled = txtNgayBan.Enabled = cbKhachHang.Enabled = false;
+        }
+        public void unenable()
+        {
+            btnThemKH.Enabled = btnBoQua.Enabled = txtTenKH.Enabled = txtDiaChi.Enabled = txtSDT.Enabled = false;
         }
         private void frmSellProduct_Load(object sender, EventArgs e)
         {
             loadCBO();
-            
+            enable();
+            txtNgayBan.DateTime.Date.ToLocalTime();
         }
 
       
@@ -58,6 +69,66 @@ namespace ShopQuanAo2.GUI
         {
             frmAddCusmer ct = new frmAddCusmer();
             ct.ShowDialog();
+        }
+        private Form checkExit(Type type)
+        {
+            foreach (Form item in this.MdiChildren)
+            {
+                if (item.GetType() == type)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+        private void btnAddBill_Click(object sender, EventArgs e)
+        {
+            int maNV = int.Parse(txtNhanVien.Text);
+            int maKH = int.Parse(cbKhachHang.EditValue.ToString());
+           
+            try
+            {
+                bill.addBill(maKH, maNV, txtNgayBan.DateTime.Date.ToShortDateString()); 
+                XtraMessageBox.Show("Thêm thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                this.Close();
+                frmSellProductInfo info = new frmSellProductInfo();
+                info.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Thêm thất bại ! Lỗi - " + ex.Message.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnAddCustomer_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ct.addCustomer(txtTenKH.Text, txtDiaChi.Text, txtSDT.Text);
+                XtraMessageBox.Show("Thêm thành công", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                loadCBO();
+                btnThemKH2.Enabled = btnAddBill.Enabled = txtNgayBan.Enabled = cbKhachHang.Enabled = true;
+                unenable();
+
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Thêm thất bại - Lỗi: " + ex.Message.ToString(), "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void btnBoQua_Click(object sender, EventArgs e)
+        {
+           btnThemKH2.Enabled = btnAddBill.Enabled = txtNgayBan.Enabled = cbKhachHang.Enabled = true;
+            unenable();
+        }
+
+        private void btnThemKH2_Click(object sender, EventArgs e)
+        {
+            enable();
+            btnThemKH.Enabled = btnBoQua.Enabled = txtTenKH.Enabled = txtDiaChi.Enabled = txtSDT.Enabled = true;
+
         }
     }
 }

@@ -89,12 +89,6 @@
     <Compile Include="GUI\frmAbout.Designer.cs">
       <DependentUpon>frmAbout.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\frmAddCusmer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\frmAddCusmer.Designer.cs">
-      <DependentUpon>frmAddCusmer.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\frmBill.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,6 +143,12 @@
     <Compile Include="GUI\frmSellProduct.Designer.cs">
       <DependentUpon>frmSellProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\frmSellProductInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmSellProductInfo.Designer.cs">
+      <DependentUpon>frmSellProductInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\frmStaff.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,9 +165,6 @@
     </Compile>
     <EmbeddedResource Include="GUI\frmAbout.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\frmAddCusmer.resx">
-      <DependentUpon>frmAddCusmer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmBill.resx">
       <DependentUpon>frmBill.cs</DependentUpon>
@@ -195,6 +192,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmSellProduct.resx">
       <DependentUpon>frmSellProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmSellProductInfo.resx">
+      <DependentUpon>frmSellProductInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmStaff.resx">
       <DependentUpon>frmStaff.cs</DependentUpon>

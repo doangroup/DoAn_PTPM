@@ -16,19 +16,17 @@ exec findKHByHD N'Tạ Quang Trung'
 
 
 
-select * from NhanVien
+select * from ChiTietHD
 go
 
 select * from HoaDon
 go
 
-update NhanVien 
-set NgaySinh = '20/11/2000'
- where MaNV = 2
+
 
 create table KhachHang
 (
-	MaKH int primary key,
+	MaKH int identity(1,1) primary key,
 	TenKH nvarchar(100) not null,
 	DiaChi nvarchar(100),
 	SDT nvarchar(20),
@@ -181,22 +179,22 @@ select * from KhachHang
 go
 
 insert into KhachHang
-values (1,N'Tạ Quang Trung', N'Thôn 5', N'0123456','1'),
-		(2,N'Nguyễn Văn Tèo', N'Thôn 2', N'0123456','1'),
-		(3,N'Nguyễn Thị Bưởi', N'Thôn 8', N'0123456','1'),
-		(4,N'Nguyễn Thị Đào', N'Thôn 1', N'0123456','1')
+values (N'Tạ Quang Trung', N'Thôn 5', N'0123456','1'),
+		(N'Nguyễn Văn Tèo', N'Thôn 2', N'0123456','1'),
+		(N'Nguyễn Thị Bưởi', N'Thôn 8', N'0123456','1'),
+		(N'Nguyễn Thị Đào', N'Thôn 1', N'0123456','1')
 go
 
 create table HoaDon
 (
-	MaHD int primary key,
+	MaHD int identity(1,1) primary key,
 	MaKH int,
 	MaNV int,
-	MaSP int,
+	
 	NgayBan datetime not null,
 	TongTien float,
 	constraint fk_HD_NV foreign key(MaNV) references NhanVien(MaNV),
-	constraint fk_HD_H foreign key(MaSP) references SanPham(MaSP),
+	
 	constraint fk_HD_KH foreign key(MaKH) references KhachHang(MaKH)
 )
 go
@@ -205,18 +203,20 @@ create table ChiTietHD
 (
 	MaCTHD int identity(1,1)primary key,
 	MaHD int,
+	MaSP int,
 	SoLuong int,
 	ThanhTien float,
 	Tinhtrang int default 0, -- 0 = chưa thanh toán | 1 = đã thanh toán
-	constraint fk_CTHD_HD foreign key(MaHD) references HoaDon(MaHD)
+	constraint fk_CTHD_HD foreign key(MaHD) references HoaDon(MaHD),
+	constraint fk_HD_H foreign key(MaSP) references SanPham(MaSP)
 )
 go
-select * from NhanVien
+select * from KhachHang
 
 
 insert into HoaDon
-values (1,1,3,3,2020/05/01,null),
-		(2,2,2,2,2020/07/01,null)
+values (1,1,2020/05/01,0),
+		(2,2,2020/07/01,0)
 go
 
 create trigger TGThanhTien
@@ -230,10 +230,10 @@ as
 go
 
 insert into ChiTietHD
-values (1,2,140000,0),
-		(1,5,140000,0)
+values (1,2,2,140000,0),
+		(2,3,5,140000,0)
 select * from ChiTietHD
-select * from HoaDon
+select * from KhachHang
 
 --create proc LayHDTheoNgay 
 --@ngayban datetime
