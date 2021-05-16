@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\BillCustomerDAO.cs" />
     <Compile Include="DAO\BillDAO.cs" />
     <Compile Include="DAO\BillInfoDAO.cs" />
     <Compile Include="DAO\CategoryDAO.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="DAO\StaffDAO.cs" />
     <Compile Include="DAO\StatusBillInfoDAO.cs" />
     <Compile Include="DTO\Bill.cs" />
+    <Compile Include="DTO\BillCustomer.cs" />
     <Compile Include="DTO\BillInfo.cs" />
     <Compile Include="DTO\Category.cs" />
     <Compile Include="DTO\Customer.cs" />
@@ -301,6 +303,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\document-add-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calculator-add-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calculator-add-icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calculator-add-icon2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calculator-add-icon3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

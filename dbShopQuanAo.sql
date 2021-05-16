@@ -3,15 +3,15 @@ go
 use QLSHOPQUANAO
 go
 drop database QLSHOPQUANAO
-create proc findKHByHD @tenKH nvarchar(50)
-as
-begin
-	select HoaDon.MaHD, HoaDon.MaKH,HoaDon.MaNV,HoaDon.MaSP,HoaDon.NgayBan 
-	from HoaDon, KhachHang 
-	where TenKH = @tenKH and HoaDon.MaKH = KhachHang.MaKH
-end
-go
-exec findKHByHD N'Tạ Quang Trung'
+--create proc findKHByHD @tenKH nvarchar(50)
+--as
+--begin
+--	select HoaDon.MaHD, HoaDon.MaKH,HoaDon.MaNV,HoaDon.MaSP,HoaDon.NgayBan 
+--	from HoaDon, KhachHang 
+--	where TenKH = @tenKH and HoaDon.MaKH = KhachHang.MaKH
+--end
+--go
+--exec findKHByHD N'Tạ Quang Trung'
 
 
 
@@ -19,7 +19,7 @@ exec findKHByHD N'Tạ Quang Trung'
 select * from ChiTietHD
 go
 
-select * from HoaDon
+select * from SanPham
 go
 
 
@@ -187,7 +187,7 @@ go
 
 create table HoaDon
 (
-	MaHD int identity(1,1) primary key,
+	MaHD int primary key,
 	MaKH int,
 	MaNV int,
 	
@@ -211,12 +211,12 @@ create table ChiTietHD
 	constraint fk_HD_H foreign key(MaSP) references SanPham(MaSP)
 )
 go
-select * from KhachHang
+select * from HoaDon
 
 
 insert into HoaDon
-values (1,1,2020/05/01,0),
-		(2,2,2020/07/01,0)
+values (1,1,1,2020/05/01,0),
+		(2,2,2,2020/07/01,0)
 go
 
 create trigger TGThanhTien
@@ -244,6 +244,19 @@ select * from KhachHang
 --go
 
 --exec LayHDTheoNgay '1900-01-01 00:00:00.000'
+
+create proc HoaDonKH @mahd int
+as
+	begin
+		select KhachHang.TenKH, NhanVien.TenNV, SanPham.TenSP, HoaDon.NgayBan, ChiTietHD.SoLuong, ChiTietHD.ThanhTien, HoaDon.TongTien
+		from KhachHang, NhanVien,SanPham, HoaDon, ChiTietHD
+		where HoaDon.MaKH = KhachHang.MaKH and NhanVien.MaNV = HoaDon.MaNV and ChiTietHD.MaHD = HoaDon.MaHD and ChiTietHD.MaSP = SanPham.MaSP and HoaDon.MaHD = @mahd
+	end
+go
+exec HoaDonKH 1
+drop proc HoaDonKH
+select * from HoaDon
+select * from ChiTietHD where MaHD = 13
 
 
 

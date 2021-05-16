@@ -50,7 +50,7 @@ namespace ShopQuanAo2.GUI
         }
         public void enable()
         {
-          btnThemKH2.Enabled = btnAddBill.Enabled = txtNgayBan.Enabled = cbKhachHang.Enabled = false;
+         txtMaHD.Enabled= btnThemKH2.Enabled = btnAddBill.Enabled = txtNgayBan.Enabled = cbKhachHang.Enabled = false;
         }
         public void unenable()
         {
@@ -60,15 +60,14 @@ namespace ShopQuanAo2.GUI
         {
             loadCBO();
             enable();
-            txtNgayBan.DateTime.Date.ToLocalTime();
+            txtNgayBan.Text = DateTime.Now.ToString();
         }
 
-      
+        
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            frmAddCusmer ct = new frmAddCusmer();
-            ct.ShowDialog();
+            
         }
         private Form checkExit(Type type)
         {
@@ -81,17 +80,18 @@ namespace ShopQuanAo2.GUI
             }
             return null;
         }
+
         private void btnAddBill_Click(object sender, EventArgs e)
         {
             int maNV = int.Parse(txtNhanVien.Text);
             int maKH = int.Parse(cbKhachHang.EditValue.ToString());
-           
+            int maHD = int.Parse(txtMaHD.Text);
             try
             {
-                bill.addBill(maKH, maNV, txtNgayBan.DateTime.Date.ToShortDateString()); 
+                bill.addBill(maHD,maKH, maNV, txtNgayBan.DateTime.Date.ToShortDateString()); 
                 XtraMessageBox.Show("Thêm thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                this.Close();
-                frmSellProductInfo info = new frmSellProductInfo();
+               
+                frmSellProductInfo info = new frmSellProductInfo(txtMaHD.Text);
                 info.ShowDialog();
             }
             catch (Exception ex)
@@ -107,7 +107,7 @@ namespace ShopQuanAo2.GUI
                 ct.addCustomer(txtTenKH.Text, txtDiaChi.Text, txtSDT.Text);
                 XtraMessageBox.Show("Thêm thành công", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 loadCBO();
-                btnThemKH2.Enabled = btnAddBill.Enabled = txtNgayBan.Enabled = cbKhachHang.Enabled = true;
+                txtMaHD.Enabled = btnThemKH2.Enabled = btnAddBill.Enabled = txtNgayBan.Enabled = cbKhachHang.Enabled = true;
                 unenable();
 
             }
@@ -120,7 +120,7 @@ namespace ShopQuanAo2.GUI
 
         private void btnBoQua_Click(object sender, EventArgs e)
         {
-           btnThemKH2.Enabled = btnAddBill.Enabled = txtNgayBan.Enabled = cbKhachHang.Enabled = true;
+            txtMaHD.Enabled = btnThemKH2.Enabled = btnAddBill.Enabled = txtNgayBan.Enabled = cbKhachHang.Enabled = true;
             unenable();
         }
 

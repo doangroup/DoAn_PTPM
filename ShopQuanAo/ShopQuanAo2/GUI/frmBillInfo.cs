@@ -98,10 +98,10 @@ namespace ShopQuanAo2.GUI
                 //Không trùng mã thì sẽ thêm vào
                 else
                 {
-
+                    int maSP = int.Parse(cbSanPham.EditValue.ToString());
                     try
                     {
-                        billInfo.addBillInfo(maHD, soLuong, thanhTien, tinhTrang);
+                        billInfo.addBillInfo(maHD, maSP,soLuong, thanhTien);
                         XtraMessageBox.Show("Thêm thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         dgvChiTIetHD.DataSource = listBillInfo;
                         listBillInfo.DataSource = billInfo.loadBillInfo();

@@ -29,7 +29,7 @@ namespace ShopQuanAo2.GUI
             cbDanhMuc.Properties.DataSource = cate.loadCategory();
             cbDanhMuc.Properties.ValueMember = "MaDM";
             cbDanhMuc.Properties.DisplayMember = "TenDM";
-
+            cbDanhMuc.ItemIndex = 0;
             BindingSource();
         }
 

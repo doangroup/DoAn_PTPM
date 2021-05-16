@@ -22,6 +22,14 @@ namespace ShopQuanAo2.DAO
             }
             return lstBill;
         }
+        public DataTable loadTotal(int maHD)
+        {
+            
+            string sqlBill = "select TongTien from HoaDon where MaHD = " + maHD;
+            DataTable dt = dp.ExcuteQuery(sqlBill);
+            
+            return dt;
+        }
         public List<Bill> findBill(int maHD)
         {
             List<Bill> lstBill = new List<Bill>();
@@ -49,10 +57,10 @@ namespace ShopQuanAo2.DAO
                 return false;
             }
         }
-        public bool addBill(int maKH, int maNV,string ngayBan)
+        public bool addBill(int maHD,int maKH, int maNV,string ngayBan)
         {
 
-            string sqlAdd = "insert into HoaDon values (" + maKH + "," + maNV + "," + ngayBan + ",0)";
+            string sqlAdd = "insert into HoaDon values ("+maHD+"," + maKH + "," + maNV + "," + ngayBan + ",0)";
             int rs = dp.ExcuteNonQuery(sqlAdd);
             if (rs > 0)
             {

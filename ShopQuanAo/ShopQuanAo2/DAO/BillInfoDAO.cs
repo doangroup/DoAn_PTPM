@@ -50,10 +50,10 @@ namespace ShopQuanAo2.DAO
                 return false;
             }
         }
-        public bool addBillInfo(int maHD, int soLuong, double thanhTien, int tinhTrang)
+        public bool addBillInfo(int maHD,int maSP, int soLuong, double thanhTien)
         {
 
-            string sqlAdd = "insert into ChiTietHD values (" + maHD + "," + soLuong + "," + thanhTien + "," + tinhTrang + ")";
+            string sqlAdd = "insert into ChiTietHD values (" + maHD + "," + maSP + "," + soLuong + "," + thanhTien + ",1)";
             int rs = dp.ExcuteNonQuery(sqlAdd);
             if (rs > 0)
             {

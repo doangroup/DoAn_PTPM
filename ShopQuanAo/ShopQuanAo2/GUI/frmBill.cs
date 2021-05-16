@@ -110,7 +110,7 @@ namespace ShopQuanAo2.GUI
                     
                     try
                     {
-                        bill.addBill(maKH,MaNV,txtNgayBan.SelectedText.ToString());
+                        bill.addBill(maHD,maKH,MaNV,txtNgayBan.SelectedText.ToString());
                         XtraMessageBox.Show("Thêm thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         dgvHoaDon.DataSource = listBill;
                         listBill.DataSource = bill.loadBill();

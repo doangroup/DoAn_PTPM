@@ -9,6 +9,28 @@ namespace ShopQuanAo2.DAO
     public class ProductDAO
     {
         DataProvider dp = new DataProvider();
+        //public DataTable loadPriceByProductID(int maSP)
+        //{
+        //    DataTable donGia = dp.ExcuteQuery("select DonGia from SanPham where MaSP = " + maSP);
+        //    return donGia;
+        //}
+        public int loadPriceByProductID(int maSP)
+        {
+            List<Product> sanPham = new List<Product>();
+            string sqlSanPham = "select * from SanPham where MaSP = " + maSP;
+            DataTable data = dp.ExcuteQuery(sqlSanPham);
+            foreach (DataRow item in data.Rows)
+            {
+                Product sp = new Product(item);
+                sanPham.Add(sp);
+            }
+            int gia = 0;
+            for(int i=0;i<sanPham.Count;i++)
+            {
+                gia = sanPham[i].DonGia;
+            }
+            return gia;
+        }
         public List<Product> loadProduct()
         {
             List<Product> lstProduct = new List<Product>();

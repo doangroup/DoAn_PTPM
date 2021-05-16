@@ -33,6 +33,8 @@
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.txtTim = new DevExpress.XtraEditors.TextEdit();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.cbTinhTrang = new System.Windows.Forms.ComboBox();
+            this.cbSanPham = new DevExpress.XtraEditors.LookUpEdit();
             this.txtMaCTHD = new DevExpress.XtraEditors.TextEdit();
             this.txtThanhTien = new DevExpress.XtraEditors.TextEdit();
             this.txtMaHD = new DevExpress.XtraEditors.TextEdit();
@@ -42,6 +44,7 @@
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.txtSoLuong = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -49,10 +52,7 @@
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.cbSanPham = new DevExpress.XtraEditors.LookUpEdit();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.cbTinhTrang = new System.Windows.Forms.ComboBox();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -61,6 +61,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTim.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbSanPham.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaCTHD.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtThanhTien.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaHD.Properties)).BeginInit();
@@ -73,7 +74,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbSanPham.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             this.SuspendLayout();
@@ -133,6 +133,27 @@
             this.layoutControl1.Size = new System.Drawing.Size(1053, 599);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // cbTinhTrang
+            // 
+            this.cbTinhTrang.FormattingEnabled = true;
+            this.cbTinhTrang.Items.AddRange(new object[] {
+            "1",
+            "0"});
+            this.cbTinhTrang.Location = new System.Drawing.Point(657, 44);
+            this.cbTinhTrang.Name = "cbTinhTrang";
+            this.cbTinhTrang.Size = new System.Drawing.Size(380, 24);
+            this.cbTinhTrang.TabIndex = 19;
+            // 
+            // cbSanPham
+            // 
+            this.cbSanPham.Location = new System.Drawing.Point(144, 100);
+            this.cbSanPham.Name = "cbSanPham";
+            this.cbSanPham.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbSanPham.Size = new System.Drawing.Size(893, 22);
+            this.cbSanPham.StyleController = this.layoutControl1;
+            this.cbSanPham.TabIndex = 18;
             // 
             // txtMaCTHD
             // 
@@ -222,6 +243,14 @@
             this.gridColumn4.VisibleIndex = 3;
             this.gridColumn4.Width = 120;
             // 
+            // gridColumn5
+            // 
+            this.gridColumn5.Caption = "Sản Phẩm";
+            this.gridColumn5.FieldName = "MaSP";
+            this.gridColumn5.Name = "gridColumn5";
+            this.gridColumn5.Visible = true;
+            this.gridColumn5.VisibleIndex = 4;
+            // 
             // txtSoLuong
             // 
             this.txtSoLuong.Location = new System.Drawing.Point(144, 72);
@@ -297,16 +326,6 @@
             this.layoutControlItem5.Text = "Mã Chi Tiết Hóa Đơn";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(124, 17);
             // 
-            // cbSanPham
-            // 
-            this.cbSanPham.Location = new System.Drawing.Point(144, 100);
-            this.cbSanPham.Name = "cbSanPham";
-            this.cbSanPham.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbSanPham.Size = new System.Drawing.Size(893, 22);
-            this.cbSanPham.StyleController = this.layoutControl1;
-            this.cbSanPham.TabIndex = 18;
-            // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.cbSanPham;
@@ -315,25 +334,6 @@
             this.layoutControlItem6.Size = new System.Drawing.Size(1027, 28);
             this.layoutControlItem6.Text = "Sản Phẩm";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(124, 17);
-            // 
-            // gridColumn5
-            // 
-            this.gridColumn5.Caption = "Sản Phẩm";
-            this.gridColumn5.FieldName = "MaSP";
-            this.gridColumn5.Name = "gridColumn5";
-            this.gridColumn5.Visible = true;
-            this.gridColumn5.VisibleIndex = 4;
-            // 
-            // cbTinhTrang
-            // 
-            this.cbTinhTrang.FormattingEnabled = true;
-            this.cbTinhTrang.Items.AddRange(new object[] {
-            "1",
-            "0"});
-            this.cbTinhTrang.Location = new System.Drawing.Point(657, 44);
-            this.cbTinhTrang.Name = "cbTinhTrang";
-            this.cbTinhTrang.Size = new System.Drawing.Size(380, 24);
-            this.cbTinhTrang.TabIndex = 19;
             // 
             // layoutControlItem4
             // 
@@ -362,6 +362,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtTim.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cbSanPham.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaCTHD.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtThanhTien.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaHD.Properties)).EndInit();
@@ -374,7 +375,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbSanPham.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             this.ResumeLayout(false);
