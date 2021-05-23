@@ -53,7 +53,7 @@ namespace ShopQuanAo2.DAO
         public bool addBillInfo(int maHD,int maSP, int soLuong, double thanhTien)
         {
 
-            string sqlAdd = "insert into ChiTietHD values (" + maHD + "," + maSP + "," + soLuong + "," + thanhTien + ",1)";
+            string sqlAdd = "insert into ChiTietHD values (" + maHD + "," + maSP + "," + soLuong + "," + thanhTien + ",0)";
             int rs = dp.ExcuteNonQuery(sqlAdd);
             if (rs > 0)
             {

@@ -11,10 +11,14 @@ namespace ShopQuanAo2.DAO
         DataProvider dp = new DataProvider();
         public DataTable loadBillCustomer(int maHD)
         {
-            
             string sqlCTHD = "exec HoaDonKH " + maHD;
             DataTable data = dp.ExcuteQuery(sqlCTHD);
-            
+            return data;
+        }
+        public DataTable loadTotalMoney(int maHD)
+        {
+            string sqlCTHD = "select TongTien from HoaDon where MaHD = " + maHD;
+            DataTable data = dp.ExcuteQuery(sqlCTHD);
             return data;
         }
     }

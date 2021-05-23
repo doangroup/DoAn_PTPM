@@ -76,7 +76,6 @@
     <Compile Include="DAO\MaHoaMD5.cs" />
     <Compile Include="DAO\ProductDAO.cs" />
     <Compile Include="DAO\StaffDAO.cs" />
-    <Compile Include="DAO\StatusBillInfoDAO.cs" />
     <Compile Include="DTO\Bill.cs" />
     <Compile Include="DTO\BillCustomer.cs" />
     <Compile Include="DTO\BillInfo.cs" />
@@ -84,7 +83,6 @@
     <Compile Include="DTO\Customer.cs" />
     <Compile Include="DTO\Product.cs" />
     <Compile Include="DTO\Staff.cs" />
-    <Compile Include="DTO\StatusBillInfo.cs" />
     <Compile Include="GUI\frmAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,11 +143,11 @@
     <Compile Include="GUI\frmSellProduct.Designer.cs">
       <DependentUpon>frmSellProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\frmSellProductInfo.cs">
+    <Compile Include="GUI\frmAddCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\frmSellProductInfo.Designer.cs">
-      <DependentUpon>frmSellProductInfo.cs</DependentUpon>
+    <Compile Include="GUI\frmAddCustomer.Designer.cs">
+      <DependentUpon>frmAddCustomer.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\frmStaff.cs">
       <SubType>Form</SubType>
@@ -195,8 +193,8 @@
     <EmbeddedResource Include="GUI\frmSellProduct.resx">
       <DependentUpon>frmSellProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\frmSellProductInfo.resx">
-      <DependentUpon>frmSellProductInfo.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\frmAddCustomer.resx">
+      <DependentUpon>frmAddCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmStaff.resx">
       <DependentUpon>frmStaff.cs</DependentUpon>
