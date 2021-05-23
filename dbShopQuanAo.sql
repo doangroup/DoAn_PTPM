@@ -219,15 +219,16 @@ values (1,1,1,2020/05/01,0),
 		(2,2,2,2020/07/01,0)
 go
 
-create trigger TGThanhTien
-on ChiTietHD
-for insert, update
-as
-	update HoaDon
-	set TongTien = inserted.SoLuong * inserted.ThanhTien
-	from inserted, HoaDon,ChiTietHD
-	where inserted.MaHD= ChiTietHD.MaHD and HoaDon.MaHD = ChiTietHD.MaHD
-go
+
+create trigger TGThanhTien 
+on ChiTIetHD
+FOR INSERT, UPDATE
+AS
+	UPDATE HOADON
+	SET TONGTIEN = (SELECT SUM(ChiTietHD.THANHTIEN) FROM ChiTietHD WHERE ChiTietHD.MAHD = (SELECT MAHD FROM inserted))
+	WHERE HOADON.MAHD = (SELECT MAHD FROM inserted)
+GO
+
 
 insert into ChiTietHD
 values (1,2,2,140000,0),
@@ -248,7 +249,7 @@ select * from KhachHang
 create proc HoaDonKH @mahd int
 as
 	begin
-		select KhachHang.TenKH, NhanVien.TenNV, SanPham.TenSP, HoaDon.NgayBan, ChiTietHD.SoLuong, ChiTietHD.ThanhTien, HoaDon.TongTien
+		select KhachHang.TenKH, NhanVien.TenNV, SanPham.TenSP, HoaDon.NgayBan, ChiTietHD.SoLuong, SanPham.DonGia ,ChiTietHD.ThanhTien
 		from KhachHang, NhanVien,SanPham, HoaDon, ChiTietHD
 		where HoaDon.MaKH = KhachHang.MaKH and NhanVien.MaNV = HoaDon.MaNV and ChiTietHD.MaHD = HoaDon.MaHD and ChiTietHD.MaSP = SanPham.MaSP and HoaDon.MaHD = @mahd
 	end
@@ -257,6 +258,8 @@ exec HoaDonKH 1
 drop proc HoaDonKH
 select * from HoaDon
 select * from ChiTietHD where MaHD = 13
+
+select TongTien from HoaDon where MaHD = 13
 
 
 
