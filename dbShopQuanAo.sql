@@ -13,15 +13,20 @@ drop database QLSHOPQUANAO
 --go
 --exec findKHByHD N'Tạ Quang Trung'
 
-
-
-
-select * from ChiTietHD
+create proc ThanhToan @mahd int
+as
+	begin
+		select HoaDon.NgayBan, HoaDon.MaHD, NhanVien.TenNV, SanPham.TenSP,ChiTietHD.SoLuong,SanPham.DonGia,ChiTietHD.ThanhTien,HoaDon.TongTien
+		from HoaDon,ChiTietHD,SanPham,NhanVien,KhachHang
+		where HoaDon.MaHD = ChiTietHD.MaHD and SanPham.MaSP = ChiTietHD.MaSP and NhanVien.MaNV = HoaDon.MaNV and HoaDon.MaKH = KhachHang.MaKH and HoaDon.MaHD = @mahd
+		group by HoaDon.NgayBan,HoaDon.MaHD, NhanVien.TenNV, SanPham.TenSP,ChiTietHD.SoLuong,SanPham.DonGia,ChiTietHD.ThanhTien,HoaDon.TongTien
+	end
 go
-
+exec ThanhToan 2
+drop proc ThanhToan
 select * from SanPham
 go
-
+select sum(ChiTietHD.SoLuong) from ChiTietHD where MaHD = 2
 
 
 create table KhachHang
@@ -229,12 +234,21 @@ AS
 	WHERE HOADON.MAHD = (SELECT MAHD FROM inserted)
 GO
 
-
+create trigger SoLuong
+on ChiTietHD
+for insert, update
+as
+	update SanPham
+	set SoLuong = SanPham.SoLuong - (select SoLuong from inserted where MaSP =(select MaSP from inserted))
+	where SanPham.MaSP = (select MaSP from inserted)
+go
+drop trigger SoLuong
+select SoLuong from ChiTietHD where MaSP = 2
 insert into ChiTietHD
-values (1,2,2,140000,0),
+values (4,2,2,140000,0),
 		(2,3,5,140000,0)
-select * from ChiTietHD
-select * from KhachHang
+select * from ChiTietHD where mahd = 60
+select * from SanPham
 
 --create proc LayHDTheoNgay 
 --@ngayban datetime
