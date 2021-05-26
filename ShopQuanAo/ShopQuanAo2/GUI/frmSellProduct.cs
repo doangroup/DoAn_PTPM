@@ -66,6 +66,7 @@ namespace ShopQuanAo2.GUI
             
             groupControl2.Enabled = false;
             groupControl1.Enabled = false;
+            btnThanhToan.Enabled = false;
 
 
             
@@ -104,6 +105,7 @@ namespace ShopQuanAo2.GUI
                 groupControl3.Enabled = false;
             
                 txtMaHDCTHD.Text = txtMaHD.Text;
+                btnThanhToan.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -250,6 +252,25 @@ namespace ShopQuanAo2.GUI
 
                 XtraMessageBox.Show("Tiền khách đưa không được để trống hoặc nhập khác số - " + ex.Message.ToString(), "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnThanhToan_Click(object sender, EventArgs e)
+        {
+            groupControl1.Enabled = false;
+            groupControl2.Enabled = false;
+            groupControl3.Enabled = true;
+            btnThanhToan.Enabled = false;
+            txtTongTien.Text = "";
+            txtTuenKhachDua.Text = "";
+            txtSoLuong.Text = "0";
+        }
+
+        private void simpleButton1_Click_1(object sender, EventArgs e)
+        {
+            groupControl1.Enabled = false;
+            groupControl2.Enabled = false;
+            groupControl3.Enabled = true;
+            btnThanhToan.Enabled = false;
         }
     }
 }

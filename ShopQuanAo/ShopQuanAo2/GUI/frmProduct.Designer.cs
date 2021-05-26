@@ -104,7 +104,8 @@
             new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Sửa", ((System.Drawing.Image)(resources.GetObject("groupControl2.CustomHeaderButtons4")))),
             new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Xuất Word", global::ShopQuanAo2.Properties.Resources.Word_icon),
             new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Xuất Excel", global::ShopQuanAo2.Properties.Resources.Excel_icon),
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Tìm Kiếm Theo Tên", ((System.Drawing.Image)(resources.GetObject("groupControl2.CustomHeaderButtons5"))))});
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("In DS Sản Phẩm", ((System.Drawing.Image)(resources.GetObject("groupControl2.CustomHeaderButtons5")))),
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Tìm Kiếm Theo Tên", ((System.Drawing.Image)(resources.GetObject("groupControl2.CustomHeaderButtons6"))))});
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.ImeMode = System.Windows.Forms.ImeMode.On;
             this.groupControl2.Location = new System.Drawing.Point(2, 25);
@@ -115,11 +116,11 @@
             // 
             // txtTim
             // 
-            this.txtTim.Location = new System.Drawing.Point(756, 3);
+            this.txtTim.Location = new System.Drawing.Point(904, 3);
             this.txtTim.Name = "txtTim";
             this.txtTim.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txtTim.Properties.Appearance.Options.UseFont = true;
-            this.txtTim.Size = new System.Drawing.Size(298, 40);
+            this.txtTim.Size = new System.Drawing.Size(231, 40);
             this.txtTim.TabIndex = 1;
             // 
             // layoutControl1

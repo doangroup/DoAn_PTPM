@@ -8,6 +8,8 @@ using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using ShopQuanAo2.DAO;
+using DevExpress.XtraReports.UI;
+
 namespace ShopQuanAo2.GUI
 {
     public partial class frmProduct : DevExpress.XtraEditors.XtraForm
@@ -176,6 +178,10 @@ namespace ShopQuanAo2.GUI
             }
             else if (e.Button.Properties.Caption == "Xuất Excel")
             {
+            }
+            else if (e.Button.Properties.Caption == "In DS Sản Phẩm")
+            {
+                
             }
         }
     }

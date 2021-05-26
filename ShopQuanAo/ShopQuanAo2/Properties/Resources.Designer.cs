@@ -273,6 +273,26 @@ namespace ShopQuanAo2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap document_add_icon1 {
+            get {
+                object obj = ResourceManager.GetObject("document-add-icon1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap document_add_icon2 {
+            get {
+                object obj = ResourceManager.GetObject("document-add-icon2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap editcontact_32x32 {
             get {
                 object obj = ResourceManager.GetObject("editcontact_32x32", resourceCulture);
