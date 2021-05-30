@@ -2,32 +2,7 @@
 go
 use QLSHOPQUANAO
 go
-drop database QLSHOPQUANAO
---create proc findKHByHD @tenKH nvarchar(50)
---as
---begin
---	select HoaDon.MaHD, HoaDon.MaKH,HoaDon.MaNV,HoaDon.MaSP,HoaDon.NgayBan 
---	from HoaDon, KhachHang 
---	where TenKH = @tenKH and HoaDon.MaKH = KhachHang.MaKH
---end
---go
---exec findKHByHD N'Tạ Quang Trung'
-
-create proc ThanhToan @mahd int
-as
-	begin
-		select HoaDon.NgayBan, HoaDon.MaHD, NhanVien.TenNV, SanPham.TenSP,ChiTietHD.SoLuong,SanPham.DonGia,ChiTietHD.ThanhTien,HoaDon.TongTien
-		from HoaDon,ChiTietHD,SanPham,NhanVien,KhachHang
-		where HoaDon.MaHD = ChiTietHD.MaHD and SanPham.MaSP = ChiTietHD.MaSP and NhanVien.MaNV = HoaDon.MaNV and HoaDon.MaKH = KhachHang.MaKH and HoaDon.MaHD = @mahd
-		group by HoaDon.NgayBan,HoaDon.MaHD, NhanVien.TenNV, SanPham.TenSP,ChiTietHD.SoLuong,SanPham.DonGia,ChiTietHD.ThanhTien,HoaDon.TongTien
-	end
-go
-exec ThanhToan 2
-drop proc ThanhToan
-select * from SanPham
-go
-select sum(ChiTietHD.SoLuong) from ChiTietHD where MaHD = 2
-
+------------------Bang-----------------------------------------
 
 create table KhachHang
 (
@@ -38,9 +13,6 @@ create table KhachHang
 	MatKhau nvarchar(50) default null
 )
 go
-
-
-
 create table KhuyenMai
 (
 	MaKM int primary key,
@@ -48,7 +20,6 @@ create table KhuyenMai
 	LinkKM nvarchar(max)
 )
 go
-select * from NhanVien
 
 create table NhanVien
 (
@@ -64,6 +35,56 @@ create table NhanVien
 )
 go
 
+create table DanhMuc
+(
+	MaDM int primary key,
+	TenDM nvarchar(50)
+)
+go
+create table SanPham
+(
+	MaSP int primary key,
+	MaDM int,
+	TenSP nvarchar(100) not null,
+	SoLuong int not null,
+	DonGia money not null,
+	HinhAnh nvarchar(50),
+	GhiChu nvarchar(200),
+	constraint fk_SP_DM foreign key(MaDM) references DanhMuc(MaDM)
+)
+go
+
+create table HoaDon
+(
+	MaHD int primary key,
+	MaKH int,
+	MaNV int,
+	Tinhtrang int default 0, -- 0 = chưa thanh toán | 1 = đã thanh toán
+	NgayBan datetime not null,
+	NgayGiao datetime null,
+	TongTien float,
+	constraint fk_HD_NV foreign key(MaNV) references NhanVien(MaNV),
+	
+	constraint fk_HD_KH foreign key(MaKH) references KhachHang(MaKH)
+)
+go
+
+create table ChiTietHD
+(
+	MaCTHD int identity(1,1)primary key,
+	MaHD int null,
+	MaSP int null,
+	SoLuong int null,
+	ThanhTien float null,
+	
+	constraint fk_CTHD_HD foreign key(MaHD) references HoaDon(MaHD),
+	constraint fk_HD_H foreign key(MaSP) references SanPham(MaSP)
+)
+
+go
+-----------------------------------------------------------------
+
+--------------------------------Thêm Dữ Liệu Vào Bảng--------------------
 
 set dateformat dmy
 go
@@ -73,36 +94,14 @@ values (N'Trung',N'Nam',N'Tân Phú','045648932',1999/01/23,'admin','c4ca4238a0b
 		(N'Nhân Viên 2',N'Nữ',N'Thủ Đức','045648932',2000/07/20,'admin2','c4ca4238a0b923820dcc509a6f75849b',0)
 go
 
-
-
-
-create table DanhMuc
-(
-	MaDM int primary key,
-	TenDM nvarchar(50)
-)
-go
 insert into DanhMuc
-values (1,'Áo sơ mi'),
-		(2,'Áo thun'),
-		(3,'Quần jean'),
-		(4,'Quần tây'),
-		(5,'Áo khoác nam'),
-		(6,'Quần jogger'),
-		(7,'Áo cặp')
-go
-
-create table SanPham
-(
-	MaSP int primary key,
-	MaDM int,
-	TenSP nvarchar(100) not null,
-	SoLuong int not null,
-	DonGia int not null,
-	HinhAnh nvarchar(50),
-	GhiChu nvarchar(200),
-	constraint fk_SP_DM foreign key(MaDM) references DanhMuc(MaDM)
-)
+values (1,N'Áo Sơ Mi'),
+		(2,N'Áo Thun'),
+		(3,N'Quần Jean'),
+		(4,N'Quần Tây'),
+		(5,N'Áo Khoác Nam'),
+		(6,N'Quần Jogger'),
+		(7,N'Áo Cặp')
 go
 
 insert into SanPham
@@ -180,57 +179,22 @@ values (1,7,N'Áo thun đính đá hình báo',20,200000,'cap3.jpg',N'Giặt ra 
 		(72,6,N'quần jogger 925',20,100000,'jogger9.jpg',null)
 go
 
-select * from KhachHang
-go
-
 insert into KhachHang
 values (N'Tạ Quang Trung', N'Thôn 5', N'0123456','1'),
 		(N'Nguyễn Văn Tèo', N'Thôn 2', N'0123456','1'),
 		(N'Nguyễn Thị Bưởi', N'Thôn 8', N'0123456','1'),
-		(N'Nguyễn Thị Đào', N'Thôn 1', N'0123456','1')
-go
-
-create table HoaDon
-(
-	MaHD int primary key,
-	MaKH int,
-	MaNV int,
-	
-	NgayBan datetime not null,
-	TongTien float,
-	constraint fk_HD_NV foreign key(MaNV) references NhanVien(MaNV),
-	
-	constraint fk_HD_KH foreign key(MaKH) references KhachHang(MaKH)
-)
-go
-drop table HoaDon
-create table ChiTietHD
-(
-	MaCTHD int identity(1,1)primary key,
-	MaHD int,
-	MaSP int,
-	SoLuong int,
-	ThanhTien float,
-	Tinhtrang int default 0, -- 0 = chưa thanh toán | 1 = đã thanh toán
-	constraint fk_CTHD_HD foreign key(MaHD) references HoaDon(MaHD),
-	constraint fk_HD_H foreign key(MaSP) references SanPham(MaSP)
-)
-go
-select * from HoaDon
-
-
-insert into HoaDon
-values (1,1,1,2020/05/01,0),
-		(2,2,2,2020/07/01,0)
+		(N'Nguyễn Thị Đào', N'Thôn 1', N'0123456','1'),
+		(N'Nguyễn Thanh Huy', N'Tp.HCM', N'0902669401','admin')
 go
 
 
+---------------------Tạo Trigger------------------------------------
 create trigger TGThanhTien 
 on ChiTIetHD
 FOR INSERT, UPDATE
 AS
 	UPDATE HOADON
-	SET TONGTIEN = (SELECT SUM(ChiTietHD.THANHTIEN) FROM ChiTietHD WHERE ChiTietHD.MAHD = (SELECT MAHD FROM inserted))
+	SET TongTien = (SELECT SUM(ChiTietHD.THANHTIEN) FROM ChiTietHD WHERE ChiTietHD.MAHD = (SELECT MAHD FROM inserted))
 	WHERE HOADON.MAHD = (SELECT MAHD FROM inserted)
 GO
 
@@ -242,13 +206,31 @@ as
 	set SoLuong = SanPham.SoLuong - (select SoLuong from inserted where MaSP =(select MaSP from inserted))
 	where SanPham.MaSP = (select MaSP from inserted)
 go
-drop trigger SoLuong
-select SoLuong from ChiTietHD where MaSP = 2
-insert into ChiTietHD
-values (4,2,2,140000,0),
-		(2,3,5,140000,0)
-select * from ChiTietHD where mahd = 60
-select * from SanPham
+
+----------------------Tạo Procedduce APP Desktop---------------------------------------
+----------------------------------------------
+--drop database QLSHOPQUANAO
+--create proc findKHByHD @tenKH nvarchar(50)
+--as
+--begin
+--	select HoaDon.MaHD, HoaDon.MaKH,HoaDon.MaNV,HoaDon.MaSP,HoaDon.NgayBan 
+--	from HoaDon, KhachHang 
+--	where TenKH = @tenKH and HoaDon.MaKH = KhachHang.MaKH
+--end
+--go
+--exec findKHByHD N'Tạ Quang Trung'
+
+create proc ThanhToan @mahd int
+as
+	begin
+		select HoaDon.NgayBan, HoaDon.MaHD, NhanVien.TenNV, SanPham.TenSP,ChiTietHD.SoLuong,SanPham.DonGia,ChiTietHD.ThanhTien,HoaDon.TongTien
+		from HoaDon,ChiTietHD,SanPham,NhanVien,KhachHang
+		where HoaDon.MaHD = ChiTietHD.MaHD and SanPham.MaSP = ChiTietHD.MaSP and NhanVien.MaNV = HoaDon.MaNV and HoaDon.MaKH = KhachHang.MaKH and HoaDon.MaHD = @mahd
+		group by HoaDon.NgayBan,HoaDon.MaHD, NhanVien.TenNV, SanPham.TenSP,ChiTietHD.SoLuong,SanPham.DonGia,ChiTietHD.ThanhTien,HoaDon.TongTien
+	end
+go
+
+
 
 --create proc LayHDTheoNgay 
 --@ngayban datetime
@@ -267,19 +249,66 @@ as
 		from KhachHang, NhanVien,SanPham, HoaDon, ChiTietHD
 		where HoaDon.MaKH = KhachHang.MaKH and NhanVien.MaNV = HoaDon.MaNV and ChiTietHD.MaHD = HoaDon.MaHD and ChiTietHD.MaSP = SanPham.MaSP and HoaDon.MaHD = @mahd
 	end
+	go
+--------------------------------------
+
+
+----------Proceduce của App Android--------------------------------------
 go
-exec HoaDonKH 1
-drop proc HoaDonKH
-select * from HoaDon
-select * from ChiTietHD where MaHD = 13
+-----Dang Ky Thanh Vien--------
+/****** Object:  StoredProcedure [dbo].[DangKyThanhVien]    Script Date: 5/30/2021 11:23:11 AM ******/
 
-select TongTien from HoaDon where MaHD = 13
+Create proc [dbo].[DangKyThanhVien](@makhach int,@tenKH nvarchar(50),@diachi nvarchar(100),@sdt nvarchar(20),@mk nvarchar(50))
+as 
+insert into KhachHang(MaKH,TenKH,DiaChi,SDT,MatKhau)
+values (@makhach,@tenKH,@diachi,@sdt,@mk)
+------------
+Go
+----------Lay Danh Myc San Pham
 
+GO
+/****** Object:  StoredProcedure [dbo].[lay_DanhMuc]    Script Date: 5/30/2021 11:23:52 AM ******/
 
+GO
+Create proc [dbo].[lay_DanhMuc]
+as
+(
+select * from DanhMuc
+)
+------------------------
+go
+--------------Lay DS San Pham--
 
+GO
+/****** Object:  StoredProcedure [dbo].[lay_DS_SanPham_Theo_Danh_Muc]    Script Date: 5/30/2021 11:24:24 AM ******/
 
+GO
+Create proc [dbo].[lay_DS_SanPham_Theo_Danh_Muc](@ma int)
+as
+Select *
+from SanPham as s
+where  s.MaDM=@ma
+--------------------
+go
+-----------------Lay Thong Tin Khach Hang
+GO
+/****** Object:  StoredProcedure [dbo].[lay_KhachHang]    Script Date: 5/30/2021 11:25:02 AM ******/
+go
+Create proc lay_KhachHang(@sdt nvarchar(50))
+as
+Select *
+from KhachHang
+where KhachHang.SDT=@sdt
+-------------------------
 
+-----------------Lay Thong Tin San Pham
+GO
+/****** Object:  StoredProcedure [dbo].[lay_SanPham]    Script Date: 5/30/2021 11:25:40 AM ******/
 
-
-
+GO
+Create proc [dbo].[lay_SanPham]
+as
+(
+select * from SanPham
+)
 
