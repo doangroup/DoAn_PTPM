@@ -131,8 +131,8 @@
             // 
             // imageCollection1
             // 
-            this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
-            this.imageCollection1.Images.SetKeyName(0, "Word-icon.png");
+            //this.imageCollection1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection1.ImageStream")));
+            //this.imageCollection1.Images.SetKeyName(0, "Word-icon.png");
             // 
             // txtSDT
             // 

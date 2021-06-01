@@ -30,6 +30,8 @@ namespace ShopQuanAo2.DAO
             
             return dt;
         }
+        
+        
         public List<Bill> findBill(int maHD)
         {
             List<Bill> lstBill = new List<Bill>();

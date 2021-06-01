@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSellProduct));
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions2 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.btnQuayLạiKH = new DevExpress.XtraEditors.SimpleButton();
@@ -168,8 +170,8 @@
             // 
             this.btnQuayLạiKH.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnQuayLạiKH.Appearance.Options.UseFont = true;
-            this.btnQuayLạiKH.Image = ((System.Drawing.Image)(resources.GetObject("btnQuayLạiKH.Image")));
-            this.btnQuayLạiKH.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
+            this.btnQuayLạiKH.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnQuayLạiKH.ImageOptions.Image")));
+            this.btnQuayLạiKH.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.btnQuayLạiKH.Location = new System.Drawing.Point(16, 287);
             this.btnQuayLạiKH.Name = "btnQuayLạiKH";
             this.btnQuayLạiKH.Size = new System.Drawing.Size(381, 73);
@@ -203,8 +205,8 @@
             // 
             this.btnAddBill.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnAddBill.Appearance.Options.UseFont = true;
-            this.btnAddBill.Image = global::ShopQuanAo2.Properties.Resources.document_add_icon;
-            this.btnAddBill.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
+            this.btnAddBill.ImageOptions.Image = global::ShopQuanAo2.Properties.Resources.document_add_icon;
+            this.btnAddBill.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.btnAddBill.Location = new System.Drawing.Point(16, 176);
             this.btnAddBill.Name = "btnAddBill";
             this.btnAddBill.Size = new System.Drawing.Size(381, 105);
@@ -320,8 +322,9 @@
             this.groupControl2.Controls.Add(this.textEdit1);
             this.groupControl2.Controls.Add(this.layoutControl2);
             this.groupControl2.Controls.Add(this.labelControl2);
+            buttonImageOptions1.Image = global::ShopQuanAo2.Properties.Resources.calculator_add_icon3;
             this.groupControl2.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Thêm", global::ShopQuanAo2.Properties.Resources.calculator_add_icon3)});
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Thêm", true, buttonImageOptions1)});
             this.groupControl2.Location = new System.Drawing.Point(820, 12);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(957, 633);
@@ -489,6 +492,7 @@
             this.txtGia.Size = new System.Drawing.Size(849, 34);
             this.txtGia.StyleController = this.layoutControl2;
             this.txtGia.TabIndex = 5;
+            this.txtGia.TextChanged += new System.EventHandler(this.txtGia_TextChanged);
             // 
             // txtThanhTien
             // 
@@ -592,6 +596,8 @@
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl2.Appearance.Options.UseFont = true;
+            this.labelControl2.Appearance.Options.UseForeColor = true;
             this.labelControl2.Location = new System.Drawing.Point(348, 12);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(118, 29);
@@ -602,6 +608,8 @@
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl1.Appearance.Options.UseFont = true;
+            this.labelControl1.Appearance.Options.UseForeColor = true;
             this.labelControl1.Location = new System.Drawing.Point(1199, 665);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(119, 29);
@@ -623,8 +631,9 @@
             // groupControl3
             // 
             this.groupControl3.Controls.Add(this.layoutControl3);
+            buttonImageOptions2.Image = global::ShopQuanAo2.Properties.Resources.calculator_add_icon3;
             this.groupControl3.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Thêm", global::ShopQuanAo2.Properties.Resources.calculator_add_icon3)});
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Thêm", true, buttonImageOptions2)});
             this.groupControl3.Location = new System.Drawing.Point(8, 8);
             this.groupControl3.Name = "groupControl3";
             this.groupControl3.Size = new System.Drawing.Size(387, 637);
@@ -649,8 +658,8 @@
             // 
             this.btnBoQua.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnBoQua.Appearance.Options.UseFont = true;
-            this.btnBoQua.Image = ((System.Drawing.Image)(resources.GetObject("btnBoQua.Image")));
-            this.btnBoQua.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter;
+            this.btnBoQua.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBoQua.ImageOptions.Image")));
+            this.btnBoQua.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.btnBoQua.Location = new System.Drawing.Point(16, 136);
             this.btnBoQua.Name = "btnBoQua";
             this.btnBoQua.Size = new System.Drawing.Size(351, 72);
@@ -756,6 +765,8 @@
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.labelControl3.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.labelControl3.Appearance.Options.UseFont = true;
+            this.labelControl3.Appearance.Options.UseForeColor = true;
             this.labelControl3.Location = new System.Drawing.Point(777, 665);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(189, 29);
@@ -766,7 +777,7 @@
             // 
             this.btnThanhToan.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnThanhToan.Appearance.Options.UseFont = true;
-            this.btnThanhToan.Image = ((System.Drawing.Image)(resources.GetObject("btnThanhToan.Image")));
+            this.btnThanhToan.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThanhToan.ImageOptions.Image")));
             this.btnThanhToan.Location = new System.Drawing.Point(1531, 657);
             this.btnThanhToan.Name = "btnThanhToan";
             this.btnThanhToan.Size = new System.Drawing.Size(219, 42);
@@ -778,7 +789,7 @@
             // 
             this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Image = global::ShopQuanAo2.Properties.Resources.document_add_icon2;
+            this.simpleButton1.ImageOptions.Image = global::ShopQuanAo2.Properties.Resources.document_add_icon2;
             this.simpleButton1.Location = new System.Drawing.Point(417, 651);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(314, 81);

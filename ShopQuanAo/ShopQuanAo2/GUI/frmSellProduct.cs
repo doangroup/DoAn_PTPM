@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using ShopQuanAo2.DAO;
 using ShopQuanAo2.DTO;
+using DevExpress.XtraReports.UI;
 namespace ShopQuanAo2.GUI
 {
     public partial class frmSellProduct : DevExpress.XtraEditors.XtraForm
@@ -105,7 +106,7 @@ namespace ShopQuanAo2.GUI
                 groupControl3.Enabled = false;
             
                 txtMaHDCTHD.Text = txtMaHD.Text;
-                btnThanhToan.Enabled = true;
+                
             }
             catch (Exception ex)
             {
@@ -188,8 +189,7 @@ namespace ShopQuanAo2.GUI
 
                 XtraMessageBox.Show("Số lượng không được để trống hoặc nhập khác số - " + ex.Message.ToString(), "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
-           
+
         }
 
         private void txtTienKhachDua_TextChanged(object sender, EventArgs e)
@@ -246,6 +246,7 @@ namespace ShopQuanAo2.GUI
                 int tongtien = int.Parse(textEdit1.Text);
                 int tienkhachdua = int.Parse(txtTuenKhachDua.Text);
                 txtTienThua.Text = (tienkhachdua - tongtien).ToString();
+                btnThanhToan.Enabled = true;
             }
             catch (Exception ex)
             {
@@ -253,7 +254,7 @@ namespace ShopQuanAo2.GUI
                 XtraMessageBox.Show("Tiền khách đưa không được để trống hoặc nhập khác số - " + ex.Message.ToString(), "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        BillPayDAO bp = new BillPayDAO();
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
             groupControl1.Enabled = false;
@@ -261,8 +262,15 @@ namespace ShopQuanAo2.GUI
             groupControl3.Enabled = true;
             btnThanhToan.Enabled = false;
             txtTongTien.Text = "";
-            txtTuenKhachDua.Text = "";
+            txtTuenKhachDua.Text = "0";
             txtSoLuong.Text = "0";
+            rpBill rp = new rpBill();
+            //rp.lbNgayBan.Text = string.Format("Tân Phú, Ngày {0} Tháng {1} Năm {2}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year);
+            int maHD = int.Parse(txtMaHD.Text);
+            rp.DataSource = bp.loadBillPay(maHD);
+
+            ReportPrintTool tool = new ReportPrintTool(rp);
+            tool.ShowPreview();
         }
 
         private void simpleButton1_Click_1(object sender, EventArgs e)
@@ -271,6 +279,12 @@ namespace ShopQuanAo2.GUI
             groupControl2.Enabled = false;
             groupControl3.Enabled = true;
             btnThanhToan.Enabled = false;
+        }
+
+        private void txtGia_TextChanged(object sender, EventArgs e)
+        {
+            
+
         }
     }
 }

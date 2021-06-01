@@ -40,11 +40,7 @@
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
-            this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSDT.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTenKH.Properties)).BeginInit();
+           
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
@@ -65,9 +61,7 @@
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.txtDiaChi);
-            this.layoutControl1.Controls.Add(this.txtSDT);
-            this.layoutControl1.Controls.Add(this.txtTenKH);
+           
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(2, 49);
             this.layoutControl1.Name = "layoutControl1";
@@ -76,36 +70,7 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // txtDiaChi
-            // 
-            this.txtDiaChi.Location = new System.Drawing.Point(113, 96);
-            this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtDiaChi.Properties.Appearance.Options.UseFont = true;
-            this.txtDiaChi.Size = new System.Drawing.Size(212, 34);
-            this.txtDiaChi.StyleController = this.layoutControl1;
-            this.txtDiaChi.TabIndex = 3;
-            // 
-            // txtSDT
-            // 
-            this.txtSDT.Location = new System.Drawing.Point(113, 56);
-            this.txtSDT.Name = "txtSDT";
-            this.txtSDT.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtSDT.Properties.Appearance.Options.UseFont = true;
-            this.txtSDT.Size = new System.Drawing.Size(212, 34);
-            this.txtSDT.StyleController = this.layoutControl1;
-            this.txtSDT.TabIndex = 2;
-            this.txtSDT.EditValueChanged += new System.EventHandler(this.txtTienKhachDua_EditValueChanged);
-            // 
-            // txtTenKH
-            // 
-            this.txtTenKH.Location = new System.Drawing.Point(113, 16);
-            this.txtTenKH.Name = "txtTenKH";
-            this.txtTenKH.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtTenKH.Properties.Appearance.Options.UseFont = true;
-            this.txtTenKH.Size = new System.Drawing.Size(212, 34);
-            this.txtTenKH.StyleController = this.layoutControl1;
-            this.txtTenKH.TabIndex = 1;
+           
             // 
             // layoutControlGroup1
             // 
@@ -123,7 +88,7 @@
             // 
             // layoutControlItem4
             // 
-            this.layoutControlItem4.Control = this.txtTenKH;
+         
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(315, 40);
@@ -132,7 +97,7 @@
             // 
             // layoutControlItem6
             // 
-            this.layoutControlItem6.Control = this.txtSDT;
+           
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 40);
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Size = new System.Drawing.Size(315, 40);
@@ -141,7 +106,7 @@
             // 
             // layoutControlItem7
             // 
-            this.layoutControlItem7.Control = this.txtDiaChi;
+            
             this.layoutControlItem7.Location = new System.Drawing.Point(0, 80);
             this.layoutControlItem7.Name = "layoutControlItem7";
             this.layoutControlItem7.Size = new System.Drawing.Size(315, 42);
@@ -161,11 +126,7 @@
             this.Load += new System.EventHandler(this.frmSellProductInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
-            this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtDiaChi.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSDT.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTenKH.Properties)).EndInit();
+            
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();

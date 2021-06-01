@@ -31,20 +31,13 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.SuspendLayout();
             // 
-            // labelControl1
-            // 
-            this.labelControl1.Location = new System.Drawing.Point(196, 172);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(390, 17);
-            this.labelControl1.TabIndex = 0;
-            this.labelControl1.Text = "Đồ án cuối môn Phát triển phần mềm và ứng dụng thông minh";
-            // 
+            
             // frmAbout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1032, 538);
-            this.Controls.Add(this.labelControl1);
+           
             this.Name = "frmAbout";
             this.ShowMdiChildCaptionInParentTitle = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

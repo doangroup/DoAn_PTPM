@@ -136,16 +136,16 @@
             // 
             // imgCLT
             // 
-            this.imgCLT.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imgCLT.ImageStream")));
-            this.imgCLT.Images.SetKeyName(0, "owner (1).png");
-            this.imgCLT.Images.SetKeyName(1, "key.png");
-            this.imgCLT.Images.SetKeyName(2, "logout.png");
-            this.imgCLT.Images.SetKeyName(3, "key (1).png");
-            this.imgCLT.Images.SetKeyName(4, "login.png");
-            this.imgCLT.Images.SetKeyName(5, "owner (1).png");
-            this.imgCLT.Images.SetKeyName(6, "login (1).png");
-            this.imgCLT.Images.SetKeyName(7, "search.png");
-            this.imgCLT.Images.SetKeyName(8, "Windows-Log-Off-icon.png");
+            //this.imgCLT.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imgCLT.ImageStream")));
+            //this.imgCLT.Images.SetKeyName(0, "owner (1).png");
+            //this.imgCLT.Images.SetKeyName(1, "key.png");
+            //this.imgCLT.Images.SetKeyName(2, "logout.png");
+            //this.imgCLT.Images.SetKeyName(3, "key (1).png");
+            //this.imgCLT.Images.SetKeyName(4, "login.png");
+            //this.imgCLT.Images.SetKeyName(5, "owner (1).png");
+            //this.imgCLT.Images.SetKeyName(6, "login (1).png");
+            //this.imgCLT.Images.SetKeyName(7, "search.png");
+            //this.imgCLT.Images.SetKeyName(8, "Windows-Log-Off-icon.png");
             // 
             // btnLogin
             // 
