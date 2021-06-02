@@ -178,11 +178,20 @@ namespace ShopQuanAo2.GUI
             }
             else if (e.Button.Properties.Caption == "Xuất Excel")
             {
+
             }
             else if (e.Button.Properties.Caption == "In DS Sản Phẩm")
             {
-                
+                rpProduct a = new rpProduct();
+                //a.DataSource = pd.loadProduct();
+                //BindData();
+                a.ShowPreviewDialog();
             }
+        }
+       
+        private void groupControl1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

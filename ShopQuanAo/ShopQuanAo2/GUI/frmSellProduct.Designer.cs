@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSellProduct));
-            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions2 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions3 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.btnQuayLạiKH = new DevExpress.XtraEditors.SimpleButton();
@@ -322,9 +322,9 @@
             this.groupControl2.Controls.Add(this.textEdit1);
             this.groupControl2.Controls.Add(this.layoutControl2);
             this.groupControl2.Controls.Add(this.labelControl2);
-            buttonImageOptions1.Image = global::ShopQuanAo2.Properties.Resources.calculator_add_icon3;
+            buttonImageOptions2.Image = global::ShopQuanAo2.Properties.Resources.calculator_add_icon3;
             this.groupControl2.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Thêm", true, buttonImageOptions1)});
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Thêm", true, buttonImageOptions2)});
             this.groupControl2.Location = new System.Drawing.Point(820, 12);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(957, 633);
@@ -340,6 +340,8 @@
             this.textEdit1.Properties.Appearance.ForeColor = System.Drawing.Color.Red;
             this.textEdit1.Properties.Appearance.Options.UseFont = true;
             this.textEdit1.Properties.Appearance.Options.UseForeColor = true;
+            this.textEdit1.Properties.Mask.EditMask = "c0";
+            this.textEdit1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.textEdit1.Size = new System.Drawing.Size(242, 34);
             this.textEdit1.TabIndex = 9;
             // 
@@ -625,15 +627,17 @@
             this.txtTienThua.Properties.Appearance.ForeColor = System.Drawing.Color.Red;
             this.txtTienThua.Properties.Appearance.Options.UseFont = true;
             this.txtTienThua.Properties.Appearance.Options.UseForeColor = true;
+            this.txtTienThua.Properties.Mask.EditMask = "c0";
+            this.txtTienThua.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtTienThua.Size = new System.Drawing.Size(181, 34);
             this.txtTienThua.TabIndex = 1;
             // 
             // groupControl3
             // 
             this.groupControl3.Controls.Add(this.layoutControl3);
-            buttonImageOptions2.Image = global::ShopQuanAo2.Properties.Resources.calculator_add_icon3;
+            buttonImageOptions3.Image = global::ShopQuanAo2.Properties.Resources.calculator_add_icon3;
             this.groupControl3.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Thêm", true, buttonImageOptions2)});
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Thêm", true, buttonImageOptions3)});
             this.groupControl3.Location = new System.Drawing.Point(8, 8);
             this.groupControl3.Name = "groupControl3";
             this.groupControl3.Size = new System.Drawing.Size(387, 637);
@@ -757,6 +761,7 @@
             this.txtTuenKhachDua.Properties.Appearance.ForeColor = System.Drawing.Color.Red;
             this.txtTuenKhachDua.Properties.Appearance.Options.UseFont = true;
             this.txtTuenKhachDua.Properties.Appearance.Options.UseForeColor = true;
+            this.txtTuenKhachDua.Properties.Mask.EditMask = "n0";
             this.txtTuenKhachDua.Size = new System.Drawing.Size(198, 34);
             this.txtTuenKhachDua.TabIndex = 8;
             this.txtTuenKhachDua.TextChanged += new System.EventHandler(this.txtTuenKhachDua_TextChanged);

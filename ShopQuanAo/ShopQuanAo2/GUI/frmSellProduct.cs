@@ -99,7 +99,7 @@ namespace ShopQuanAo2.GUI
             try
             {
                 bill.addBill(maHD,maKH, maNV, txtNgayBan.DateTime.Date.ToShortDateString()); 
-                XtraMessageBox.Show("Thêm thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                XtraMessageBox.Show("Tạo thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                 groupControl2.Enabled = true;
                 groupControl1.Enabled = false;
@@ -110,7 +110,7 @@ namespace ShopQuanAo2.GUI
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show("Thêm thất bại ! Lỗi - " + ex.Message.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Tạo thất bại ! Lỗi - " + ex.Message.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -132,8 +132,7 @@ namespace ShopQuanAo2.GUI
 
         private void btnThemKH_Click(object sender, EventArgs e)
         {
-            frmAddCustomer act = new frmAddCustomer();
-            act.ShowDialog();
+           
         }
 
         private void groupControl3_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
@@ -264,15 +263,15 @@ namespace ShopQuanAo2.GUI
             txtTongTien.Text = "";
             txtTuenKhachDua.Text = "0";
             txtSoLuong.Text = "0";
-            rpBill rp = new rpBill();
-            //rp.lbNgayBan.Text = string.Format("Tân Phú, Ngày {0} Tháng {1} Năm {2}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year);
-            int maHD = int.Parse(txtMaHD.Text);
-            rp.DataSource = bp.loadBillPay(maHD);
-
-            ReportPrintTool tool = new ReportPrintTool(rp);
-            tool.ShowPreview();
+            //rpBill rp = new rpBill();
+            ////rp.lbNgayBan.Text = string.Format("Tân Phú, Ngày {0} Tháng {1} Năm {2}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year);
+            //int maHD = int.Parse(txtMaHD.Text);
+            //rp.DataSource = bp.loadBillPay(maHD);
+            XtraMessageBox.Show("Thanh toán thành công!","Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //ReportPrintTool tool = new ReportPrintTool(rp);
+            //tool.ShowPreview();
         }
-
+        
         private void simpleButton1_Click_1(object sender, EventArgs e)
         {
             groupControl1.Enabled = false;

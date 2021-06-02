@@ -8,7 +8,7 @@ namespace ShopQuanAo2.DAO
 {
     public class DataProvider
     {
-        private string sql = "Data Source = DESKTOP-R95F3JA; Initial Catalog = QLSHOPQUANAO; User ID = sa; Password = taquangtrung";
+        public string sql = "Data Source = DESKTOP-R95F3JA; Initial Catalog = QLSHOPQUANAO; User ID = sa; Password = taquangtrung";
         public DataTable ExcuteQuery(string query, object[] parameter = null)
         {
             DataTable data = new DataTable();

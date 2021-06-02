@@ -203,12 +203,6 @@
     <Compile Include="GUI\frmSellProduct.Designer.cs">
       <DependentUpon>frmSellProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\frmAddCustomer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\frmAddCustomer.Designer.cs">
-      <DependentUpon>frmAddCustomer.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\frmStaff.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,6 +214,18 @@
     </Compile>
     <Compile Include="GUI\rpBill.Designer.cs">
       <DependentUpon>rpBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\rpProduct.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GUI\rpProduct.Designer.cs">
+      <DependentUpon>rpProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\XtraReport1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GUI\XtraReport1.Designer.cs">
+      <DependentUpon>XtraReport1.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -259,14 +265,14 @@
     <EmbeddedResource Include="GUI\frmSellProduct.resx">
       <DependentUpon>frmSellProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\frmAddCustomer.resx">
-      <DependentUpon>frmAddCustomer.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmStaff.resx">
       <DependentUpon>frmStaff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\rpBill.resx">
       <DependentUpon>rpBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\rpProduct.resx">
+      <DependentUpon>rpProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
