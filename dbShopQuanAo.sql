@@ -2,6 +2,8 @@
 go
 use QLSHOPQUANAO
 go
+
+drop database QLSHOPQUANAO
 ------------------Bang-----------------------------------------
 
 create table KhachHang
@@ -37,13 +39,13 @@ go
 
 create table DanhMuc
 (
-	MaDM int primary key,
+	MaDM int identity(1,1) primary key,
 	TenDM nvarchar(50)
 )
 go
 create table SanPham
 (
-	MaSP int primary key,
+	MaSP int identity(1,1) primary key,
 	MaDM int,
 	TenSP nvarchar(100) not null,
 	SoLuong int not null,
@@ -56,7 +58,7 @@ go
 
 create table HoaDon
 (
-	MaHD int primary key,
+	MaHD int identity(1,1) primary key,
 	MaKH int,
 	MaNV int,
 	Tinhtrang int default 0, -- 0 = chưa thanh toán | 1 = đã thanh toán
@@ -103,6 +105,39 @@ values (1,N'Áo Sơ Mi'),
 		(6,N'Quần Jogger'),
 		(7,N'Áo Cặp')
 go
+
+select * from SanPham
+------------Test----------
+insert into DanhMuc
+values (N'Áo Sơ Mi'),
+		(N'Áo Thun'),
+		(N'Quần Jean'),
+		(N'Quần Tây'),
+		(N'Áo Khoác Nam'),
+		(N'Quần Jogger'),
+		(N'Áo Cặp')
+go
+insert into SanPham
+values (1,N'đá hình báo',20,200000,'',N'Giặt ra màu')
+
+insert into SanPham
+values (1,N'đá hình báo',20,200000,'cap3.jpg',N'Giặt ra màu'),
+		(2,N'Áo thun đính đá',10,100000,'cap6.jpg',null),
+		(1,N'Áo thun đính đá đầu hổ',50,20000,'cap10.jpg',null),
+		(2,N'Áo thun burlong thêu',10,50000,'cap5.jpg',N'Giặt ra màu'),
+		(2,N'Áo thun cánh chim',40,100000,'cap13.jpg',null),
+		(3,N'Áo thun cánh chim ngũ sắc',15,200000,'cap13.jpg',N'Giặt không ra màu'),
+		(3,N'Áo sơ mi nam họa tiết sọc in',20,250000,'cap17.jpg',N'Vải dày'),
+		(4,N'Áo thun cánh chim thiên thần có cổ đính ',50,20000,'cap14.jpg',null),
+		(3,N'Áo thun nam đính đá versace ',20,100000,'cap2.jpg',N'Giặt ra màu'),
+		(4,N'Áo thun cánh chim thiên thần',20,100000,'cap1.jpg',N'Giặt ra màu'),
+		(5,N'Áo sơ mi nam họa tiết jean sọc ',20,100000,'cap16.jpg',null),
+		(4,N'Áo thun tay dài thêu versace',20,100000,'cap4.jpg',null),
+		(6,N'Áo thun dài tay đính đá',20,100000,'cap7.jpg',null),
+		(7,N'Áo thun dài tay đính cườm versace',20,100000,'cap12.jpg',null),
+		(7,N'áo thun đầu hổ 8997 Nam-Nữ',20,100000,'cap9.jpg',null),
+		(7,N'áo sơ mi sọc 1890',20,100000,'cap18.jpg',null)
+--------------------------------
 
 insert into SanPham
 values (1,7,N'Áo thun đính đá hình báo',20,200000,'cap3.jpg',N'Giặt ra màu'),
@@ -249,10 +284,10 @@ as
 		from KhachHang, NhanVien,SanPham, HoaDon, ChiTietHD
 		where HoaDon.MaKH = KhachHang.MaKH and NhanVien.MaNV = HoaDon.MaNV and ChiTietHD.MaHD = HoaDon.MaHD and ChiTietHD.MaSP = SanPham.MaSP and HoaDon.MaHD = @mahd
 	end
-	go
+go
 --------------------------------------
 
-
+select * from SanPham
 ----------Proceduce của App Android--------------------------------------
 go
 -----Dang Ky Thanh Vien--------
