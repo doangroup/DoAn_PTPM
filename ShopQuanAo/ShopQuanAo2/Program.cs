@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using DevExpress.UserSkins;
 using DevExpress.Skins;
 using ShopQuanAo2.View;
+using ShopQuanAo2.GUI;
 namespace ShopQuanAo2
 {
     static class Program
@@ -20,7 +21,8 @@ namespace ShopQuanAo2
 
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
-            Application.Run(new frmLogin());
+            //Application.Run(new frmLogin());
+            Application.Run(new frmAddProduct());
         }
     }
 }

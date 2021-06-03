@@ -49,7 +49,7 @@ namespace ShopQuanAo2.GUI
         {
             int masp = int.Parse(txtMaSP.Text);
             int soluong = int.Parse(txtSoLuong.Text);
-            int dongia = int.Parse(txtDonGia.Text);
+            double dongia = double.Parse(txtDonGia.Text);
             
             if (e.Button.Properties.Caption == "Tải Lại")
             {
@@ -58,13 +58,13 @@ namespace ShopQuanAo2.GUI
             }
             else if (e.Button.Properties.Caption == "Thêm")
             {
-                txtMaSP.Text = "";
-                cbDanhMuc.Text = "";
+
+                cbDanhMuc.EditValue = null;
                 txtTenSP.Text = "";
                 txtSoLuong.Text = "";
                 txtDonGia.Text = "";
                 txtGhiChu.Text = "";
-                txtMaSP.Focus();
+                cbDanhMuc.Focus();
             }
             else if (e.Button.Properties.Caption == "Lưu")
             {
@@ -72,36 +72,10 @@ namespace ShopQuanAo2.GUI
                 // nếu có sẽ sửa 
                 //Chưa xong phần kiểm tra khóa chính để hỏi Sửa 
                 int madm = int.Parse(cbDanhMuc.EditValue.ToString());
-
-                if (pd.checkPrimarykey(masp) == true)
-                {
-                    DialogResult dl = XtraMessageBox.Show("Mã sản phẩm trùng với mã đã có bán có muốn sửa cho Mã Sản Phẩm: " + txtMaSP.Text + " không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (dl == DialogResult.Yes)
-                    {
-                        try
-                        {
-                            pd.repairProduct(masp, madm, txtTenSP.Text, soluong, dongia, txtGhiChu.Text);
-                            XtraMessageBox.Show("Sửa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            dgvSanPham.DataSource = listProduct;
-                            listProduct.DataSource = pd.loadProduct();
-
-                        }
-                        catch (Exception ex)
-                        {
-                            XtraMessageBox.Show("Sửa thất bại ! Lỗi - " + ex.Message.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    else
-                    {
-                        XtraMessageBox.Show("Thêm thất bại! Lỗi - Trùng mã sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                //Không trùng mã thì sẽ thêm vào
-                else 
                 {
                     try
                     {
-                        pd.addProduct(masp, madm, txtTenSP.Text, soluong, dongia, txtGhiChu.Text);
+                        pd.addProduct(madm, txtTenSP.Text, soluong, dongia, txtGhiChu.Text);
                         XtraMessageBox.Show("Thêm thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         dgvSanPham.DataSource = listProduct;
                         listProduct.DataSource = pd.loadProduct();
@@ -115,7 +89,7 @@ namespace ShopQuanAo2.GUI
             }
             else if (e.Button.Properties.Caption == "Xóa")
             {
-                
+                masp = int.Parse(txtMaSP.Text);
                 DialogResult dl = XtraMessageBox.Show("Bạn có chắc muốn xóa Sản Phẩm: " + txtTenSP.Text + " không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dl == DialogResult.Yes)
                 {
@@ -135,7 +109,7 @@ namespace ShopQuanAo2.GUI
             else if (e.Button.Properties.Caption == "Sửa")
             {
 
-
+                masp = int.Parse(txtMaSP.Text);
                 int madm = int.Parse(cbDanhMuc.EditValue.ToString());
                 DialogResult dl = XtraMessageBox.Show("Bạn có chắc muốn sửa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dl == DialogResult.Yes)
@@ -192,6 +166,23 @@ namespace ShopQuanAo2.GUI
         private void groupControl1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void cbDanhMuc_EditValueChanged(object sender, EventArgs e)
+        {
+            //try
+            //{
+            //    int madm = int.Parse(cbDanhMuc.EditValue.ToString());
+             
+
+            //    dgvSanPham.DataSource = listProduct;
+            //    listProduct.DataSource = pd.loadProductByCategoryID(madm);
+            //}
+            //catch (Exception ex)
+            //{
+
+            //    XtraMessageBox.Show("Lỗi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
     }
 }

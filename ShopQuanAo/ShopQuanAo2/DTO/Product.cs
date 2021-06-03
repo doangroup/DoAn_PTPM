@@ -7,14 +7,15 @@ namespace ShopQuanAo2.DTO
 {
     public class Product
     {
-        int maSP, maDM, soLuong, donGia;
+        int maSP, maDM, soLuong;
+        decimal donGia;
         public Product(DataRow row)
         {
             this.MaSP = (int)row[0];
             this.MaDM = (int)row[1];
             this.TenSP = row[2].ToString();
             this.SoLuong = (int)row[3];
-            this.DonGia = (int)row[4];
+            this.DonGia = (decimal)row[4];
             this.GhiChu = row[5].ToString();
 
         }
@@ -27,7 +28,7 @@ namespace ShopQuanAo2.DTO
             this.TenSP = tensp;
             this.GhiChu = ghichu;
         }
-        public int DonGia
+        public decimal DonGia
         {
             get { return donGia; }
             set { donGia = value; }

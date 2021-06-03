@@ -170,6 +170,7 @@
             this.cbDanhMuc.Size = new System.Drawing.Size(407, 22);
             this.cbDanhMuc.StyleController = this.layoutControl1;
             this.cbDanhMuc.TabIndex = 12;
+            this.cbDanhMuc.EditValueChanged += new System.EventHandler(this.cbDanhMuc_EditValueChanged);
             // 
             // dgvSanPham
             // 
@@ -236,7 +237,6 @@
             // gridColumn5
             // 
             this.gridColumn5.Caption = "Đơn Giá";
-            this.gridColumn5.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.gridColumn5.FieldName = "DonGia";
             this.gridColumn5.Name = "gridColumn5";
             this.gridColumn5.Visible = true;
@@ -254,6 +254,7 @@
             // 
             // txtMaSP
             // 
+            this.txtMaSP.Enabled = false;
             this.txtMaSP.Location = new System.Drawing.Point(109, 16);
             this.txtMaSP.Name = "txtMaSP";
             this.txtMaSP.Size = new System.Drawing.Size(407, 22);
@@ -295,8 +296,7 @@
             this.txtDonGia.Name = "txtDonGia";
             this.txtDonGia.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.txtDonGia.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.txtDonGia.Properties.Mask.EditMask = "c3";
-            this.txtDonGia.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtDonGia.Properties.Mask.EditMask = "d";
             this.txtDonGia.Size = new System.Drawing.Size(527, 22);
             this.txtDonGia.StyleController = this.layoutControl1;
             this.txtDonGia.TabIndex = 4;

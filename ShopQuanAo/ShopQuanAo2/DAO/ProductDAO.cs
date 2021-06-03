@@ -14,7 +14,19 @@ namespace ShopQuanAo2.DAO
         //    DataTable donGia = dp.ExcuteQuery("select DonGia from SanPham where MaSP = " + maSP);
         //    return donGia;
         //}
-        public int loadPriceByProductID(int maSP)
+        public List<Product> loadProductByCategoryID(int maDM)
+        {
+            List<Product> lstProduct = new List<Product>();
+            string sqlProduct = "select MaSP, MaDM, TenSP, SoLuong, DonGia, GhiChu from SanPham where MaDM = " + maDM;
+            DataTable dt = dp.ExcuteQuery(sqlProduct);
+            foreach (DataRow item in dt.Rows)
+            {
+                Product pd = new Product(item);
+                lstProduct.Add(pd);
+            }
+            return lstProduct;
+        }
+        public decimal loadPriceByProductID(int maSP)
         {
             List<Product> sanPham = new List<Product>();
             string sqlSanPham = "select * from SanPham where MaSP = " + maSP;
@@ -24,7 +36,7 @@ namespace ShopQuanAo2.DAO
                 Product sp = new Product(item);
                 sanPham.Add(sp);
             }
-            int gia = 0;
+            decimal gia = 0;
             for(int i=0;i<sanPham.Count;i++)
             {
                 gia = sanPham[i].DonGia;
@@ -47,7 +59,7 @@ namespace ShopQuanAo2.DAO
         public List<Product> findProduct(string tenSP)
         {
             List<Product> lstProduct = new List<Product>();
-            string sqlProduct = "select * from SanPham where TenSP = N'" + tenSP + "'";
+            string sqlProduct = "select MaSP, MaDM, TenSP, SoLuong, DonGia, GhiChu from SanPham where TenSP = N'" + tenSP + "'";
             DataTable dt = dp.ExcuteQuery(sqlProduct);
             foreach (DataRow item in dt.Rows)
             {
@@ -72,10 +84,10 @@ namespace ShopQuanAo2.DAO
                 return false;
             }
         }
-        public bool addProduct(int maSP, int maDM, string tenSP, int soLuong, int donGia, string ghiChu)
+        public bool addProduct(int maDM, string tenSP, int soLuong, double donGia, string ghiChu)
         {
 
-            string sqlAdd = "insert into SanPham values (" + maSP + "," + maDM + ",N'" + tenSP + "'," + soLuong + "," + donGia + ",'',N'" + ghiChu + "')";
+            string sqlAdd = "insert into SanPham values (" + maDM + ",N'" + tenSP + "'," + soLuong + "," + donGia + ",'',N'" + ghiChu + "')";
             int rs = dp.ExcuteNonQuery(sqlAdd);
             if (rs > 0)
             {
@@ -87,14 +99,13 @@ namespace ShopQuanAo2.DAO
                 return false;
             }
         }
-        public bool repairProduct(int maSP, int maDM, string tenSP, int soLuong, int donGia, string ghiChu)
+        public bool repairProduct(int maSP, int maDM, string tenSP, int soLuong, double donGia, string ghiChu)
         {
             string sqlAdd = "update SanPham set MaDM = " + maDM + ", TenSP = N'" + tenSP + "',SoLuong = " + soLuong + ", DonGia = " + donGia + ",GhiChu = N'" + ghiChu + "' where MaSP = " + maSP;
             int rs = dp.ExcuteNonQuery(sqlAdd);
             if (rs > 0)
             {
                 return true;
-
             }
             else
             {

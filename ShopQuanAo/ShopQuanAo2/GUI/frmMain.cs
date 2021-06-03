@@ -235,16 +235,9 @@ namespace ShopQuanAo2
             }
         }
 
+        private void navBarItem6_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
 
-
-
-
-
-
-
-
-
-
-
+        }
     }
 }
