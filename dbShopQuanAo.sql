@@ -223,14 +223,14 @@ go
 create proc ThanhToan @mahd int
 as
 	begin
-		select HoaDon.NgayBan, HoaDon.MaHD, NhanVien.TenNV, SanPham.TenSP,ChiTietHD.SoLuong,SanPham.DonGia,ChiTietHD.ThanhTien,HoaDon.TongTien
+		select HoaDon.NgayBan, HoaDon.MaHD, NhanVien.TenNV, SanPham.TenSP,ChiTietHD.SoLuong,SanPham.DonGia,ChiTietHD.ThanhTien,HoaDon.TongTien,KhachHang.TenKH
 		from HoaDon,ChiTietHD,SanPham,NhanVien,KhachHang
 		where HoaDon.MaHD = ChiTietHD.MaHD and SanPham.MaSP = ChiTietHD.MaSP and NhanVien.MaNV = HoaDon.MaNV and HoaDon.MaKH = KhachHang.MaKH and HoaDon.MaHD = @mahd
-		group by HoaDon.NgayBan,HoaDon.MaHD, NhanVien.TenNV, SanPham.TenSP,ChiTietHD.SoLuong,SanPham.DonGia,ChiTietHD.ThanhTien,HoaDon.TongTien
+		group by HoaDon.NgayBan,HoaDon.MaHD, NhanVien.TenNV, SanPham.TenSP,ChiTietHD.SoLuong,SanPham.DonGia,ChiTietHD.ThanhTien,HoaDon.TongTien,KhachHang.TenKH
 	end
 go
-
-
+exec ThanhToan 12
+drop proc ThanhToan
 
 --create proc LayHDTheoNgay 
 --@ngayban datetime
