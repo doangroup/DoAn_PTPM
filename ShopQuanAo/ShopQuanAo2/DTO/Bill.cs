@@ -11,46 +11,28 @@ namespace ShopQuanAo2.DTO
 
         public Bill()
         { }
-        private int maHD, maKH,maNV;
+        private int maHD, maKH,maNV, tinhTrang;
         private double tongTien;
+        private string ngayBan, ngayGiao;
 
-        public double TongTien
-        {
-            get { return tongTien; }
-            set { tongTien = value; }
-        }
-        public int MaNV
-        {
-            get { return maNV; }
-            set { maNV = value; }
-        }
-        private string ngayBan;
+        public int MaHD { get => maHD; set => maHD = value; }
+        public int MaKH { get => maKH; set => maKH = value; }
+        public int MaNV { get => maNV; set => maNV = value; }
+        public int TinhTrang { get => tinhTrang; set => tinhTrang = value; }
+        public double TongTien { get => tongTien; set => tongTien = value; }
+        public string NgayBan { get => ngayBan; set => ngayBan = value; }
+        public string NgayGiao { get => ngayGiao; set => ngayGiao = value; }
+
         public Bill(DataRow row)
         {
             this.MaHD = (int)row[0];
             this.MaKH = (int)row[1];
             this.MaNV = (int)row[2];
-            this.NgayBan = row[3].ToString();
-            this.TongTien = (double)row[4];
+            this.TinhTrang = (int)row[3];
+            this.NgayBan = row[4].ToString();
+            this.NgayGiao = row[5].ToString();
+            this.TongTien = (double)row[6];
         }
-        public string NgayBan
-        {
-            get { return ngayBan; }
-            set { ngayBan = value; }
-        }
-
-        
-
-        public int MaKH
-        {
-            get { return maKH; }
-            set { maKH = value; }
-        }
-
-        public int MaHD
-        {
-            get { return maHD; }
-            set { maHD = value; }
-        }
+       
     }
 }

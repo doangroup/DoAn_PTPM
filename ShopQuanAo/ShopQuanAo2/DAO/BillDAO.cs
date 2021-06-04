@@ -22,6 +22,17 @@ namespace ShopQuanAo2.DAO
             }
             return lstBill;
         }
+        public string loadBillLastID()
+        {
+            string maHD = "";
+            string sqlBill = "select max(MaHD) from HoaDon";
+            DataTable dt = dp.ExcuteQuery(sqlBill);
+            if (dt.Rows.Count > 0)
+            {
+                maHD = dt.Rows[0][0].ToString();
+            }
+            return maHD;
+        }
         public DataTable loadTotal(int maHD)
         {
             
@@ -59,15 +70,14 @@ namespace ShopQuanAo2.DAO
                 return false;
             }
         }
-        public bool addBill(int maHD,int maKH, int maNV,string ngayBan)
+        public bool addBill(int maKH, int maNV,string ngayBan)
         {
 
-            string sqlAdd = "insert into HoaDon values ("+maHD+"," + maKH + "," + maNV + "," + ngayBan + ",0)";
+            string sqlAdd = "insert into HoaDon  values (" + maKH + "," + maNV + ",0,'" + ngayBan + "',null,0)";
             int rs = dp.ExcuteNonQuery(sqlAdd);
             if (rs > 0)
             {
                 return true;
-
             }
             else
             {
@@ -76,7 +86,7 @@ namespace ShopQuanAo2.DAO
         }
         public bool repairBill(int maHD, int maKH, int maNV,string ngayBan)
         {
-            string sqlAdd = "update HoaDon set MaKH = " + maKH + ",MaNV = " + maNV + ",NgayBan = " + ngayBan + ",TongTien = 0 where MaHD = " + maHD;
+            string sqlAdd = "update HoaDon set MaKH = " + maKH + ",MaNV = " + maNV + ",NgayBan = '" + ngayBan + "',TongTien = 0 where MaHD = " + maHD;
             int rs = dp.ExcuteNonQuery(sqlAdd);
             if (rs > 0)
             {

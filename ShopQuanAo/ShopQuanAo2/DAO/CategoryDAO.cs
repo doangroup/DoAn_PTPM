@@ -25,9 +25,9 @@ namespace ShopQuanAo2.DAO
             string sqlCategory = "select max(MaDM) from DanhMuc";
             DataTable dt = dp.ExcuteQuery(sqlCategory);
             if (dt.Rows.Count > 0)
-            
+            {
                 madm = dt.Rows[0][0].ToString();
-            
+            }
             return madm;
         }
         public List<Category> findCategory(string tendm)

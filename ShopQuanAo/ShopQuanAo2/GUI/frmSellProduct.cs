@@ -23,6 +23,9 @@ namespace ShopQuanAo2.GUI
         BillCustomerDAO billct = new BillCustomerDAO();
 
         BindingSource listBillInfo = new BindingSource();
+
+
+        BindingSource listBill = new BindingSource();
         private Staff st;
 
         public Staff ST
@@ -57,6 +60,9 @@ namespace ShopQuanAo2.GUI
             cbSanPham.Properties.DisplayMember = "TenSP";
             cbSanPham.Properties.ValueMember = "MaSP";
             cbSanPham.ItemIndex = 0;
+
+            dgvHoaDOn.DataSource = listBill;
+            listBill.DataSource = bill.loadBill();
         }
         
         private void frmSellProduct_Load(object sender, EventArgs e)
@@ -95,17 +101,17 @@ namespace ShopQuanAo2.GUI
         {
             int maNV = int.Parse(txtNhanVien.Text);
             int maKH = int.Parse(cbKhachHang.EditValue.ToString());
-            int maHD = int.Parse(txtMaHD.Text);
+            //int maHD = int.Parse(txtMaHD.Text);
             try
             {
-                bill.addBill(maHD,maKH, maNV, txtNgayBan.DateTime.Date.ToShortDateString()); 
+                bill.addBill(maKH, maNV, txtNgayBan.DateTime.Date.ToShortDateString()); 
                 XtraMessageBox.Show("Tạo thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                 groupControl2.Enabled = true;
                 groupControl1.Enabled = false;
                 groupControl3.Enabled = false;
             
-                txtMaHDCTHD.Text = txtMaHD.Text;
+                txtMaHDCTHD.Text = bill.loadBillLastID();
                 
             }
             catch (Exception ex)
@@ -177,10 +183,11 @@ namespace ShopQuanAo2.GUI
 
         private void txtSoLuong_TextChanged(object sender, EventArgs e)
         {
+            
             try
             {
                 int sl = int.Parse(txtSoLuong.Text);
-                int gia = int.Parse(txtGia.Text);
+                double gia = double.Parse(txtGia.Text);
                 txtThanhTien.Text = (sl * gia).ToString();
             }
             catch (Exception ex)
@@ -299,6 +306,23 @@ namespace ShopQuanAo2.GUI
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void btnThemKH_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                ct.addCustomer(txtTenKH.Text, txtDiaChi.Text, txtSDT.Text);
+                XtraMessageBox.Show("Thêm thành công", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                groupControl1.Enabled = true;
+                groupControl3.Enabled = false;
+                loadCBO();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Thêm thất bại - Lỗi: " + ex.Message.ToString(), "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
     }

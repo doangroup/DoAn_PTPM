@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
+﻿using DevExpress.XtraEditors;
 using ShopQuanAo2.DAO;
+using System;
+using System.Windows.Forms;
 namespace ShopQuanAo2.GUI
 {
     public partial class frmCustomer : DevExpress.XtraEditors.XtraForm
     {
-        CustomerDAO ct = new CustomerDAO();
-       
-        BindingSource listCustomer = new BindingSource();
+        private CustomerDAO ct = new CustomerDAO();
+        private BindingSource listCustomer = new BindingSource();
         //Tránh mất dữ liệu gốc khi binding qua textbox
         //Hạn chế lỗi mất kêt nối Binding - Nguồn: K Team
         public frmCustomer()
@@ -26,24 +19,24 @@ namespace ShopQuanAo2.GUI
         {
             dgvKhachHang.DataSource = listCustomer;
             listCustomer.DataSource = ct.loadCustomer();
-            
+
 
             BindingSource();
         }
         private void BindingSource()
         {
             txtMaKH.DataBindings.Add(new Binding("Text", dgvKhachHang.DataSource, "MaKH", true, DataSourceUpdateMode.Never));
-           
+
             txtTenKH.DataBindings.Add(new Binding("Text", dgvKhachHang.DataSource, "TenKH", true, DataSourceUpdateMode.Never));
             txtDiaChi.DataBindings.Add(new Binding("Text", dgvKhachHang.DataSource, "DiaChi", true, DataSourceUpdateMode.Never));
             txtSDT.DataBindings.Add(new Binding("Text", dgvKhachHang.DataSource, "SDT", true, DataSourceUpdateMode.Never));
-           
+
         }
 
         private void groupControl2_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
         {
-            int maKH = int.Parse(txtMaKH.Text);
-           
+
+
 
             if (e.Button.Properties.Caption == "Tải Lại")
             {
@@ -56,59 +49,28 @@ namespace ShopQuanAo2.GUI
                 txtTenKH.Text = "";
                 txtDiaChi.Text = "";
                 txtSDT.Text = "";
-           
+
                 txtMaKH.Focus();
             }
             else if (e.Button.Properties.Caption == "Lưu")
             {
-                //Kiểm tra khóa chính nếu trùng thì sẽ hỏi có sửa k? nếu k thì t.b lỗi
-                // nếu có sẽ sửa 
-                //Chưa xong phần kiểm tra khóa chính để hỏi Sửa 
-                
-
-                if (ct.checkPrimarykey(maKH) == true)
+                try
                 {
-                    DialogResult dl = XtraMessageBox.Show("Mã khách hàng trùng với mã đã có bán có muốn sửa cho Mã Khách Hàng: " + txtMaKH.Text + " không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (dl == DialogResult.Yes)
-                    {
-                        try
-                        {
-                            ct.repairCustomer(maKH, txtTenKH.Text, txtDiaChi.Text, txtSDT.Text);
-                            XtraMessageBox.Show("Sửa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            dgvKhachHang.DataSource = listCustomer;
-                            listCustomer.DataSource = ct.loadCustomer();
+                    ct.addCustomer(txtTenKH.Text, txtDiaChi.Text, txtSDT.Text);
+                    XtraMessageBox.Show("Thêm thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    dgvKhachHang.DataSource = listCustomer;
+                    listCustomer.DataSource = ct.loadCustomer();
 
-                        }
-                        catch (Exception ex)
-                        {
-                            XtraMessageBox.Show("Sửa thất bại ! Lỗi - " + ex.Message.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    else
-                    {
-                        XtraMessageBox.Show("Thêm thất bại! Lỗi - Trùng mã khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
                 }
-                //Không trùng mã thì sẽ thêm vào
-                else
+                catch (Exception ex)
                 {
-                    try
-                    {
-                        ct.addCustomer(txtTenKH.Text, txtDiaChi.Text, txtSDT.Text);
-                        XtraMessageBox.Show("Thêm thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        dgvKhachHang.DataSource = listCustomer;
-                        listCustomer.DataSource = ct.loadCustomer();
-
-                    }
-                    catch (Exception ex)
-                    {
-                        XtraMessageBox.Show("Thêm thất bại ! Lỗi - " + ex.Message.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    XtraMessageBox.Show("Thêm thất bại ! Lỗi - " + ex.Message.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
             }
             else if (e.Button.Properties.Caption == "Xóa")
             {
-
+                int maKH = int.Parse(txtMaKH.Text);
                 DialogResult dl = XtraMessageBox.Show("Bạn có chắc muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dl == DialogResult.Yes)
                 {
@@ -128,8 +90,8 @@ namespace ShopQuanAo2.GUI
             else if (e.Button.Properties.Caption == "Sửa")
             {
 
+                int maKH = int.Parse(txtMaKH.Text);
 
-               
                 DialogResult dl = XtraMessageBox.Show("Bạn có chắc muốn sửa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dl == DialogResult.Yes)
                 {
@@ -171,6 +133,19 @@ namespace ShopQuanAo2.GUI
             }
             else if (e.Button.Properties.Caption == "Xuất Excel")
             {
+            }
+        }
+
+        private void txtSDT_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void txtSDT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
             }
         }
     }

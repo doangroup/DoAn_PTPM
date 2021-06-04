@@ -63,7 +63,7 @@ namespace ShopQuanAo2.GUI
             else if (e.Button.Properties.Caption == "Xóa")
             {
                 int maNV = int.Parse(txtMaNV.Text);
-
+                 
                 DialogResult dl = XtraMessageBox.Show("Bạn có chắc muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dl == DialogResult.Yes)
                 {
@@ -87,8 +87,11 @@ namespace ShopQuanAo2.GUI
                 int maNV = int.Parse(txtMaNV.Text);
                 int sDT = int.Parse(txtSDT.Text);
                 string gioiTinh = cbGioiTinh.Text;
-                string ngaySinh = txtNgaySinh.DateTime.Date.ToShortDateString();
+
+                DateTime dt = Convert.ToDateTime(txtNgaySinh.EditValue);
                
+                string ngaySinh = dt.ToString("yyyy-MM-dd");
+
                 DialogResult dl = XtraMessageBox.Show("Bạn có chắc muốn sửa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dl == DialogResult.Yes)
                 {

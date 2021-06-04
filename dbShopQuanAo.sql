@@ -30,7 +30,7 @@ create table NhanVien
 	GioiTinh nvarchar(20) not null,
 	DiaChi nvarchar(100) not null,
 	SDT nvarchar(100) not null,
-	NgaySinh datetime not null,
+	NgaySinh date not null,
 	TenDN nvarchar(50),
 	MatKhau nvarchar(50) not null,
 	LoaiTK int not null -- 1 = Quản lý & 0 = Nhân viên
@@ -62,8 +62,8 @@ create table HoaDon
 	MaKH int,
 	MaNV int,
 	Tinhtrang int default 0, -- 0 = chưa thanh toán | 1 = đã thanh toán
-	NgayBan datetime not null,
-	NgayGiao datetime null,
+	NgayBan date not null,
+	NgayGiao date null,
 	TongTien float,
 	constraint fk_HD_NV foreign key(MaNV) references NhanVien(MaNV),
 	
@@ -78,7 +78,6 @@ create table ChiTietHD
 	MaSP int null,
 	SoLuong int null,
 	ThanhTien float null,
-	
 	constraint fk_CTHD_HD foreign key(MaHD) references HoaDon(MaHD),
 	constraint fk_HD_H foreign key(MaSP) references SanPham(MaSP)
 )
@@ -92,10 +91,10 @@ set dateformat dmy
 go
 
 insert into NhanVien
-values (N'Trung',N'Nam',N'Tân Phú','045648932',1999/01/23,'admin','c4ca4238a0b923820dcc509a6f75849b',1),
-		(N'Nhân Viên 2',N'Nữ',N'Thủ Đức','045648932',2000/07/20,'admin2','c4ca4238a0b923820dcc509a6f75849b',0)
+values (N'Trung',N'Nam',N'Tân Phú','045648932','1999/01/23','admin','c4ca4238a0b923820dcc509a6f75849b',1),
+		(N'Nhân Viên 2',N'Nữ',N'Thủ Đức','045648932','2000/07/20','admin2','c4ca4238a0b923820dcc509a6f75849b',0)
 go
-
+select * from NhanVien
 insert into DanhMuc
 values (N'Áo Sơ Mi'),
 		(N'Áo Thun'),
@@ -189,7 +188,14 @@ values (N'Tạ Quang Trung', N'Thôn 5', N'0123456','1'),
 		(N'Nguyễn Thanh Huy', N'Tp.HCM', N'0902669401','admin')
 go
 
+insert into HoaDon 
+values (1,1,0,'04/06/2021',null,0)
+
+insert into ChiTietHD values (8,3,1,20000)
 select * from NhanVien
+select * from KhachHang
+select * from HoaDon
+select * from ChiTietHD
 ---------------------Tạo Trigger------------------------------------
 create trigger TGTuoi
 on NhanVien
