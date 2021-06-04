@@ -28,7 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBillInfo));
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions2 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions3 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions4 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions5 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.txtTim = new DevExpress.XtraEditors.TextEdit();
@@ -92,13 +97,17 @@
             // 
             this.groupControl2.Controls.Add(this.txtTim);
             this.groupControl2.Controls.Add(this.layoutControl1);
+            buttonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("buttonImageOptions1.Image")));
+            buttonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("buttonImageOptions2.Image")));
+            buttonImageOptions3.Image = global::ShopQuanAo2.Properties.Resources.Word_icon;
+            buttonImageOptions4.Image = global::ShopQuanAo2.Properties.Resources.Excel_icon;
+            buttonImageOptions5.Image = ((System.Drawing.Image)(resources.GetObject("buttonImageOptions5.Image")));
             this.groupControl2.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Tải Lại", ((System.Drawing.Image)(resources.GetObject("groupControl2.CustomHeaderButtons")))),
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Xóa", ((System.Drawing.Image)(resources.GetObject("groupControl2.CustomHeaderButtons1")))),
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Sửa", ((System.Drawing.Image)(resources.GetObject("groupControl2.CustomHeaderButtons2")))),
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Xuất Word", global::ShopQuanAo2.Properties.Resources.Word_icon),
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Xuất Excel", global::ShopQuanAo2.Properties.Resources.Excel_icon),
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Tìm Kiếm Theo Mã Hóa Đơn", ((System.Drawing.Image)(resources.GetObject("groupControl2.CustomHeaderButtons3"))))});
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Tải Lại", true, buttonImageOptions1),
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Xóa", true, buttonImageOptions2),
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Xuất Word", true, buttonImageOptions3),
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Xuất Excel", true, buttonImageOptions4),
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Tìm Kiếm Theo Mã Hóa Đơn", true, buttonImageOptions5)});
             this.groupControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl2.ImeMode = System.Windows.Forms.ImeMode.On;
             this.groupControl2.Location = new System.Drawing.Point(2, 25);
@@ -109,7 +118,7 @@
             // 
             // txtTim
             // 
-            this.txtTim.Location = new System.Drawing.Point(676, 3);
+            this.txtTim.Location = new System.Drawing.Point(599, 3);
             this.txtTim.Name = "txtTim";
             this.txtTim.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txtTim.Properties.Appearance.Options.UseFont = true;
@@ -147,7 +156,7 @@
             // 
             // cbSanPham
             // 
-            this.cbSanPham.Location = new System.Drawing.Point(144, 100);
+            this.cbSanPham.Location = new System.Drawing.Point(144, 104);
             this.cbSanPham.Name = "cbSanPham";
             this.cbSanPham.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -166,7 +175,7 @@
             // 
             // txtThanhTien
             // 
-            this.txtThanhTien.Location = new System.Drawing.Point(657, 72);
+            this.txtThanhTien.Location = new System.Drawing.Point(657, 76);
             this.txtThanhTien.Name = "txtThanhTien";
             this.txtThanhTien.Properties.Mask.EditMask = "c";
             this.txtThanhTien.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
@@ -184,10 +193,10 @@
             // 
             // dgvChiTIetHD
             // 
-            this.dgvChiTIetHD.Location = new System.Drawing.Point(16, 128);
+            this.dgvChiTIetHD.Location = new System.Drawing.Point(16, 132);
             this.dgvChiTIetHD.MainView = this.gridView1;
             this.dgvChiTIetHD.Name = "dgvChiTIetHD";
-            this.dgvChiTIetHD.Size = new System.Drawing.Size(1021, 455);
+            this.dgvChiTIetHD.Size = new System.Drawing.Size(1021, 451);
             this.dgvChiTIetHD.TabIndex = 11;
             this.dgvChiTIetHD.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -253,7 +262,7 @@
             // 
             // txtSoLuong
             // 
-            this.txtSoLuong.Location = new System.Drawing.Point(144, 72);
+            this.txtSoLuong.Location = new System.Drawing.Point(144, 76);
             this.txtSoLuong.Name = "txtSoLuong";
             this.txtSoLuong.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.txtSoLuong.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
@@ -284,16 +293,16 @@
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.dgvChiTIetHD;
-            this.layoutControlItem7.Location = new System.Drawing.Point(0, 112);
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 116);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(1027, 461);
+            this.layoutControlItem7.Size = new System.Drawing.Size(1027, 457);
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.txtSoLuong;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 56);
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 60);
             this.layoutControlItem1.Name = "layoutControlItem1";
             this.layoutControlItem1.Size = new System.Drawing.Size(513, 28);
             this.layoutControlItem1.Text = "Số Lượng";
@@ -304,14 +313,14 @@
             this.layoutControlItem2.Control = this.txtMaHD;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 28);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(513, 28);
+            this.layoutControlItem2.Size = new System.Drawing.Size(513, 32);
             this.layoutControlItem2.Text = "Mã Hóa Đơn";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(124, 16);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.txtThanhTien;
-            this.layoutControlItem3.Location = new System.Drawing.Point(513, 56);
+            this.layoutControlItem3.Location = new System.Drawing.Point(513, 60);
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Size = new System.Drawing.Size(514, 28);
             this.layoutControlItem3.Text = "Thành Tiền";
@@ -329,7 +338,7 @@
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.cbSanPham;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 84);
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 88);
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Size = new System.Drawing.Size(1027, 28);
             this.layoutControlItem6.Text = "Sản Phẩm";
@@ -340,7 +349,7 @@
             this.layoutControlItem4.Control = this.cbTinhTrang;
             this.layoutControlItem4.Location = new System.Drawing.Point(513, 28);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(514, 28);
+            this.layoutControlItem4.Size = new System.Drawing.Size(514, 32);
             this.layoutControlItem4.Text = "Tình Trạng";
             this.layoutControlItem4.TextSize = new System.Drawing.Size(124, 17);
             // 

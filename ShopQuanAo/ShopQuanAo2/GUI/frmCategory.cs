@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
+﻿using DevExpress.XtraEditors;
 using ShopQuanAo2.DAO;
+using System;
+using System.Windows.Forms;
 namespace ShopQuanAo2.GUI
 {
     public partial class frmCategory : DevExpress.XtraEditors.XtraForm
     {
-        CategoryDAO cate= new CategoryDAO();
-        BindingSource listCategory = new BindingSource();
+        private CategoryDAO cate = new CategoryDAO();
+        private BindingSource listCategory = new BindingSource();
         //Tránh mất dữ liệu gốc khi binding qua textbox
         //Hạn chế lỗi mất kêt nối Binding - Nguồn: K Team
         public frmCategory()
@@ -25,9 +19,9 @@ namespace ShopQuanAo2.GUI
         {
             dgvDanhMuc.DataSource = listCategory;
             listCategory.DataSource = cate.loadCategory();
+            txtMaDM.Enabled = false;
 
-            
-            
+
             BindingSource();
         }
 
@@ -35,12 +29,12 @@ namespace ShopQuanAo2.GUI
         {
             txtMaDM.DataBindings.Add(new Binding("Text", dgvDanhMuc.DataSource, "MaDM", true, DataSourceUpdateMode.Never));
             txtTenDM.DataBindings.Add(new Binding("Text", dgvDanhMuc.DataSource, "TenDM", true, DataSourceUpdateMode.Never));
-           
+
         }
 
         private void groupControl2_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
         {
-            int maDM = int.Parse(txtMaDM.Text);
+            
             if (e.Button.Properties.Caption == "Tải Lại")
             {
                 dgvDanhMuc.DataSource = listCategory;
@@ -48,61 +42,38 @@ namespace ShopQuanAo2.GUI
             }
             else if (e.Button.Properties.Caption == "Thêm")
             {
-                txtMaDM.Text = "";
+
                 txtTenDM.Text = "";
-               
-                txtMaDM.Focus();
+
+                txtTenDM.Focus();
             }
             else if (e.Button.Properties.Caption == "Lưu")
             {
                 //Kiểm tra khóa chính nếu trùng thì sẽ hỏi có sửa k? nếu k thì t.b lỗi
                 // nếu có sẽ sửa 
                 //Chưa xong phần kiểm tra khóa chính để hỏi Sửa 
-                
 
-                if (cate.checkPrimarykey(maDM) == true)
-                {
-                    DialogResult dl = XtraMessageBox.Show("Mã danh mục trùng với mã đã có bán có muốn sửa cho Mã Danh Mục: " + txtMaDM.Text + " không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (dl == DialogResult.Yes)
-                    {
-                        try
-                        {
-                            cate.repairCategory(maDM, txtTenDM.Text);
-                            XtraMessageBox.Show("Sửa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            dgvDanhMuc.DataSource = listCategory;
-                            listCategory.DataSource = cate.loadCategory();
 
-                        }
-                        catch (Exception ex)
-                        {
-                            XtraMessageBox.Show("Sửa thất bại ! Lỗi - " + ex.Message.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    else
-                    {
-                        XtraMessageBox.Show("Thêm thất bại! Lỗi - Trùng mã danh mục", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
+
                 //Không trùng mã thì sẽ thêm vào
-                else
-                {
-                    try
-                    {
-                        cate.addCategory(maDM, txtTenDM.Text);
-                        XtraMessageBox.Show("Thêm thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        dgvDanhMuc.DataSource = listCategory;
-                        listCategory.DataSource = cate.loadCategory();
 
-                    }
-                    catch (Exception ex)
-                    {
-                        XtraMessageBox.Show("Thêm thất bại ! Lỗi - " + ex.Message.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                try
+                {
+                    cate.addCategory(txtTenDM.Text);
+                    XtraMessageBox.Show("Thêm thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    dgvDanhMuc.DataSource = listCategory;
+                    listCategory.DataSource = cate.loadCategory();
+
                 }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show("Thêm thất bại ! Lỗi - " + ex.Message.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
             else if (e.Button.Properties.Caption == "Xóa")
             {
-
+                int maDM = int.Parse(txtMaDM.Text);
                 DialogResult dl = XtraMessageBox.Show("Bạn có chắc muốn xóa Danh Mục: " + txtTenDM.Text + " không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dl == DialogResult.Yes)
                 {
@@ -122,14 +93,14 @@ namespace ShopQuanAo2.GUI
             else if (e.Button.Properties.Caption == "Sửa")
             {
 
+                int maDM = int.Parse(txtMaDM.Text);
 
-                
                 DialogResult dl = XtraMessageBox.Show("Bạn có chắc muốn sửa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dl == DialogResult.Yes)
                 {
                     try
                     {
-                        cate.repairCategory(maDM,txtTenDM.Text);
+                        cate.repairCategory(maDM, txtTenDM.Text);
                         XtraMessageBox.Show("Sửa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         dgvDanhMuc.DataSource = listCategory;
                         listCategory.DataSource = cate.loadCategory();

@@ -97,18 +97,6 @@ values (N'Trung',N'Nam',N'Tân Phú','045648932',1999/01/23,'admin','c4ca4238a0b
 go
 
 insert into DanhMuc
-values (1,N'Áo Sơ Mi'),
-		(2,N'Áo Thun'),
-		(3,N'Quần Jean'),
-		(4,N'Quần Tây'),
-		(5,N'Áo Khoác Nam'),
-		(6,N'Quần Jogger'),
-		(7,N'Áo Cặp')
-go
-
-select * from SanPham
-------------Test----------
-insert into DanhMuc
 values (N'Áo Sơ Mi'),
 		(N'Áo Thun'),
 		(N'Quần Jean'),
@@ -117,101 +105,80 @@ values (N'Áo Sơ Mi'),
 		(N'Quần Jogger'),
 		(N'Áo Cặp')
 go
-insert into SanPham
-values (1,N'đá hình báo',20,200000,'',N'Giặt ra màu')
 
 insert into SanPham
-values (1,N'đá hình báo',20,200000,'cap3.jpg',N'Giặt ra màu'),
-		(2,N'Áo thun đính đá',10,100000,'cap6.jpg',null),
-		(1,N'Áo thun đính đá đầu hổ',50,20000,'cap10.jpg',null),
-		(2,N'Áo thun burlong thêu',10,50000,'cap5.jpg',N'Giặt ra màu'),
-		(2,N'Áo thun cánh chim',40,100000,'cap13.jpg',null),
-		(3,N'Áo thun cánh chim ngũ sắc',15,200000,'cap13.jpg',N'Giặt không ra màu'),
-		(3,N'Áo sơ mi nam họa tiết sọc in',20,250000,'cap17.jpg',N'Vải dày'),
-		(4,N'Áo thun cánh chim thiên thần có cổ đính ',50,20000,'cap14.jpg',null),
-		(3,N'Áo thun nam đính đá versace ',20,100000,'cap2.jpg',N'Giặt ra màu'),
-		(4,N'Áo thun cánh chim thiên thần',20,100000,'cap1.jpg',N'Giặt ra màu'),
-		(5,N'Áo sơ mi nam họa tiết jean sọc ',20,100000,'cap16.jpg',null),
-		(4,N'Áo thun tay dài thêu versace',20,100000,'cap4.jpg',null),
-		(6,N'Áo thun dài tay đính đá',20,100000,'cap7.jpg',null),
+values (7,N'Áo thun đính đá hình báo',20,200000,'cap3.jpg',N'Giặt ra màu'),
+		(7,N'Áo thun đính đá',10,100000,'cap6.jpg',null),
+		(7,N'Áo thun đính đá đầu hổ',50,20000,'cap10.jpg',null),
+		(7,N'Áo thun burlong thêu',10,50000,'cap5.jpg',N'Giặt ra màu'),
+		(7,N'Áo thun cánh chim',40,100000,'cap13.jpg',null),
+		(7,N'Áo thun cánh chim ngũ sắc',15,200000,'cap13.jpg',N'Giặt không ra màu'),
+		(7,N'Áo sơ mi nam họa tiết sọc in',20,250000,'cap17.jpg',N'Vải dày'),
+		(7,N'Áo thun cánh chim thiên thần có cổ đính ',50,20000,'cap14.jpg',null),
+		(7,N'Áo thun nam đính đá versace ',20,100000,'cap2.jpg',N'Giặt ra màu'),
+		(7,N'Áo thun cánh chim thiên thần',20,100000,'cap1.jpg',N'Giặt ra màu'),
+		(7,N'Áo sơ mi nam họa tiết jean sọc ',20,100000,'cap16.jpg',null),
+		(7,N'Áo thun tay dài thêu versace',20,100000,'cap4.jpg',null),
+		(7,N'Áo thun dài tay đính đá',20,100000,'cap7.jpg',null),
 		(7,N'Áo thun dài tay đính cườm versace',20,100000,'cap12.jpg',null),
 		(7,N'áo thun đầu hổ 8997 Nam-Nữ',20,100000,'cap9.jpg',null),
-		(7,N'áo sơ mi sọc 1890',20,100000,'cap18.jpg',null)
---------------------------------
-
-insert into SanPham
-values (1,7,N'Áo thun đính đá hình báo',20,200000,'cap3.jpg',N'Giặt ra màu'),
-		(2,7,N'Áo thun đính đá',10,100000,'cap6.jpg',null),
-		(3,7,N'Áo thun đính đá đầu hổ',50,20000,'cap10.jpg',null),
-		(4,7,N'Áo thun burlong thêu',10,50000,'cap5.jpg',N'Giặt ra màu'),
-		(5,7,N'Áo thun cánh chim',40,100000,'cap13.jpg',null),
-		(6,7,N'Áo thun cánh chim ngũ sắc',15,200000,'cap13.jpg',N'Giặt không ra màu'),
-		(7,7,N'Áo sơ mi nam họa tiết sọc in',20,250000,'cap17.jpg',N'Vải dày'),
-		(8,7,N'Áo thun cánh chim thiên thần có cổ đính ',50,20000,'cap14.jpg',null),
-		(9,7,N'Áo thun nam đính đá versace ',20,100000,'cap2.jpg',N'Giặt ra màu'),
-		(10,7,N'Áo thun cánh chim thiên thần',20,100000,'cap1.jpg',N'Giặt ra màu'),
-		(11,7,N'Áo sơ mi nam họa tiết jean sọc ',20,100000,'cap16.jpg',null),
-		(12,7,N'Áo thun tay dài thêu versace',20,100000,'cap4.jpg',null),
-		(13,7,N'Áo thun dài tay đính đá',20,100000,'cap7.jpg',null),
-		(14,7,N'Áo thun dài tay đính cườm versace',20,100000,'cap12.jpg',null),
-		(15,7,N'áo thun đầu hổ 8997 Nam-Nữ',20,100000,'cap9.jpg',null),
-		(16,7,N'áo sơ mi sọc 1890',20,100000,'cap18.jpg',null),
-		(17,7,N'áo sơ mi mặt trời 290 (Nam -nữ)',20,100000,'cap15.jpg',null),
-		(18,1,N'Áo sơ mi họa tiết versace',20,100000,'somi14.jpg',null),
-		(19,1,N'Áo sơ mi họa tiết versace',20,100000,'somi15.jpg',null),
-		(20,1,N'Áo sơ mi nam họa tiết D&G',20,100000,'somi16.jpg',null),
-		(21,1,N'Áo sơ mi nam trắng NYC',20,100000,'somi11.jpg',null),
-		(22,1,N'Áo sơ mi nam trắng trơn',20,100000,'somi20.jpg',null),
-		(23,1,N'Áo sơ mi nam họa tiết versace',20,100000,'somi13.jpg',null),
-		(24,1,N'Áo sơ mi nam họa tiết versace',20,100000,'somi25.jpg',null),
-		(25,1,N'Áo sơ mi nam burberry ',20,100000,'somi10.jpg',null),
-		(26,1,N'Áo sơ mi nam họa tiết hoa văn',20,100000,'somi12.jpg',null),
-		(27,1,N'Áo sơ mi NYC',20,100000,'somi9.jpg',null),
-		(28,1,N'Áo sơ mi nam sọc caro',20,100000,'somi23.jpg',null),
-		(29,1,N'áo sơ mi nam trắng trơn',20,100000,'somi24.jpg',null),
-		(30,1,N'Áo sơ mi nam họa tiết',20,100000,'somi3.jpg',null),
-		(31,1,N'Áo sơ mi nam sọc họa',20,100000,'somi2.jpg',null),
-		(32,2,N'Áo thun nam hoạ tiết burberi',20,100000,'thun1.jpg',null),
-		(33,2,N'Áo thun nam hoạ tiết hình sư tử',20,100000,'thun2.jpg',null),
-		(34,2,N'Áo thun nam hoạ tiết đặc biệt',20,100000,'thun3.jpg',null),
-		(35,2,N'Áo thun nam hoạ tiết chuột Mickey đính',20,100000,'thun4.jpg',null),
-		(36,2,N'Áo thun nam hoạ tiết đặc biệt ',20,100000,'thun5.jpg',null),
-		(37,2,N'Áo thun nam đính cườm',20,100000,'thun6.jpg',null),
-		(38,2,N'Áo thun nam hoạ tiết in nhũ vàng',20,100000,'thun7.jpg',null),
-		(39,2,N'Áo thun đính cườm',20,100000,'thun8.jpg',null),
-		(40,2,N'áo thun nam họa tiết thêu 3D đính cườm',20,100000,'thun9.jpg',null),
-		(41,2,N'Áo thun có cổ LOGO',20,100000,'thun10.jpg',null),
-		(42,2,N'Áo thun nam có cổ',20,100000,'thun11.jpg',null),
-		(43,3,N'Quần jean đen nam rách gối',20,100000,'jean1.jpg',null),
-		(44,3,N'quần jean rách nam',20,100000,'jean2',null),
-		(45,3,N'quần jean rách',20,100000,'jean3',null),
-		(46,3,N'quần jean rách',20,100000,'jean4',null),
-		(47,3,N'Quần jean rách',20,100000,'jean5',null),
-		(48,3,N'quần jean',20,100000,'jean6',null),
-		(49,3,N'quần jean rách',20,100000,'jean7',null),
-		(50,3,N'quần jean rách gối',20,100000,'jean8',null),
-		(51,3,N'quần jean rách',20,100000,'jean9',null),
-		(52,3,N'quần jean rách',20,100000,'jean10.jpg',null),
-		(53,3,N'quần jean rách',20,100000,'jean11.jpg',null),
-		(54,4,N'quần tây âu (big size)',20,100000,'tay1.jpg',null),
-		(55,4,N'quần tây Nam size lớn ống côn',20,100000,'tay2.jpg',null),
-		(56,4,N'quần tây size lớn xám chì ống ôm',20,100000,'tay3.jpg',null),
-		(57,4,N'Quần Tây nam ống côn',20,100000,'tay4.jpg',null),
-		(58,4,N'quần tây nam ống côn',20,100000,'tay5.jpg',null),
-		(59,4,N'quần tây âu 3',20,100000,'tay6.jpg',null),
-		(60,4,N'quần tây âu 5',20,100000,'tay7.jpg',null),
-		(61,4,N'quần tây âu 1',20,100000,'tay8.jpg',null),
-		(62,4,N'Tây slim hàn quốc',20,100000,'tay9.jpg',null),
-		(63,5,N'áo khoác số c7',20,100000,'khoac1.jpg',null),
-		(64,5,N'áo khoác bombor',20,100000,'khoac2.jpg',null),
-		(65,6,N'quần jogger thun',20,100000,'jogger2.jpg',null),
-		(66,6,N'quần jogger thun 2007',20,100000,'jogger3.jpg',null),
-		(67,6,N'quần jogger thun 2009',20,100000,'jogger4.jpg',null),
-		(68,6,N'quần jogger thun 2019',20,100000,'jogger5.jpg',null),
-		(69,6,N'quần jogger thun 2020',20,100000,'jogger6.jpg',null),
-		(70,6,N'quần jogger',20,100000,'jogger7.jpg',null),
-		(71,6,N'quần jogger 1815',20,100000,'jogger8.jpg',null),
-		(72,6,N'quần jogger 925',20,100000,'jogger9.jpg',null)
+		(7,N'áo sơ mi sọc 1890',20,100000,'cap18.jpg',null),
+		(7,N'áo sơ mi mặt trời 290 (Nam -nữ)',20,100000,'cap15.jpg',null),
+		(1,N'Áo sơ mi họa tiết versace',20,100000,'somi14.jpg',null),
+		(1,N'Áo sơ mi họa tiết versace',20,100000,'somi15.jpg',null),
+		(1,N'Áo sơ mi nam họa tiết D&G',20,100000,'somi16.jpg',null),
+		(1,N'Áo sơ mi nam trắng NYC',20,100000,'somi11.jpg',null),
+		(1,N'Áo sơ mi nam trắng trơn',20,100000,'somi20.jpg',null),
+		(1,N'Áo sơ mi nam họa tiết versace',20,100000,'somi13.jpg',null),
+		(1,N'Áo sơ mi nam họa tiết versace',20,100000,'somi25.jpg',null),
+		(1,N'Áo sơ mi nam burberry ',20,100000,'somi10.jpg',null),
+		(1,N'Áo sơ mi nam họa tiết hoa văn',20,100000,'somi12.jpg',null),
+		(1,N'Áo sơ mi NYC',20,100000,'somi9.jpg',null),
+		(1,N'Áo sơ mi nam sọc caro',20,100000,'somi23.jpg',null),
+		(1,N'áo sơ mi nam trắng trơn',20,100000,'somi24.jpg',null),
+		(1,N'Áo sơ mi nam họa tiết',20,100000,'somi3.jpg',null),
+		(1,N'Áo sơ mi nam sọc họa',20,100000,'somi2.jpg',null),
+		(2,N'Áo thun nam hoạ tiết burberi',20,100000,'thun1.jpg',null),
+		(2,N'Áo thun nam hoạ tiết hình sư tử',20,100000,'thun2.jpg',null),
+		(2,N'Áo thun nam hoạ tiết đặc biệt',20,100000,'thun3.jpg',null),
+		(2,N'Áo thun nam hoạ tiết chuột Mickey đính',20,100000,'thun4.jpg',null),
+		(2,N'Áo thun nam hoạ tiết đặc biệt ',20,100000,'thun5.jpg',null),
+		(2,N'Áo thun nam đính cườm',20,100000,'thun6.jpg',null),
+		(2,N'Áo thun nam hoạ tiết in nhũ vàng',20,100000,'thun7.jpg',null),
+		(2,N'Áo thun đính cườm',20,100000,'thun8.jpg',null),
+		(2,N'áo thun nam họa tiết thêu 3D đính cườm',20,100000,'thun9.jpg',null),
+		(2,N'Áo thun có cổ LOGO',20,100000,'thun10.jpg',null),
+		(2,N'Áo thun nam có cổ',20,100000,'thun11.jpg',null),
+		(3,N'Quần jean đen nam rách gối',20,100000,'jean1.jpg',null),
+		(3,N'quần jean rách nam',20,100000,'jean2',null),
+		(3,N'quần jean rách',20,100000,'jean3',null),
+		(3,N'quần jean rách',20,100000,'jean4',null),
+		(3,N'Quần jean rách',20,100000,'jean5',null),
+		(3,N'quần jean',20,100000,'jean6',null),
+		(3,N'quần jean rách',20,100000,'jean7',null),
+		(3,N'quần jean rách gối',20,100000,'jean8',null),
+		(3,N'quần jean rách',20,100000,'jean9',null),
+		(3,N'quần jean rách',20,100000,'jean10.jpg',null),
+		(3,N'quần jean rách',20,100000,'jean11.jpg',null),
+		(4,N'quần tây âu (big size)',20,100000,'tay1.jpg',null),
+		(4,N'quần tây Nam size lớn ống côn',20,100000,'tay2.jpg',null),
+		(4,N'quần tây size lớn xám chì ống ôm',20,100000,'tay3.jpg',null),
+		(4,N'Quần Tây nam ống côn',20,100000,'tay4.jpg',null),
+		(4,N'quần tây nam ống côn',20,100000,'tay5.jpg',null),
+		(4,N'quần tây âu 3',20,100000,'tay6.jpg',null),
+		(4,N'quần tây âu 5',20,100000,'tay7.jpg',null),
+		(4,N'quần tây âu 1',20,100000,'tay8.jpg',null),
+		(4,N'Tây slim hàn quốc',20,100000,'tay9.jpg',null),
+		(5,N'áo khoác số c7',20,100000,'khoac1.jpg',null),
+		(5,N'áo khoác bombor',20,100000,'khoac2.jpg',null),
+		(6,N'quần jogger thun',20,100000,'jogger2.jpg',null),
+		(6,N'quần jogger thun 2007',20,100000,'jogger3.jpg',null),
+		(6,N'quần jogger thun 2009',20,100000,'jogger4.jpg',null),
+		(6,N'quần jogger thun 2019',20,100000,'jogger5.jpg',null),
+		(6,N'quần jogger thun 2020',20,100000,'jogger6.jpg',null),
+		(6,N'quần jogger',20,100000,'jogger7.jpg',null),
+		(6,N'quần jogger 1815',20,100000,'jogger8.jpg',null),
+		(6,N'quần jogger 925',20,100000,'jogger9.jpg',null)
 go
 
 insert into KhachHang
@@ -222,8 +189,21 @@ values (N'Tạ Quang Trung', N'Thôn 5', N'0123456','1'),
 		(N'Nguyễn Thanh Huy', N'Tp.HCM', N'0902669401','admin')
 go
 
-
+select * from NhanVien
 ---------------------Tạo Trigger------------------------------------
+create trigger TGTuoi
+on NhanVien
+for insert, update
+as
+	begin
+		if exists (select * from NhanVien where year(GETDATE())- YEAR(NgaySinh)<18)
+		begin
+			print N'Tuổi phải lớn hơn 18+'
+			rollback tran
+		end
+	end
+go
+select * from NhanVien
 create trigger TGThanhTien 
 on ChiTIetHD
 FOR INSERT, UPDATE

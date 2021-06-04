@@ -237,7 +237,62 @@ namespace ShopQuanAo2
 
         private void navBarItem6_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
+            Form frm = this.checkExit(typeof(frmAddProduct));
+            if (frm != null)
+            {
+                frm.Activate();
+            }
+            else
+            {
+                frmAddProduct sell = new frmAddProduct();
+                sell.MdiParent = this;
+                sell.Show();
+            }
+        }
 
+        private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.checkExit(typeof(frmAddProduct));
+            if (frm != null)
+            {
+                frm.Activate();
+            }
+            else
+            {
+                frmAddProduct sell = new frmAddProduct();
+                sell.MdiParent = this;
+                sell.Show();
+            }
+        }
+
+        private void navBarItem1_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            Form frm = this.checkExit(typeof(frmSellProduct));
+            if (frm != null)
+            {
+                frm.Activate();
+            }
+            else
+            {
+                frmSellProduct sell = new frmSellProduct(Acc);
+                sell.MdiParent = this;
+                sell.Show();
+            }
+        }
+
+        private void navBarItem2_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            Form frm = this.checkExit(typeof(frmAddCustomer));
+            if (frm != null)
+            {
+                frm.Activate();
+            }
+            else
+            {
+                frmAddCustomer sell = new frmAddCustomer();
+                sell.MdiParent = this;
+                sell.Show();
+            }
         }
     }
 }

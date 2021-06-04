@@ -1,15 +1,11 @@
-﻿using System;
+﻿using ShopQuanAo2.DTO;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using ShopQuanAo2.DAO;
-using ShopQuanAo2.DTO;
 using System.Data;
 namespace ShopQuanAo2.DAO
 {
     public class CategoryDAO
     {
-        DataProvider dp = new DataProvider();
+        private DataProvider dp = new DataProvider();
 
         public List<Category> loadCategory()
         {
@@ -22,6 +18,17 @@ namespace ShopQuanAo2.DAO
                 lstCategory.Add(cate);
             }
             return lstCategory;
+        }
+        public string loadCategoryLastID()
+        {
+            string madm = "";
+            string sqlCategory = "select max(MaDM) from DanhMuc";
+            DataTable dt = dp.ExcuteQuery(sqlCategory);
+            if (dt.Rows.Count > 0)
+            
+                madm = dt.Rows[0][0].ToString();
+            
+            return madm;
         }
         public List<Category> findCategory(string tendm)
         {
@@ -50,10 +57,10 @@ namespace ShopQuanAo2.DAO
                 return false;
             }
         }
-        public bool addCategory(int maDM, string tenDM)
+        public bool addCategory(string tenDM)
         {
 
-            string sqlAdd = "insert into DanhMuc values (" + maDM + ",N'" + tenDM + "')";
+            string sqlAdd = "insert into DanhMuc values (N'" + tenDM + "')";
             int rs = dp.ExcuteNonQuery(sqlAdd);
             if (rs > 0)
             {

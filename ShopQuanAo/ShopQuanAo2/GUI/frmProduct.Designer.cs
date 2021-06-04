@@ -278,6 +278,7 @@
             this.txtSoLuong.Size = new System.Drawing.Size(527, 22);
             this.txtSoLuong.StyleController = this.layoutControl1;
             this.txtSoLuong.TabIndex = 5;
+            this.txtSoLuong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoLuong_KeyPress);
             // 
             // txtGhiChu
             // 
@@ -300,6 +301,7 @@
             this.txtDonGia.Size = new System.Drawing.Size(527, 22);
             this.txtDonGia.StyleController = this.layoutControl1;
             this.txtDonGia.TabIndex = 4;
+            this.txtDonGia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDonGia_KeyPress);
             // 
             // layoutControlGroup1
             // 

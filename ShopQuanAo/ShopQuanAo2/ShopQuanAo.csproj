@@ -149,6 +149,12 @@
     <Compile Include="GUI\frmAbout.Designer.cs">
       <DependentUpon>frmAbout.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\frmAddCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmAddCustomer.Designer.cs">
+      <DependentUpon>frmAddCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\frmAddProduct.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,6 +249,9 @@
     </Compile>
     <EmbeddedResource Include="GUI\frmAbout.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmAddCustomer.resx">
+      <DependentUpon>frmAddCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmAddProduct.resx">
       <DependentUpon>frmAddProduct.cs</DependentUpon>
@@ -398,9 +407,7 @@
   <ItemGroup>
     <None Include="Resources\calculator-add-icon3.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Report\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\document-add-icon1.png" />
   </ItemGroup>
@@ -409,6 +416,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

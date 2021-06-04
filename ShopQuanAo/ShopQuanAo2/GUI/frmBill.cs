@@ -71,57 +71,7 @@ namespace ShopQuanAo2.GUI
                 txtNgayBan.Text = "";
                 txtMaHD.Focus();
             }
-            else if (e.Button.Properties.Caption == "Lưu")
-            {
-                //Kiểm tra khóa chính nếu trùng thì sẽ hỏi có sửa k? nếu k thì t.b lỗi
-                // nếu có sẽ sửa 
-                //Chưa xong phần kiểm tra khóa chính để hỏi Sửa 
-
-                int maHD = int.Parse(txtMaHD.Text);
-                int maKH = int.Parse(cbKhachHang.EditValue.ToString());
-                int MaNV = int.Parse(cbNhanVien.EditValue.ToString());
-               
-                if (bill.checkPrimarykey(maHD) == true)
-                {
-                    DialogResult dl = XtraMessageBox.Show("Mã hóa đơn trùng với mã đã có bán có muốn sửa cho Mã Hóa Đơn: " + txtMaHD.Text + " không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (dl == DialogResult.Yes)
-                    {
-                        try
-                        {
-                            bill.repairBill(maHD, maKH,MaNV,txtNgayBan.SelectedText.ToString());
-                            XtraMessageBox.Show("Sửa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            dgvHoaDon.DataSource = listBill;
-                            listBill.DataSource = bill.loadBill();
-
-                        }
-                        catch (Exception ex)
-                        {
-                            XtraMessageBox.Show("Sửa thất bại ! Lỗi - " + ex.Message.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    else
-                    {
-                        XtraMessageBox.Show("Thêm thất bại! Lỗi - Trùng mã danh mục", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                //Không trùng mã thì sẽ thêm vào
-                else
-                {
-                    
-                    try
-                    {
-                        bill.addBill(maHD,maKH,MaNV,txtNgayBan.SelectedText.ToString());
-                        XtraMessageBox.Show("Thêm thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        dgvHoaDon.DataSource = listBill;
-                        listBill.DataSource = bill.loadBill();
-
-                    }
-                    catch (Exception ex)
-                    {
-                        XtraMessageBox.Show("Thêm thất bại ! Lỗi - " + ex.Message.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
+            
             else if (e.Button.Properties.Caption == "Xóa")
             {
                 int maHD = int.Parse(txtMaHD.Text);
@@ -142,31 +92,7 @@ namespace ShopQuanAo2.GUI
                     }
                 }
             }
-            else if (e.Button.Properties.Caption == "Sửa")
-            {
-                int maHD = int.Parse(txtMaHD.Text);
-                int maKH = int.Parse(cbKhachHang.EditValue.ToString());
-                int MaNV = int.Parse(cbNhanVien.EditValue.ToString());
-              
-
-
-                DialogResult dl = XtraMessageBox.Show("Bạn có chắc muốn sửa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dl == DialogResult.Yes)
-                {
-                    try
-                    {
-                        bill.repairBill(maHD, maKH,MaNV,txtNgayBan.SelectedText.ToString());
-                        XtraMessageBox.Show("Sửa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        dgvHoaDon.DataSource = listBill;
-                        listBill.DataSource = bill.loadBill();
-
-                    }
-                    catch (Exception ex)
-                    {
-                        XtraMessageBox.Show("Sửa thất bại ! Lỗi - " + ex.Message.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
+           
             else if (e.Button.Properties.Caption == "Tìm Kiếm Theo Tên Khách Hàng")
             {
                 if (txtTim.Text == "")

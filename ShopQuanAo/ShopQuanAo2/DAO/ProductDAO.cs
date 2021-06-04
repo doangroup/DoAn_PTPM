@@ -14,6 +14,18 @@ namespace ShopQuanAo2.DAO
         //    DataTable donGia = dp.ExcuteQuery("select DonGia from SanPham where MaSP = " + maSP);
         //    return donGia;
         //}
+        public List<Product> loadProductByCategoryName(string tenDM)
+        {
+            List<Product> lstProduct = new List<Product>();
+            string sqlProduct = "select MaSP, DanhMuc.MaDM, TenSP, SoLuong, DonGia, GhiChu from SanPham,DanhMuc where DanhMuc.MaDM = SanPham.MaDM and DanhMuc.TenDM  = N'" + tenDM + "'";
+            DataTable dt = dp.ExcuteQuery(sqlProduct);
+            foreach (DataRow item in dt.Rows)
+            {
+                Product pd = new Product(item);
+                lstProduct.Add(pd);
+            }
+            return lstProduct;
+        }
         public List<Product> loadProductByCategoryID(int maDM)
         {
             List<Product> lstProduct = new List<Product>();
