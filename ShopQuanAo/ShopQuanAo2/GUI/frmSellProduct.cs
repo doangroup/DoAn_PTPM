@@ -1,31 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
+﻿using DevExpress.XtraEditors;
 using ShopQuanAo2.DAO;
 using ShopQuanAo2.DTO;
-using DevExpress.XtraReports.UI;
+using System;
+using System.Windows.Forms;
 namespace ShopQuanAo2.GUI
 {
     public partial class frmSellProduct : DevExpress.XtraEditors.XtraForm
     {
-        CustomerDAO ct = new CustomerDAO();
-        ProductDAO pd = new ProductDAO();
-        StaffDAO saff = new StaffDAO();
-        BillDAO bill = new BillDAO();
-        BillInfoDAO info = new BillInfoDAO();
-
-        BillCustomerDAO billct = new BillCustomerDAO();
-
-        BindingSource listBillInfo = new BindingSource();
-
-
-        BindingSource listBill = new BindingSource();
+        private CustomerDAO ct = new CustomerDAO();
+        private ProductDAO pd = new ProductDAO();
+        private StaffDAO saff = new StaffDAO();
+        private BillDAO bill = new BillDAO();
+        private BillInfoDAO info = new BillInfoDAO();
+        private BillCustomerDAO billct = new BillCustomerDAO();
+        private BindingSource listBillInfo = new BindingSource();
+        private BindingSource listBill = new BindingSource();
         private Staff st;
 
         public Staff ST
@@ -33,23 +22,20 @@ namespace ShopQuanAo2.GUI
             get { return st; }
             set { st = value; staff(ST); }
         }
-        void staff(Staff st)
+
+        private void staff(Staff st)
         {
 
             txtNhanVien.Text = st.MaNV.ToString();
-            
+
         }
         public frmSellProduct(Staff st)
         {
             InitializeComponent();
             ST = st;
         }
-        private void BindingSource()
-        {
-            txtTongTien.DataBindings.Add(new Binding("Text", dgvInHoaDon.DataSource, "TongTien", true, DataSourceUpdateMode.Never));
 
-        }
-       
+
         public void loadCBO()
         {
             cbKhachHang.Properties.DataSource = ct.loadCustomer();
@@ -63,27 +49,29 @@ namespace ShopQuanAo2.GUI
 
             dgvHoaDOn.DataSource = listBill;
             listBill.DataSource = bill.loadBill();
+
         }
-        
+
         private void frmSellProduct_Load(object sender, EventArgs e)
         {
             loadCBO();
-         
-            txtNgayBan.Text = DateTime.Now.ToString();
-            
-            groupControl2.Enabled = false;
-            groupControl1.Enabled = false;
+
+            txtNgayBan.Text = DateTime.Now.ToShortDateString();
+
+            groupCTHD.Enabled = false;
+            groupHoaDon.Enabled = false;
             btnThanhToan.Enabled = false;
+            BindingSource();
 
 
-            
+
         }
 
-        
+
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            
+
         }
         private Form checkExit(Type type)
         {
@@ -104,15 +92,19 @@ namespace ShopQuanAo2.GUI
             //int maHD = int.Parse(txtMaHD.Text);
             try
             {
-                bill.addBill(maKH, maNV, txtNgayBan.DateTime.Date.ToShortDateString()); 
+                bill.addBill(maKH, maNV, txtNgayBan.DateTime.Date.ToShortDateString());
                 XtraMessageBox.Show("Tạo thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-                groupControl2.Enabled = true;
-                groupControl1.Enabled = false;
-                groupControl3.Enabled = false;
-            
+                groupCTHD.Enabled = true;
+                groupHoaDon.Enabled = true;
+                groupKH.Enabled = false;
+                dgvHoaDOn.DataSource = listBill;
+                listBill.DataSource = bill.loadBill();
                 txtMaHDCTHD.Text = bill.loadBillLastID();
-                
+                int maHD = int.Parse(txtMaHDCTHD.Text);
+                dgvInHoaDon.DataSource = billct.loadBillCustomer(maHD);
+                var summaryValue = gridView1.Columns["ThanhTien"].SummaryItem.SummaryValue;
+                textEdit1.EditValue = summaryValue;
             }
             catch (Exception ex)
             {
@@ -122,23 +114,23 @@ namespace ShopQuanAo2.GUI
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void btnBoQua_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnThemKH2_Click(object sender, EventArgs e)
         {
-            
-            
+
+
         }
 
         private void btnThemKH_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void groupControl3_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
@@ -149,8 +141,8 @@ namespace ShopQuanAo2.GUI
                 {
                     ct.addCustomer(txtTenKH.Text, txtDiaChi.Text, txtSDT.Text);
                     XtraMessageBox.Show("Thêm thành công", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    groupControl1.Enabled = true;
-                    groupControl3.Enabled = false;
+                    groupHoaDon.Enabled = true;
+                    groupKH.Enabled = false;
                     loadCBO();
                 }
                 catch (Exception ex)
@@ -163,16 +155,16 @@ namespace ShopQuanAo2.GUI
 
         private void btnBoQua_Click_1(object sender, EventArgs e)
         {
-            groupControl2.Enabled = false;
-            groupControl1.Enabled = true;
-            groupControl3.Enabled = false;
+            groupCTHD.Enabled = false;
+            groupHoaDon.Enabled = true;
+            groupKH.Enabled = false;
         }
 
         private void btnQuayLạiKH_Click(object sender, EventArgs e)
         {
-            groupControl3.Enabled = true;
-            groupControl1.Enabled = false;
-            groupControl2.Enabled = false;
+            groupKH.Enabled = true;
+            groupHoaDon.Enabled = false;
+            groupCTHD.Enabled = false;
         }
 
         private void cbSanPham_EditValueChanged(object sender, EventArgs e)
@@ -183,7 +175,7 @@ namespace ShopQuanAo2.GUI
 
         private void txtSoLuong_TextChanged(object sender, EventArgs e)
         {
-            
+
             try
             {
                 int sl = int.Parse(txtSoLuong.Text);
@@ -200,12 +192,12 @@ namespace ShopQuanAo2.GUI
 
         private void txtTienKhachDua_TextChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void groupControl2_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
         {
-            
+
         }
 
         private void groupControl2_CustomButtonClick_1(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
@@ -220,22 +212,14 @@ namespace ShopQuanAo2.GUI
                     int thanhtien = int.Parse(txtThanhTien.Text);
                     info.addBillInfo(mahd, masp, sl, thanhtien);
                     XtraMessageBox.Show("Thêm thành công", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    groupControl1.Enabled = false;
-                    groupControl2.Enabled = true;
-                    groupControl3.Enabled = false;
+                    groupHoaDon.Enabled = true;
+                    groupCTHD.Enabled = true;
+                    groupKH.Enabled = false;
                     loadCBO();
                     dgvInHoaDon.DataSource = billct.loadBillCustomer(mahd);
-                    //gridView1.Columns["ThanhTien"].Visible = false;
-
                     var summaryValue = gridView1.Columns["ThanhTien"].SummaryItem.SummaryValue;
                     textEdit1.EditValue = summaryValue;
-                    //int tien = dgvInHoaDon.;
-                    //double tongtien = 0;
-                    //for (int i = 0; i < tien - 1; i++)
-                    //{
-                    //    thanhtien += float.Parse(dgvInHoaDon.Rows[i].Cells["Giá"].Value.ToString());
-                    //}
-                    //txttongtien.Text = thanhtien.ToString();
+
                 }
                 catch (Exception ex)
                 {
@@ -260,36 +244,38 @@ namespace ShopQuanAo2.GUI
                 XtraMessageBox.Show("Tiền khách đưa không được để trống hoặc nhập khác số - " + ex.Message.ToString(), "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        BillPayDAO bp = new BillPayDAO();
+
+        private BillPayDAO bp = new BillPayDAO();
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            groupControl1.Enabled = false;
-            groupControl2.Enabled = false;
-            groupControl3.Enabled = true;
+            groupHoaDon.Enabled = false;
+            groupCTHD.Enabled = false;
+            groupKH.Enabled = true;
             btnThanhToan.Enabled = false;
-            txtTongTien.Text = "";
             txtTuenKhachDua.Text = "0";
             txtSoLuong.Text = "0";
-            //rpBill rp = new rpBill();
+            int maHD = int.Parse(txtMaHDCTHD.Text);
+            bill.repairStatusBill(maHD);
+            BillPay billPay2 = new BillPay();
             ////rp.lbNgayBan.Text = string.Format("Tân Phú, Ngày {0} Tháng {1} Năm {2}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year);
-            //int maHD = int.Parse(txtMaHD.Text);
-            //rp.DataSource = bp.loadBillPay(maHD);
-            XtraMessageBox.Show("Thanh toán thành công!","Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            //ReportPrintTool tool = new ReportPrintTool(rp);
-            //tool.ShowPreview();
+            frmBillPay rpBillPay = new frmBillPay();
+            rpBillPay.prinBill(billPay2, bp.loadBillPay(maHD));
+            rpBillPay.ShowDialog();
+            XtraMessageBox.Show("Thanh toán thành công! Tổng tiền: " + textEdit1.Text, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            btnThanhToan.Enabled = false;
         }
-        
+
         private void simpleButton1_Click_1(object sender, EventArgs e)
         {
-            groupControl1.Enabled = false;
-            groupControl2.Enabled = false;
-            groupControl3.Enabled = true;
+            groupHoaDon.Enabled = false;
+            groupCTHD.Enabled = false;
+            groupKH.Enabled = true;
             btnThanhToan.Enabled = false;
         }
 
         private void txtGia_TextChanged(object sender, EventArgs e)
         {
-            
+
 
         }
 
@@ -308,15 +294,19 @@ namespace ShopQuanAo2.GUI
                 e.Handled = true;
             }
         }
+        private void BindingSource()
+        {
+            txtMaHDCTHD.DataBindings.Add(new Binding("Text", dgvHoaDOn.DataSource, "MaHD", true, DataSourceUpdateMode.Never));
 
+        }
         private void btnThemKH_Click_1(object sender, EventArgs e)
         {
             try
             {
                 ct.addCustomer(txtTenKH.Text, txtDiaChi.Text, txtSDT.Text);
                 XtraMessageBox.Show("Thêm thành công", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                groupControl1.Enabled = true;
-                groupControl3.Enabled = false;
+                groupHoaDon.Enabled = true;
+                groupKH.Enabled = false;
                 loadCBO();
             }
             catch (Exception ex)
@@ -324,6 +314,20 @@ namespace ShopQuanAo2.GUI
                 XtraMessageBox.Show("Thêm thất bại - Lỗi: " + ex.Message.ToString(), "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
+        }
+
+        private void gridView2_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
+        {
+
+        }
+
+        private void gridView2_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            int maHD = int.Parse(gridView2.GetRowCellValue(gridView2.FocusedRowHandle, "MaHD").ToString());
+            dgvInHoaDon.DataSource = billct.loadBillCustomer(maHD);
+            groupCTHD.Enabled = true;
+            var summaryValue = gridView1.Columns["ThanhTien"].SummaryItem.SummaryValue;
+            textEdit1.EditValue = summaryValue;
         }
     }
 }

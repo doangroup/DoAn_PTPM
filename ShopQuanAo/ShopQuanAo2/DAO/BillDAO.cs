@@ -84,6 +84,20 @@ namespace ShopQuanAo2.DAO
                 return false;
             }
         }
+        public bool repairStatusBill(int maHD)
+        {
+            string sqlAdd = "update HoaDon set TinhTrang = 1 where MaHD = " + maHD;
+            int rs = dp.ExcuteNonQuery(sqlAdd);
+            if (rs > 0)
+            {
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
         public bool repairBill(int maHD, int maKH, int maNV,string ngayBan)
         {
             string sqlAdd = "update HoaDon set MaKH = " + maKH + ",MaNV = " + maNV + ",NgayBan = '" + ngayBan + "',TongTien = 0 where MaHD = " + maHD;
