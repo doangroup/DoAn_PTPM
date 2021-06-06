@@ -13,6 +13,18 @@ namespace ShopQuanAo2.DAO
         public List<Bill> loadBill()
         {
             List<Bill> lstBill = new List<Bill>();
+            string sqlBill = "select * from HoaDon where TinhTrang = 0";
+            DataTable dt = dp.ExcuteQuery(sqlBill);
+            foreach (DataRow item in dt.Rows)
+            {
+                Bill bill = new Bill(item);
+                lstBill.Add(bill);
+            }
+            return lstBill;
+        }
+        public List<Bill> loadBillF()
+        {
+            List<Bill> lstBill = new List<Bill>();
             string sqlBill = "select * from HoaDon";
             DataTable dt = dp.ExcuteQuery(sqlBill);
             foreach (DataRow item in dt.Rows)

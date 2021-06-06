@@ -27,8 +27,7 @@ namespace ShopQuanAo2
         }
         void phanQuyen(int loaiTK)
         {
-            btnRegister.Enabled = btnSanPham.Enabled = btnTaiKhoan.Enabled = btnDanhMuc.Enabled = btnKhachHang.Enabled = btnNhanVien.Enabled = barButtonItem2.Enabled = barButtonItem6.Enabled = btnHoaDon.Enabled = btnCTHD.Enabled = loaiTK == 1;
-
+            btnRegister.Enabled = btnSanPham.Enabled = btnTaiKhoan.Enabled = btnDanhMuc.Enabled = btnKhachHang.Enabled = btnNhanVien.Enabled = barButtonItem2.Enabled = barButtonItem6.Enabled = btnThongKe.Enabled = loaiTK == 1;
         }
         public frmMain(Staff acc)
         {
@@ -55,14 +54,14 @@ namespace ShopQuanAo2
             DevExpress.LookAndFeel.DefaultLookAndFeel themes = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             themes.LookAndFeel.SkinName = "Valentine";
             
-            Form frm = this.checkExit(typeof(frmProduct));
+            Form frm = this.checkExit(typeof(frmSellProduct));
             if (frm != null)
             {
                 frm.Activate();
             }
             else
             {
-                frmProduct product = new frmProduct();
+                frmSellProduct product = new frmSellProduct(Acc);
                 product.MdiParent = this;
                 product.Show();
             }
@@ -86,7 +85,7 @@ namespace ShopQuanAo2
 
         private void btnLogout_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            this.Hide();
+            this.Close();
             frmLogin lg = new frmLogin();
             lg.Show();
             lg.txtUsername.Text = "";
@@ -292,6 +291,66 @@ namespace ShopQuanAo2
                 frmAddCustomer sell = new frmAddCustomer();
                 sell.MdiParent = this;
                 sell.Show();
+            }
+        }
+
+        private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.checkExit(typeof(frmAddCustomer));
+            if (frm != null)
+            {
+                frm.Activate();
+            }
+            else
+            {
+                frmAddCustomer sell = new frmAddCustomer();
+                sell.MdiParent = this;
+                sell.Show();
+            }
+        }
+
+        private void barButtonItem14_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.checkExit(typeof(frmBill));
+            if (frm != null)
+            {
+                frm.Activate();
+            }
+            else
+            {
+                frmBill bill = new frmBill();
+                bill.MdiParent = this;
+                bill.Show();
+            }
+        }
+
+        private void btnCTHDNV_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.checkExit(typeof(frmBillInfo));
+            if (frm != null)
+            {
+                frm.Activate();
+            }
+            else
+            {
+                frmBillInfo billInfo = new frmBillInfo();
+                billInfo.MdiParent = this;
+                billInfo.Show();
+            }
+        }
+
+        private void btnThongKe_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.checkExit(typeof(frmStatistical));
+            if (frm != null)
+            {
+                frm.Activate();
+            }
+            else
+            {
+                frmStatistical billInfo = new frmStatistical();
+                billInfo.MdiParent = this;
+                billInfo.Show();
             }
         }
     }

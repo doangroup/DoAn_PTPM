@@ -250,6 +250,12 @@
     <Compile Include="GUI\frmStaff.Designer.cs">
       <DependentUpon>frmStaff.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\frmStatistical.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmStatistical.Designer.cs">
+      <DependentUpon>frmStatistical.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\rpBill.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -311,6 +317,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmStaff.resx">
       <DependentUpon>frmStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmStatistical.resx">
+      <DependentUpon>frmStatistical.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\rpBill.resx">
       <DependentUpon>rpBill.cs</DependentUpon>
@@ -456,6 +465,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Add-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ID-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ID-icon %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Network-Ip-Address-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Male-user-add-icon %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\invoice-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Male-user-add-icon %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\invoice-icon %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\invoice-icon %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Reload-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\statistics-market-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

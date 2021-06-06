@@ -118,6 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="gridColumn4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAWdEVYdFRpdGxlAFBob25lO0hvbWVQaG9uZTuCWQI7AAAAwElEQVQ4T53SwQnCQBCF4QVrECzG
+        q0WkmUDAqyDYhOApVXhQsAwL8Cqs7y0+GGcGTTx8Gtadn7hs6bqOeqjvb639VGstfNCwTI4oYIdnRRR4
+        QhYJA54Cd/DDA4QBT4ErzB4mBXag4Qt/mEqBNSjwgBWEzRkFFnADRY4QNmcUoA0oQFv42AzhstkA7cFG
+        TrAEOywt4gP8KyPYjTyTs1uT3gcUOUA2EGQB4ZnYg80M3wLCEN+Il83e2HbZWoAf/6vlBbOLnZJWm4Zy
+        AAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAkAAAAAAAEAIACpMgAAlgAAAICAAAABACAAKAgBAD8zAABgYAAAAQAgAKiUAABnOwEASEgAAAEA

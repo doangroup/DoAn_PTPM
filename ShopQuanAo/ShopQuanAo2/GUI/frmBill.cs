@@ -26,7 +26,7 @@ namespace ShopQuanAo2.GUI
         private void frmBill_Load(object sender, EventArgs e)
         {
             dgvHoaDon.DataSource = listBill;
-            listBill.DataSource = bill.loadBill();
+            listBill.DataSource = bill.loadBillF();
 
             cbKhachHang.Properties.DataSource = ct.loadCustomer();
             cbKhachHang.Properties.DisplayMember = "TenKH";
@@ -45,7 +45,7 @@ namespace ShopQuanAo2.GUI
             txtMaHD.DataBindings.Add(new Binding("Text", dgvHoaDon.DataSource, "MaHD", true, DataSourceUpdateMode.Never));
             cbKhachHang.DataBindings.Add(new Binding("EditValue", dgvHoaDon.DataSource, "MaKH", true, DataSourceUpdateMode.Never));
             cbNhanVien.DataBindings.Add(new Binding("EditValue", dgvHoaDon.DataSource, "MaNV", true, DataSourceUpdateMode.Never));
-           
+            txtTinhTrang.DataBindings.Add(new Binding("Text", dgvHoaDon.DataSource, "TinhTrang", true, DataSourceUpdateMode.Never));
             txtNgayBan.DataBindings.Add(new Binding("Text", dgvHoaDon.DataSource, "NgayBan", true, DataSourceUpdateMode.Never));
             txtTongTien.DataBindings.Add(new Binding("Text", dgvHoaDon.DataSource, "TongTien", true, DataSourceUpdateMode.Never));
 
@@ -64,35 +64,6 @@ namespace ShopQuanAo2.GUI
                 dgvHoaDon.DataSource = listBill;
                 listBill.DataSource = bill.loadBill();
             }
-            else if (e.Button.Properties.Caption == "Thêm")
-            {
-                txtMaHD.Text = "";
-                
-                txtNgayBan.Text = "";
-                txtMaHD.Focus();
-            }
-            
-            else if (e.Button.Properties.Caption == "Xóa")
-            {
-                int maHD = int.Parse(txtMaHD.Text);
-                
-                DialogResult dl = XtraMessageBox.Show("Bạn có chắc muốn xóa Hóa Đơn: " + txtMaHD.Text + " không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dl == DialogResult.Yes)
-                {
-                    try
-                    {
-                        bill.deleteBill(maHD);
-                        XtraMessageBox.Show("Xóa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        dgvHoaDon.DataSource = listBill;
-                        listBill.DataSource = bill.loadBill();
-                    }
-                    catch (Exception ex)
-                    {
-                        XtraMessageBox.Show("Xóa thất bại ! Lỗi - " + ex.Message.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-           
             else if (e.Button.Properties.Caption == "Tìm Kiếm Theo Tên Khách Hàng")
             {
                 if (txtTim.Text == "")

@@ -65,9 +65,9 @@ namespace ShopQuanAo2.DAO
                 return false;
             }
         }
-        public bool repairBillInfo(int maCTHD,int maHD, int soLuong, double thanhTien, int tinhTrang)
+        public bool repairBillInfo(int maCTHD,int maHD, int soLuong, double thanhTien)
         {
-            string sqlAdd = "update ChiTietHD set MaHD = " + maHD + ", SoLuong = " + soLuong + ",ThanhTien = " + thanhTien + ",TinhTrang = " + tinhTrang + " where MaCTHD = " + maCTHD;
+            string sqlAdd = "update ChiTietHD set MaHD = " + maHD + ", SoLuong = " + soLuong + ",ThanhTien = " + thanhTien + " where MaCTHD = " + maCTHD;
             int rs = dp.ExcuteNonQuery(sqlAdd);
             if (rs > 0)
             {

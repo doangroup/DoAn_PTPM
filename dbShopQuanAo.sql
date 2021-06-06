@@ -196,6 +196,8 @@ select * from NhanVien
 select * from KhachHang
 select * from HoaDon
 select * from ChiTietHD
+select * from HoaDon where TinhTrang = 1
+
 ---------------------Tạo Trigger------------------------------------
 create trigger TGTuoi
 on NhanVien

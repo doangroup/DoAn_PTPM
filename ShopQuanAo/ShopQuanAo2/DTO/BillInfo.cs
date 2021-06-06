@@ -30,7 +30,7 @@ namespace ShopQuanAo2.DTO
             this.MaSP = (int)row[2];
             this.SoLuong = (int)row[3];
             this.ThanhTien = (double)row[4];
-            this.TinhTrang = (int)row[5];
+          
         }
         public BillInfo()
         { }

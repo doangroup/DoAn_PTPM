@@ -55,6 +55,10 @@
             this.btnBanHang = new DevExpress.XtraBars.BarButtonItem();
             this.btnCTHD = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnCTHDNV = new DevExpress.XtraBars.BarButtonItem();
+            this.btnHoaDonNV = new DevExpress.XtraBars.BarButtonItem();
+            this.btnThongKe = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.papeUser = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -120,10 +124,14 @@
             this.barButtonItem7,
             this.btnBanHang,
             this.btnCTHD,
-            this.barButtonItem11});
+            this.barButtonItem11,
+            this.barButtonItem12,
+            this.btnCTHDNV,
+            this.btnHoaDonNV,
+            this.btnThongKe});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ribbonControl1.MaxItemId = 27;
+            this.ribbonControl1.MaxItemId = 31;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageHeaderItemLinks.Add(this.ribbonControl1.ExpandCollapseItem);
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -335,6 +343,40 @@
             this.barButtonItem11.Name = "barButtonItem11";
             this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem11_ItemClick);
             // 
+            // barButtonItem12
+            // 
+            this.barButtonItem12.Caption = "Thêm Khách Hàng";
+            this.barButtonItem12.Id = 27;
+            this.barButtonItem12.ImageOptions.LargeImage = global::ShopQuanAo2.Properties.Resources.Male_user_add_icon__1_1;
+            this.barButtonItem12.Name = "barButtonItem12";
+            this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick);
+            // 
+            // btnCTHDNV
+            // 
+            this.btnCTHDNV.Caption = "Chi Tiết Hóa Đơn";
+            this.btnCTHDNV.Id = 28;
+            this.btnCTHDNV.ImageOptions.LargeImage = global::ShopQuanAo2.Properties.Resources.invoice_icon;
+            this.btnCTHDNV.Name = "btnCTHDNV";
+            this.btnCTHDNV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCTHDNV_ItemClick);
+            // 
+            // btnHoaDonNV
+            // 
+            this.btnHoaDonNV.Caption = "Hóa Đơn";
+            this.btnHoaDonNV.Id = 29;
+            this.btnHoaDonNV.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnHoaDonNV.ImageOptions.Image")));
+            this.btnHoaDonNV.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnHoaDonNV.ImageOptions.LargeImage")));
+            this.btnHoaDonNV.Name = "btnHoaDonNV";
+            this.btnHoaDonNV.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem14_ItemClick);
+            // 
+            // btnThongKe
+            // 
+            this.btnThongKe.Caption = "Thống Kê";
+            this.btnThongKe.Id = 30;
+            this.btnThongKe.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThongKe.ImageOptions.Image")));
+            this.btnThongKe.ImageOptions.LargeImage = global::ShopQuanAo2.Properties.Resources.statistics_market_icon;
+            this.btnThongKe.Name = "btnThongKe";
+            this.btnThongKe.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThongKe_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -355,6 +397,7 @@
             // 
             // ribbonPageGroup3
             // 
+            this.ribbonPageGroup3.AllowTextClipping = false;
             this.ribbonPageGroup3.Glyph = ((System.Drawing.Image)(resources.GetObject("ribbonPageGroup3.Glyph")));
             this.ribbonPageGroup3.ItemLinks.Add(this.skinRibbonGalleryBarItem1);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
@@ -375,21 +418,21 @@
             this.ribbonPageGroup4.ItemLinks.Add(this.btnNhanVien);
             this.ribbonPageGroup4.ItemLinks.Add(this.btnKhachHang);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
-            this.ribbonPageGroup4.Text = "Tổ Chức";
+            this.ribbonPageGroup4.Text = "Nhân Viên & Khách Hàng";
             // 
             // ribbonPageGroup2
             // 
             this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem2);
             this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem6);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "Hàng Hóa";
+            this.ribbonPageGroup2.Text = "Sản Phẩm & Danh Mục";
             // 
             // ribbonPageGroup6
             // 
-            this.ribbonPageGroup6.ItemLinks.Add(this.btnHoaDon);
-            this.ribbonPageGroup6.ItemLinks.Add(this.btnCTHD);
+            this.ribbonPageGroup6.AllowTextClipping = false;
+            this.ribbonPageGroup6.ItemLinks.Add(this.btnThongKe);
             this.ribbonPageGroup6.Name = "ribbonPageGroup6";
-            this.ribbonPageGroup6.Text = "Hóa Đơn";
+            this.ribbonPageGroup6.Text = "Thống Kê";
             // 
             // ribbonPage3
             // 
@@ -405,6 +448,8 @@
             this.ribbonPageGroup7.AllowTextClipping = false;
             this.ribbonPageGroup7.Glyph = ((System.Drawing.Image)(resources.GetObject("ribbonPageGroup7.Glyph")));
             this.ribbonPageGroup7.ItemLinks.Add(this.btnBanHang);
+            this.ribbonPageGroup7.ItemLinks.Add(this.btnCTHDNV);
+            this.ribbonPageGroup7.ItemLinks.Add(this.btnHoaDonNV);
             this.ribbonPageGroup7.Name = "ribbonPageGroup7";
             this.ribbonPageGroup7.Text = "Lập Hóa Đơn Bán Hàng";
             // 
@@ -412,8 +457,9 @@
             // 
             this.ribbonPageGroup5.AllowTextClipping = false;
             this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem11);
+            this.ribbonPageGroup5.ItemLinks.Add(this.barButtonItem12);
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
-            this.ribbonPageGroup5.Text = "Sản Phẩm & Danh Mục";
+            this.ribbonPageGroup5.Text = "Thêm";
             // 
             // ribbonPage4
             // 
@@ -466,7 +512,7 @@
             this.dockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Left;
             this.dockPanel1.Font = new System.Drawing.Font("Tahoma", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.dockPanel1.ID = new System.Guid("45b1dc06-b583-4f65-938d-f45fe06b3fc6");
-            this.dockPanel1.Location = new System.Drawing.Point(0, 0);
+            this.dockPanel1.Location = new System.Drawing.Point(-207, 0);
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.OriginalSize = new System.Drawing.Size(207, 200);
             this.dockPanel1.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Left;
@@ -516,9 +562,9 @@
             // navBarItem1
             // 
             this.navBarItem1.Caption = "Phiếu Bán Hàng";
-            this.navBarItem1.LargeImage = ((System.Drawing.Image)(resources.GetObject("navBarItem1.LargeImage")));
+            this.navBarItem1.LargeImage = global::ShopQuanAo2.Properties.Resources.invoice_icon__1_;
             this.navBarItem1.Name = "navBarItem1";
-            this.navBarItem1.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItem1.SmallImage")));
+            this.navBarItem1.SmallImage = global::ShopQuanAo2.Properties.Resources.invoice_icon__1_1;
             this.navBarItem1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItem1_LinkClicked);
             // 
             // navBarGroup3
@@ -543,7 +589,7 @@
             // 
             this.navBarItem2.Caption = "Khách Hàng";
             this.navBarItem2.Name = "navBarItem2";
-            this.navBarItem2.SmallImage = ((System.Drawing.Image)(resources.GetObject("navBarItem2.SmallImage")));
+            this.navBarItem2.SmallImage = global::ShopQuanAo2.Properties.Resources.Male_user_add_icon__1_2;
             this.navBarItem2.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarItem2_LinkClicked);
             // 
             // navBarItem3
@@ -658,6 +704,10 @@
         private DevExpress.XtraBars.BarButtonItem btnCTHD;
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem12;
+        private DevExpress.XtraBars.BarButtonItem btnCTHDNV;
+        private DevExpress.XtraBars.BarButtonItem btnHoaDonNV;
+        private DevExpress.XtraBars.BarButtonItem btnThongKe;
     }
 }
 
