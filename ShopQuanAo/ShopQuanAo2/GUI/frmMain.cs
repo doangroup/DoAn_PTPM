@@ -89,7 +89,7 @@ namespace ShopQuanAo2
             frmLogin lg = new frmLogin();
             lg.Show();
             lg.txtUsername.Text = "";
-            lg.txtPassword.Text = "";
+          
         }
 
         private void groupControl2_Click(object sender, EventArgs e)
