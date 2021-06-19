@@ -90,9 +90,10 @@ namespace ShopQuanAo2.GUI
             int maNV = int.Parse(txtNhanVien.Text);
             int maKH = int.Parse(cbKhachHang.EditValue.ToString());
             //int maHD = int.Parse(txtMaHD.Text);
+            string ngayBan = txtNgayBan.DateTime.Date.ToShortDateString();
             try
             {
-                bill.addBill(maKH, maNV, txtNgayBan.DateTime.Date.ToShortDateString());
+                bill.addBill(maKH, maNV, ngayBan);
                 XtraMessageBox.Show("Tạo thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                 groupCTHD.Enabled = true;

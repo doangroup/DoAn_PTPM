@@ -87,6 +87,7 @@
             this.btnSanPham = new DevExpress.XtraBars.BarButtonItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.btnDSSP = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgCLT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -128,10 +129,11 @@
             this.barButtonItem12,
             this.btnCTHDNV,
             this.btnHoaDonNV,
-            this.btnThongKe});
+            this.btnThongKe,
+            this.btnDSSP});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ribbonControl1.MaxItemId = 31;
+            this.ribbonControl1.MaxItemId = 32;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageHeaderItemLinks.Add(this.ribbonControl1.ExpandCollapseItem);
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -370,7 +372,7 @@
             // 
             // btnThongKe
             // 
-            this.btnThongKe.Caption = "Thống Kê";
+            this.btnThongKe.Caption = "Hóa Đơn";
             this.btnThongKe.Id = 30;
             this.btnThongKe.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThongKe.ImageOptions.Image")));
             this.btnThongKe.ImageOptions.LargeImage = global::ShopQuanAo2.Properties.Resources.statistics_market_icon;
@@ -431,6 +433,7 @@
             // 
             this.ribbonPageGroup6.AllowTextClipping = false;
             this.ribbonPageGroup6.ItemLinks.Add(this.btnThongKe);
+            this.ribbonPageGroup6.ItemLinks.Add(this.btnDSSP);
             this.ribbonPageGroup6.Name = "ribbonPageGroup6";
             this.ribbonPageGroup6.Text = "Thống Kê";
             // 
@@ -617,6 +620,14 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // btnDSSP
+            // 
+            this.btnDSSP.Caption = "Sản Phẩm";
+            this.btnDSSP.Id = 31;
+            this.btnDSSP.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDSSP.ImageOptions.Image")));
+            this.btnDSSP.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDSSP.ImageOptions.LargeImage")));
+            this.btnDSSP.Name = "btnDSSP";
+            // 
             // frmMain
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
@@ -708,6 +719,7 @@
         private DevExpress.XtraBars.BarButtonItem btnCTHDNV;
         private DevExpress.XtraBars.BarButtonItem btnHoaDonNV;
         private DevExpress.XtraBars.BarButtonItem btnThongKe;
+        private DevExpress.XtraBars.BarButtonItem btnDSSP;
     }
 }
 

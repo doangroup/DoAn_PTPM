@@ -190,7 +190,6 @@ go
 
 insert into HoaDon 
 values (1,1,0,'04/06/2021',null,0)
-
 insert into ChiTietHD values (8,3,1,20000)
 select * from NhanVien
 select * from KhachHang
@@ -242,7 +241,17 @@ go
 --end
 --go
 --exec findKHByHD N'Tạ Quang Trung'
-
+create proc ThongKeHDTheoNgay @ngaydb date, @ngaykt date
+as
+	begin
+		select *
+		from HoaDon
+		where HoaDon.NgayBan >= @ngaydb and HoaDon.NgayBan <= @ngaykt
+	end
+go
+exec ThongKeHDTheoNgay '06/06/2021','14/06/2021'
+select * from HoaDon
+drop proc ThongKeHDTheoNgay
 create proc ThanhToan @mahd int
 as
 	begin
@@ -259,7 +268,9 @@ drop proc ThanhToan
 --@ngayban datetime
 --as
 --begin
---	select TenSP, ChiTietHD.SoLuong, SanPham.DonGia, NgayBan, TenKH, ThanhTien = ChiTietHD.SoLuong * DonGia from KhachHang, HoaDon,SanPham, ChiTietHD where NgayBan = @ngayban and SanPham.MaSP = HoaDon.MaSP and KhachHang.MaKH = HoaDon.MaKH
+--	select TenSP, ChiTietHD.SoLuong, SanPham.DonGia, NgayBan, TenKH, ThanhTien = ChiTietHD.SoLuong * DonGia 
+--	from KhachHang, HoaDon,SanPham, ChiTietHD 
+--	where NgayBan = @ngayban and SanPham.MaSP = HoaDon.MaSP and KhachHang.MaKH = HoaDon.MaKH
 --end
 --go
 

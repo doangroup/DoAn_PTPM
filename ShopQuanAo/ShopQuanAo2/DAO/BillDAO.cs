@@ -85,7 +85,7 @@ namespace ShopQuanAo2.DAO
         public bool addBill(int maKH, int maNV,string ngayBan)
         {
 
-            string sqlAdd = "insert into HoaDon  values (" + maKH + "," + maNV + ",0,'" + ngayBan + "',null,0)";
+            string sqlAdd = "set Dateformat DMY insert into HoaDon  values (" + maKH + "," + maNV + ",0,'" + ngayBan + "',null,0)";
             int rs = dp.ExcuteNonQuery(sqlAdd);
             if (rs > 0)
             {
