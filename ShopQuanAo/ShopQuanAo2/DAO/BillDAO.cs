@@ -10,6 +10,8 @@ namespace ShopQuanAo2.DAO
     {
         DataProvider dp = new DataProvider();
 
+
+       
         public List<Bill> loadBill()
         {
             List<Bill> lstBill = new List<Bill>();

@@ -241,17 +241,37 @@ go
 --end
 --go
 --exec findKHByHD N'Tạ Quang Trung'
+create proc LoadHDThongKe
+as
+	begin
+		select NhanVien.TenNV,KhachHang.TenKH,HoaDon.NgayBan,HoaDon.TongTien
+		from HoaDon,NhanVien,KhachHang
+		where HoaDon.MaKH = KhachHang.MaKH and HoaDon.MaNV = NhanVien.MaNV
+	end
+go
+exec LoadHDThongKe
 create proc ThongKeHDTheoNgay @ngaydb date, @ngaykt date
 as
 	begin
-		select *
-		from HoaDon
-		where HoaDon.NgayBan >= @ngaydb and HoaDon.NgayBan <= @ngaykt
+		select NhanVien.TenNV,KhachHang.TenKH,HoaDon.NgayBan,HoaDon.TongTien
+		from HoaDon,NhanVien,KhachHang
+		where HoaDon.MaKH = KhachHang.MaKH and HoaDon.MaNV = NhanVien.MaNV and HoaDon.NgayBan >= @ngaydb and HoaDon.NgayBan <= @ngaykt
 	end
 go
-exec ThongKeHDTheoNgay '06/06/2021','14/06/2021'
+set dateformat DMY exec ThongKeHDTheoNgay '06-06-2021','14-06-2021'
+set dateformat DMY exec ThongKeHDTheoNgay '06/06/2021','20/06/2021'
 select * from HoaDon
 drop proc ThongKeHDTheoNgay
+
+create proc ThongKeHDTheoNgay2 
+as
+	begin
+		select NhanVien.TenNV,KhachHang.TenKH,HoaDon.NgayBan,HoaDon.TongTien
+		from HoaDon,NhanVien,KhachHang
+		where HoaDon.MaKH = KhachHang.MaKH and HoaDon.MaNV = NhanVien.MaNV 
+	end
+go
+exec ThongKeHDTheoNgay2
 create proc ThanhToan @mahd int
 as
 	begin

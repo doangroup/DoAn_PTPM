@@ -12,6 +12,8 @@ using ShopQuanAo2.DAO;
 using ShopQuanAo2.GUI;
 using ShopQuanAo2.View;
 using ShopQuanAo2.DTO;
+using DevExpress.XtraReports.UI;
+
 namespace ShopQuanAo2
 {
     public partial class frmMain : DevExpress.XtraBars.Ribbon.RibbonForm
@@ -352,6 +354,14 @@ namespace ShopQuanAo2
                 billInfo.MdiParent = this;
                 billInfo.Show();
             }
+        }
+
+        private void btnDSSP_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            rpProduct a = new rpProduct();
+            //a.DataSource = pd.loadProduct();
+            //BindData();
+            a.ShowPreviewDialog();
         }
     }
 }

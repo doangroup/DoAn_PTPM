@@ -59,6 +59,7 @@
             this.btnCTHDNV = new DevExpress.XtraBars.BarButtonItem();
             this.btnHoaDonNV = new DevExpress.XtraBars.BarButtonItem();
             this.btnThongKe = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDSSP = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.papeUser = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -87,7 +88,6 @@
             this.btnSanPham = new DevExpress.XtraBars.BarButtonItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.btnDSSP = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgCLT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
@@ -379,6 +379,15 @@
             this.btnThongKe.Name = "btnThongKe";
             this.btnThongKe.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThongKe_ItemClick);
             // 
+            // btnDSSP
+            // 
+            this.btnDSSP.Caption = "Sản Phẩm";
+            this.btnDSSP.Id = 31;
+            this.btnDSSP.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDSSP.ImageOptions.Image")));
+            this.btnDSSP.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDSSP.ImageOptions.LargeImage")));
+            this.btnDSSP.Name = "btnDSSP";
+            this.btnDSSP.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDSSP_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -619,14 +628,6 @@
             this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // btnDSSP
-            // 
-            this.btnDSSP.Caption = "Sản Phẩm";
-            this.btnDSSP.Id = 31;
-            this.btnDSSP.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDSSP.ImageOptions.Image")));
-            this.btnDSSP.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDSSP.ImageOptions.LargeImage")));
-            this.btnDSSP.Name = "btnDSSP";
             // 
             // frmMain
             // 
