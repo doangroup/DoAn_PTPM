@@ -37,7 +37,7 @@ namespace ShopQuanAo2.GUI
             catch (Exception ex)
             {
 
-                XtraMessageBox.Show("Thêm thất bại! - Lỗi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show("Thêm thất bại! - Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }
