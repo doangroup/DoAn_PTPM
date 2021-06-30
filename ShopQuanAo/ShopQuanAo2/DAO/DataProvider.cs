@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using System.Data.SqlClient;
+
 namespace ShopQuanAo2.DAO
 {
     public class DataProvider
     {
-        public string sql = "Data Source = DESKTOP-R95F3JA; Initial Catalog = QLSHOPQUANAO; User ID = sa; Password = taquangtrung";
+        public string sql = "Data Source=DESKTOP-GAJACTU\\SQLEXPRESS;Initial Catalog=QLSHOPQUANAO;User ID=sa;Password=taquangtrung";
+
         public DataTable ExcuteQuery(string query, object[] parameter = null)
         {
             DataTable data = new DataTable();
@@ -36,6 +38,7 @@ namespace ShopQuanAo2.DAO
                 conn.Close();
             }
             return data;
+
         }
         public int ExcuteNonQuery(string query, object[] parameter = null)
         {
