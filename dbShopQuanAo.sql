@@ -190,7 +190,7 @@ go
 
 insert into HoaDon 
 values (1,1,0,'04/06/2021',null,0)
-insert into ChiTietHD values (8,3,1,20000)
+insert into ChiTietHD values (1,3,1,20000)
 select * from NhanVien
 select * from KhachHang
 select * from HoaDon
