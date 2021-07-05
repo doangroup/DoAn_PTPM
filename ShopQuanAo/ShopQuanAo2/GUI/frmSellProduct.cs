@@ -159,6 +159,8 @@ namespace ShopQuanAo2.GUI
             groupCTHD.Enabled = false;
             groupHoaDon.Enabled = true;
             groupKH.Enabled = false;
+            dgvHoaDOn.DataSource = listBill;
+            listBill.DataSource = bill.loadBill();
         }
 
         private void btnQuayLạiKH_Click(object sender, EventArgs e)
@@ -237,7 +239,16 @@ namespace ShopQuanAo2.GUI
                 int tongtien = int.Parse(textEdit1.Text);
                 int tienkhachdua = int.Parse(txtTuenKhachDua.Text);
                 txtTienThua.Text = (tienkhachdua - tongtien).ToString();
-                btnThanhToan.Enabled = true;
+                int tienthua = int.Parse(txtTienThua.Text);
+                
+                if (tienthua < 0)
+                {
+                    btnThanhToan.Enabled = false;
+                }
+                else
+                {
+                    btnThanhToan.Enabled = true;
+                }
             }
             catch (Exception ex)
             {
@@ -255,6 +266,7 @@ namespace ShopQuanAo2.GUI
             btnThanhToan.Enabled = false;
             txtTuenKhachDua.Text = "0";
             txtSoLuong.Text = "0";
+            
             int maHD = int.Parse(txtMaHDCTHD.Text);
             bill.repairStatusBill(maHD);
             BillPay billPay2 = new BillPay();
@@ -272,6 +284,8 @@ namespace ShopQuanAo2.GUI
             groupCTHD.Enabled = false;
             groupKH.Enabled = true;
             btnThanhToan.Enabled = false;
+            dgvHoaDOn.DataSource = listBill;
+            listBill.DataSource = bill.loadBill();
         }
 
         private void txtGia_TextChanged(object sender, EventArgs e)
@@ -302,18 +316,26 @@ namespace ShopQuanAo2.GUI
         }
         private void btnThemKH_Click_1(object sender, EventArgs e)
         {
-            try
+            if (txtTenKH.Text.Equals("") || txtDiaChi.Text.Equals("")|| txtSDT.Text.Equals(""))
             {
-                ct.addCustomer(txtTenKH.Text, txtDiaChi.Text, txtSDT.Text);
-                XtraMessageBox.Show("Thêm thành công", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                groupHoaDon.Enabled = true;
-                groupKH.Enabled = false;
-                loadCBO();
+                XtraMessageBox.Show("Vui lòng nhập đủ thông tin Khách Hàng", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (Exception ex)
+            else
             {
-                XtraMessageBox.Show("Thêm thất bại - Lỗi: " + ex.Message.ToString(), "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                try
+                {
+                    ct.addCustomer(txtTenKH.Text, txtDiaChi.Text, txtSDT.Text);
+                    XtraMessageBox.Show("Thêm thành công", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    groupHoaDon.Enabled = true;
+                    groupKH.Enabled = false;
+                    loadCBO(); dgvHoaDOn.DataSource = listBill;
+                    listBill.DataSource = bill.loadBill();
+                }
+                catch (Exception ex)
+                {
+                    XtraMessageBox.Show("Thêm thất bại - Lỗi: " + ex.Message.ToString(), "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+                }
             }
         }
 

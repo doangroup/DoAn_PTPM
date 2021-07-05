@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using ShopQuanAo2.DAO;
+﻿using DevExpress.XtraEditors;
 using DevExpress.XtraReports.UI;
+using ShopQuanAo2.DAO;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Windows.Forms;
 
 namespace ShopQuanAo2.GUI
 {
     public partial class frmProduct : DevExpress.XtraEditors.XtraForm
     {
-        ProductDAO pd = new ProductDAO();
-        CategoryDAO cate = new CategoryDAO();
-        BindingSource listProduct = new BindingSource();
+        private ProductDAO pd = new ProductDAO();
+        private CategoryDAO cate = new CategoryDAO();
+        private BindingSource listProduct = new BindingSource();
         //Tránh mất dữ liệu gốc khi binding qua textbox
         //Hạn chế lỗi mất kêt nối Binding - Nguồn: K Team
         public frmProduct()
@@ -50,7 +46,7 @@ namespace ShopQuanAo2.GUI
             int masp = int.Parse(txtMaSP.Text);
             int soluong = int.Parse(txtSoLuong.Text);
             double dongia = double.Parse(txtDonGia.Text);
-            
+
             if (e.Button.Properties.Caption == "Tải Lại")
             {
                 dgvSanPham.DataSource = listProduct;
@@ -120,7 +116,7 @@ namespace ShopQuanAo2.GUI
                         XtraMessageBox.Show("Sửa thành công !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         dgvSanPham.DataSource = listProduct;
                         listProduct.DataSource = pd.loadProduct();
-                        
+
                     }
                     catch (Exception ex)
                     {
@@ -136,7 +132,7 @@ namespace ShopQuanAo2.GUI
                 }
                 try
                 {
-                    dgvSanPham.DataSource = listProduct;  
+                    dgvSanPham.DataSource = listProduct;
                     listProduct.DataSource = pd.findProduct(txtTim.Text);
                     txtTim.Text = "";
                 }
@@ -147,12 +143,18 @@ namespace ShopQuanAo2.GUI
                 }
 
             }
-            else if (e.Button.Properties.Caption == "Xuất Word")
-            {
-            }
             else if (e.Button.Properties.Caption == "Xuất Excel")
             {
+                ExportExcel excel = new ExportExcel();
+                // Lấy về nguồn dữ liệu cần Export là 1 DataTable
+                // DataTable này mỗi bạn lấy mỗi khác. 
+                // Ở đây tôi dùng BindingSouce có tên bs nên tôi ép kiểu như sau:
+                // Bạn nào gán trực tiếp vào DataGridView thì ép kiểu DataSource của
+                // DataGridView nhé 
 
+
+                DataTable dt = (DataTable)listProduct.DataSource;
+                excel.Export(dt, "Danh sach", "DANH SÁCH SẢN PHẨM");
             }
             else if (e.Button.Properties.Caption == "In DS Sản Phẩm")
             {
@@ -173,7 +175,7 @@ namespace ShopQuanAo2.GUI
             //try
             //{
             //    int madm = int.Parse(cbDanhMuc.EditValue.ToString());
-             
+
 
             //    dgvSanPham.DataSource = listProduct;
             //    listProduct.DataSource = pd.loadProductByCategoryID(madm);
