@@ -64,7 +64,7 @@ namespace ShopQuanAo2.GUI
                 dgvHoaDon.DataSource = listBill;
                 listBill.DataSource = bill.loadBill();
             }
-            else if (e.Button.Properties.Caption == "Tìm Kiếm Theo Tên Khách Hàng")
+            else if (e.Button.Properties.Caption == "Tìm Kiếm Theo Mã Hóa Đơn")
             {
                 if (txtTim.Text == "")
                 {
