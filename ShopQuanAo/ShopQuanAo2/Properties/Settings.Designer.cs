@@ -26,8 +26,8 @@ namespace ShopQuanAo2.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-R95F3JA;Initial Catalog=QLSHOPQUANAO;Persist Security Info=Tr" +
-            "ue;User ID=sa")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-1RP7O2E\\SQLEXPRESS;Initial Catalog=QLSHOPQUANAO;Persist Secur" +
+            "ity Info=True;User ID=sa;Password=sa2012")]
         public string QLSHOPQUANAOConnectionString {
             get {
                 return ((string)(this["QLSHOPQUANAOConnectionString"]));
