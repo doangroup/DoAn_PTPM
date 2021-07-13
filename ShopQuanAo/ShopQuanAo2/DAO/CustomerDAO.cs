@@ -21,7 +21,17 @@ namespace ShopQuanAo2.DAO
             }
             return lstCustomer;
         }
-
+        public string loadCustomerLastID()
+        {
+            string maKH = "";
+            string sqlBill = "select max(MaKH) from KhachHang";
+            DataTable dt = dp.ExcuteQuery(sqlBill);
+            if (dt.Rows.Count > 0)
+            {
+                maKH = dt.Rows[0][0].ToString();
+            }
+            return maKH;
+        }
         public List<Customer> findCustomer(string tenKH)
         {
             List<Customer> lstCustomer = new List<Customer>();

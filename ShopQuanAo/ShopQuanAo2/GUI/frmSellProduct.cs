@@ -328,8 +328,15 @@ namespace ShopQuanAo2.GUI
                     XtraMessageBox.Show("Thêm thành công", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     groupHoaDon.Enabled = true;
                     groupKH.Enabled = false;
-                    loadCBO(); dgvHoaDOn.DataSource = listBill;
+                    //cbKhachHang.Properties.DataSource = ct.loadCustomerLastID();
+                    //cbKhachHang.Properties.ValueMember = "MaKH";
+                    //cbKhachHang.Properties.DisplayMember = "TenKH";
+                    loadCBO();
+                    dgvHoaDOn.DataSource = listBill;
                     listBill.DataSource = bill.loadBill();
+                    txtTenKH.Text = "";
+                    txtDiaChi.Text = "";
+                    txtSDT.Text = "";
                 }
                 catch (Exception ex)
                 {

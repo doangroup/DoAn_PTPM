@@ -50,7 +50,7 @@ namespace ShopQuanAo2.View
         private void frmLogin_Load(object sender, EventArgs e)
         {
             DevExpress.LookAndFeel.DefaultLookAndFeel themes = new DevExpress.LookAndFeel.DefaultLookAndFeel();
-            themes.LookAndFeel.SkinName = "Valentine";
+            themes.LookAndFeel.SkinName = "Visual Studio 2013 Light";
             txtPassword.Properties.PasswordChar = (txtPassword.Properties.PasswordChar == '*') ? '\0' : '*';
         }
 

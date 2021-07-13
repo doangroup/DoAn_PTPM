@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
+﻿using DevExpress.XtraEditors;
 using ShopQuanAo2.DAO;
+using System;
+using System.Windows.Forms;
 namespace ShopQuanAo2.GUI
 {
     public partial class frmAddCustomer : DevExpress.XtraEditors.XtraForm
@@ -17,7 +10,8 @@ namespace ShopQuanAo2.GUI
         {
             InitializeComponent();
         }
-        CustomerDAO ct = new CustomerDAO();
+
+        private CustomerDAO ct = new CustomerDAO();
 
         private void frmAddCustomer_Load(object sender, EventArgs e)
         {
@@ -29,17 +23,23 @@ namespace ShopQuanAo2.GUI
         }
         private void btnThemKH_Click(object sender, EventArgs e)
         {
-            try
+            if (txtTenKH.Text.Equals("") || txtDiaChi.Text.Equals("") || txtSDT.Text.Equals(""))
             {
-                ct.addCustomer(txtTenKH.Text, txtDiaChi.Text, txtSDT.Text);
-                loadDGV(); XtraMessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                XtraMessageBox.Show("Vui lòng nhập đủ thông tin Khách Hàng", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (Exception ex)
+            else
             {
+                try
+                {
+                    ct.addCustomer(txtTenKH.Text, txtDiaChi.Text, txtSDT.Text);
+                    loadDGV(); XtraMessageBox.Show("Thêm thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                catch (Exception ex)
+                {
 
-                XtraMessageBox.Show("Thêm thất bại! - Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    XtraMessageBox.Show("Thêm thất bại! - Lỗi " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            
         }
     }
 }

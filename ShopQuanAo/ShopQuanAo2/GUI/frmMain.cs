@@ -54,7 +54,7 @@ namespace ShopQuanAo2
         private void frmMain_Load(object sender, EventArgs e)
         {
             DevExpress.LookAndFeel.DefaultLookAndFeel themes = new DevExpress.LookAndFeel.DefaultLookAndFeel();
-            themes.LookAndFeel.SkinName = "Valentine";
+            themes.LookAndFeel.SkinName = "Visual Studio 2013 Light";
             
             Form frm = this.checkExit(typeof(frmSellProduct));
             if (frm != null)
@@ -90,8 +90,9 @@ namespace ShopQuanAo2
             this.Close();
             frmLogin lg = new frmLogin();
             lg.Show();
-            lg.txtUsername.Text = "";
-          
+            //lg.txtUsername.Text = "";
+            lg.txtPassword.Text = "";
+
         }
 
         private void groupControl2_Click(object sender, EventArgs e)
